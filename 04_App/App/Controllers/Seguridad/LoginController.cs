@@ -16,7 +16,7 @@ namespace App.Controllers.Seguridad
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
-    {
+    { 
         private IConfiguration _config;
         private readonly LnUsuario _lnUsuario = new LnUsuario();
         public LoginController(IConfiguration config)

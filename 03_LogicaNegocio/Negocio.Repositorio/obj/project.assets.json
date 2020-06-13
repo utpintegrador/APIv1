@@ -5998,11 +5998,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyecto Encuentralo\\APIEncuentralo\\03_LogicaNegocio\\Negocio.Repositorio\\Negocio.Repositorio.csproj",
+      "projectUniqueName": "D:\\Integrador2\\APIv1\\03_LogicaNegocio\\Negocio.Repositorio\\Negocio.Repositorio.csproj",
       "projectName": "Negocio.Repositorio",
-      "projectPath": "D:\\Proyecto Encuentralo\\APIEncuentralo\\03_LogicaNegocio\\Negocio.Repositorio\\Negocio.Repositorio.csproj",
+      "projectPath": "D:\\Integrador2\\APIv1\\03_LogicaNegocio\\Negocio.Repositorio\\Negocio.Repositorio.csproj",
       "packagesPath": "C:\\Users\\Frank-PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyecto Encuentralo\\APIEncuentralo\\03_LogicaNegocio\\Negocio.Repositorio\\obj\\",
+      "outputPath": "D:\\Integrador2\\APIv1\\03_LogicaNegocio\\Negocio.Repositorio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6021,11 +6021,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Proyecto Encuentralo\\APIEncuentralo\\01_Modelos\\Entidad\\Entidad.csproj": {
-              "projectPath": "D:\\Proyecto Encuentralo\\APIEncuentralo\\01_Modelos\\Entidad\\Entidad.csproj"
+            "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
+              "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
             },
-            "D:\\Proyecto Encuentralo\\APIEncuentralo\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {
-              "projectPath": "D:\\Proyecto Encuentralo\\APIEncuentralo\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj"
+            "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {
+              "projectPath": "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj"
             }
           }
         }

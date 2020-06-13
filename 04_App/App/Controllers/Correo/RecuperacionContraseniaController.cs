@@ -43,7 +43,7 @@ namespace App.Controllers.Correo
 
         }
 
-        [HttpGet("ObtenerUsuarioPorCodigo/{codigo}")]
+        [HttpGet("ObtenerUsuarioPorCodigo/{codigo}")] 
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseObtenerPorCodigoDto), 404)]
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseObtenerPorCodigoDto), 200)]
         public async Task<ActionResult<RecuperacionContraseniaObtenerPorCodigoDto>> ObtenerUsuarioPorCodigo(string codigo)
