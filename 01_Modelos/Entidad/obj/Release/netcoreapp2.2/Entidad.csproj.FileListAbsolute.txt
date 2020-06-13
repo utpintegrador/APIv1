@@ -1,0 +1,48 @@
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.deps.json
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\ProyectoVentas\GitHub\RedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CopyComplete
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.deps.json
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfo.cs
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CopyComplete
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.dll
+D:\Android 04 11 2019\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.deps.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.deps.json
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\bin\Release\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.AssemblyInfo.cs
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.csproj.CopyComplete
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.dll
+D:\Proyecto Encuentralo\APIEncuentralo\01_Modelos\Entidad\obj\Release\netcoreapp2.2\Entidad.pdb

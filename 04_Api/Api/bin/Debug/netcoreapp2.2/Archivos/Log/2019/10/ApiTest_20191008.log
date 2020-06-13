@@ -1,0 +1,16 @@
+12:55:58:984 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+15:10:15:168 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+15:12:26:745 ERROR  [192.168.100.118] [AdUsuario                     ]    [Registrar                                 ]    - Could not find stored procedure 'Seguridad.usp_Usuario_Registrar'.
+15:50:33:770 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+16:06:02:650 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+16:28:36:434 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+16:30:03:180 ERROR  [192.168.100.118] [AdUsuario                     ]    [Registrar                                 ]    - Cannot insert the value NULL into column 'FechaActualizacion', table 'DB_A25F3D_RedSocial.Seguridad.Usuario'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+The 'usp_Usuario_Registrar' procedure attempted to return a status of NULL, which is not allowed. A status of 0 will be returned instead.
+17:47:00:947 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+18:44:07:935 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+19:22:21:304 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+19:42:27:522 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+19:43:37:930 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+19:48:43:455 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+19:50:09:332 INFO   [192.168.100.118] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.

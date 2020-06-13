@@ -1,0 +1,4 @@
+15:32:07:654 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+21:09:46:055 ERROR  [192.168.189.2] [AdRecuperacionContrasenia     ]    [ObtenerPendientesProceso                  ]    - Tiempo de espera de la operación de espera agotado
+21:10:42:219 ERROR  [192.168.189.2] [AdRecuperacionContrasenia     ]    [ObtenerPendientesProceso                  ]    - Tiempo de espera de la operación de espera agotado
+21:11:46:631 ERROR  [192.168.189.2] [AdRecuperacionContrasenia     ]    [ObtenerPendientesProceso                  ]    - Tiempo de espera de la operación de espera agotado

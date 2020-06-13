@@ -1,0 +1,12 @@
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\bin\Debug\netcoreapp2.2\Datos.deps.json
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\bin\Debug\netcoreapp2.2\Datos.dll
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\bin\Debug\netcoreapp2.2\Datos.pdb
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.csprojAssemblyReference.cache
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.AssemblyInfoInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.AssemblyInfo.cs
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.csproj.CopyComplete
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.dll
+D:\ProyectoVentas\SlnProyectoVentas\02_LogicaAccesoDatos\Datos\obj\Debug\netcoreapp2.2\Datos.pdb

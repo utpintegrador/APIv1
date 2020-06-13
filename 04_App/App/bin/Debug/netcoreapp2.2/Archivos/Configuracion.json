@@ -1,0 +1,10 @@
+{
+  "Servidor": ".",
+  "Servidor2": "sql5033.site4now.net",
+  "BaseDatos": "DB_A25F3D_Encuentralo",
+  "Usuario": "sa",
+  "Usuario2": "DB_A25F3D_Encuentralo_admin",
+  "Contrasenia": "d3sarrollo",
+  "RutaLog": "",
+  "NombreLog": "ApiTest"
+}

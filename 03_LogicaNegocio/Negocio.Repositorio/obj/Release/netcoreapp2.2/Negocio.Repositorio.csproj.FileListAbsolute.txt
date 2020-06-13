@@ -1,0 +1,64 @@
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\NVelocity.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\NVelocityTemplateEngine.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.xml
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\NVelocity.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\NVelocityTemplateEngine.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.xml
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Proyecto Encuentralo\APIEncuentralo\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.pdb

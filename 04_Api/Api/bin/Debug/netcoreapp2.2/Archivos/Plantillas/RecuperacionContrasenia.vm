@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reporte</title>
+	<style type="text/css">
+        #outlook a { 
+			padding:0;
+		} /* Force Outlook to provide a "view in browser" menu link. */
+        
+		body{
+			width:100% !important; 
+			-webkit-text-size-adjust:100%; 
+			-ms-text-size-adjust:100%; 
+			margin:0; 
+			padding:0;
+			font-family: sans-serif;
+			font-size:11px;
+		}
+		ul {
+			 margin: 14px;
+			 padding: -10px;
+		}
+		li {
+			 margin: 14px;
+			 padding: -10px;
+		}
+        
+		/* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+        .ExternalClass{
+			width:100%;
+		} /* Force Hotmail to display emails at full width */
+        
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+			line-height: 100%;
+		} /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+        
+		#backgroundTable {
+			margin:0; 
+			padding:0; 
+			width:100% !important; 
+			line-height: 100% !important;
+		}
+
+        table td {
+			border-collapse: collapse;
+		}
+        
+		table { 
+			border-collapse:collapse; 
+			mso-table-lspace:0pt; 
+			mso-table-rspace:0pt; 
+		}
+        
+		/*a {color: #e95353;text-decoration: none;text-decoration:none!important;}*/
+        /*STYLES*/
+        table[class=full] { 
+			width: 100%; 
+			clear: both; 
+		}
+
+        table[class="tabla"]{
+            color:#333333;
+			border-width: 1px;
+			border-color: #dedede;
+			border-collapse: collapse;
+			font-family: tahoma;
+			font-size: 11px;
+        }
+
+
+        /*################################################*/
+        /*IPAD STYLES*/
+        /*################################################*/
+        @media only screen and (max-width: 640px) {
+			a[href^="tel"], a[href^="sms"] {
+				text-decoration: none;
+				color: #ffffff; /* or whatever your want */
+				pointer-events: none;
+				cursor: default;
+			}
+			
+			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+				text-decoration: default;
+				color: #ffffff !important;
+				pointer-events: auto;
+				cursor: default;
+			}
+			
+			table[class=devicewidth] {
+				width: 440px!important;
+				text-align:center!important;
+			}
+			
+			table[class=devicewidthinner] {
+				width: 420px!important;
+				text-align:center!important;
+			}
+			
+			table[class="sthide"]{
+				display: none!important;
+			}
+			
+			td[class="menu"]{
+				text-align:center !important; 
+				padding: 0 0 10px 0 !important;
+			}
+			
+			td[class="logo"]{
+				padding:10px 0 5px 0!important;
+				margin: 0 auto !important;
+			}
+        }
+
+	</style>
+
+	#set($tabla="color:#333333;border-width: 0px;border-color: #dedede;border-collapse: collapse;font-family: tahoma;font-size: 11px;")
+			
+	#set($thTituloDetalle="color: #558ED5;")
+	#set($thDetalleDatos="color: #184981;")
+
+	#set($thTitulo1="background-color: #F86A5B;height: 35px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #F86A5B;")
+	
+	#set($thTitulo2="background-color: #ffffff;height: 5px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #dedede;")
+	
+	#set($thTitulo3="background-color: #F9845C;height: 3px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #F9845C;")
+	
+	#set($thTitulo4="background-color: #ffffff;height: 2.7px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #dedede;")
+	
+	#set($thTitulo5="background-color: #F9AF5F;height: 5px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #F9AF5F;")
+	
+	#set($thTitulo6="background-color: #fff;height: 5px;")
+	
+	#set($thTitulo7="background-color: #46AFFA;height: 35px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #46AFFA;")
+	
+	#set($thTitulo8="background-color: #04EEFE;height: 5px;border-width: 0px 0.4px 0px 0.4px;border-style: solid;border-color: #04EEFE;")
+	
+	#set($thTituloAsunto="height: 25px;border-width: 1px;padding: 6px;border-style: solid;border-color: #dedede;background-color: #CAFFCA;")
+	
+	#set($tableBorde="border-width: 0.4px;border-style: solid;border-color: #dedede;")
+	#set($imagenLogo="padding:11;")
+	
+	#set($th="border-width: 1px;padding: 6px;border-style: solid;border-color: #dedede;background-color: #CAFFCA;")
+	#set($td="border-width: 1px;padding: 6px;border-style: solid;border-color: #dedede;background-color: #ffffff;")
+
+</head>
+<body>
+	<section>
+		
+ 		<div class="block"> 
+			<!-- Start of preheader Gray-->
+ 			<table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="preheader">
+				<tbody>
+					<tr>
+						<td width="100%">
+							<table width="650" cellpadding="0" cellspacing="0" border="0" class="devicewidth">
+								<tbody>
+									<tr>
+										<td width="100%" height="20">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- End of preheader -->
+ 		</div> 
+
+		<div class="block">
+			<table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="bigimage">
+				<tbody>
+					<tr>
+						<td>
+						
+							<table bgcolor="#ffffff" width="650" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth" modulebg="edit" style="$tableBorde">
+								
+								<tbody>
+									<tr>
+										<td colspan="2" style="$thTitulo1" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo2" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo3" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo4" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo5" align="center"></td>
+									</tr>
+									
+									<tr>
+										<td style="padding: 35px;">
+											<table width="600" cellspacing="0" cellpadding="0" class="devicewidthinner" align="center" style="$tabla">
+												<tbody>
+													<tr>
+														<th>
+															<img height="90" 
+															src="https://red-social.s3.us-east-2.amazonaws.com/Aplicativo/logo.jpeg" 
+															alt="Logo After- Class" />
+														</th>
+													</tr>
+													<tr>
+														<td align="left">
+															<br />
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+
+													<tr>
+														<td>	
+															<table border="1" width="500" align="center">
+																<tr>
+																	<th style="$thTituloAsunto" align="center" colspan="2">
+																		Estimado ${datos.Nombre} ${datos.Apellido}
+																	</th>
+																</tr>
+																	<tr>
+																		<td style="$td" align="left" width="300" height="50" colspan="2">
+																			<ul>
+																			<li>Existe una solicitud de contrase&ntilde;a olvidada!!, para continuar el proceso favor de brindar el siguiente c&oacute;digo: ${datos.CodigoGenerado}</li>
+																			
+																			<li>El c&oacute;digo brindado tiene una duraci&oacute;n de minutos limitada, por lo cual vencer&aacute; en ${datos.MinutosVencimientoCodigo} minutos.</li>
+																			
+																			<li>Fecha de solicitud: ${datos.FechaRegistro}</li>
+																			</ul>
+																		</td>
+																	</tr>
+															</table>
+														</td>
+													</tr>
+													
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+													
+													<tr>
+														<th style="$thTituloAsunto" align="center" colspan="2">
+														Omitir en caso que no reconozcas esta acci&oacute;n.
+														</th>
+													</tr>
+
+												</tbody>
+											</table>
+
+										</td>
+										
+									</tr>
+									
+<!-- 									<tr>
+										<td width="100%" height="20">
+										</td>
+									</tr> -->
+									<tr>
+										<td colspan="2" style="$thTitulo8" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo2" align="center"></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="$thTitulo7" align="center"></td>
+									</tr>
+									
+								</tbody>
+								
+							</table>
+
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</section>
+</body>
+
+</html>

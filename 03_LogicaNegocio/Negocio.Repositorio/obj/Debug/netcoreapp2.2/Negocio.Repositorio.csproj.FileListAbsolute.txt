@@ -1,0 +1,60 @@
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.deps.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.xml
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocity.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocityTemplateEngine.dll

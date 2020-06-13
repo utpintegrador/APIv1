@@ -1,0 +1,14 @@
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.deps.json
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Negocio.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Datos.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Datos.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.csprojAssemblyReference.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.AssemblyInfoInputs.cache
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.AssemblyInfo.cs
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.csproj.CopyComplete
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.dll
+D:\ProyectoVentas\SlnProyectoVentas\03_LogicaNegocio\Negocio\obj\Debug\netcoreapp2.2\Negocio.pdb

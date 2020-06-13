@@ -1,0 +1,6 @@
+00:23:53:085 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+00:24:49:624 INFO   [192.168.189.2] [<SubirImagenUsuario2>d__7     ]    [MoveNext                                  ]    - {"ContentDisposition":"form-data; name=\"Archivo\"; filename=\"13_1_20191119_173011.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Archivo\"; filename=\"13_1_20191119_173011.jpg\""],"Content-Type":["image/jpeg"]},"Length":26153,"Name":"Archivo","FileName":"13_1_20191119_173011.jpg"}
+00:25:49:397 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
+02:30:43:974 INFO   [192.168.189.2] [<SubirImagenUsuario2>d__7     ]    [MoveNext                                  ]    - ["IdUsuario"]
+02:30:48:419 INFO   [192.168.189.2] [<SubirImagenUsuario2>d__7     ]    [MoveNext                                  ]    - 1
+18:22:40:255 ERROR  [172.16.10.10] [AdPublicacion                 ]    [ObtenerPorIdUsuario                       ]    - The string 'El mes pasado' was not recognized as a valid DateTime. There is an unknown word starting at index '0'.

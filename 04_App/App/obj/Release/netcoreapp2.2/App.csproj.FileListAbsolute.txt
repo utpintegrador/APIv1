@@ -1,0 +1,96 @@
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.deps.json
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.json
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.dev.json
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.dll
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.pdb
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\App.xml
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cache
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cs
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorTargetAssemblyInfo.cache
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.dll
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.xml
+D:\ProyectoVentas\GitHub\RedSocial\04_App\App\obj\Release\netcoreapp2.2\App.pdb
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.deps.json
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.json
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.dev.json
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.dll
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.pdb
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.xml
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csprojAssemblyReference.cache
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cache
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cs
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfoInputs.cache
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfo.cs
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorTargetAssemblyInfo.cache
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CopyComplete
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.dll
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.xml
+D:\Android 04 11 2019\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.deps.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.dev.json
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\App.xml
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csprojAssemblyReference.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cs
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfoInputs.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfo.cs
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.RazorTargetAssemblyInfo.cache
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CopyComplete
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.xml
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Release\netcoreapp2.2\App.pdb
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\NVelocityTemplateEngine.dll
+D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Release\netcoreapp2.2\NVelocity.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.deps.json
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.json
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.runtimeconfig.dev.json
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\App.xml
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\NVelocityTemplateEngine.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\NVelocity.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.csprojAssemblyReference.cache
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cache
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.RazorAssemblyInfo.cs
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfoInputs.cache
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.AssemblyInfo.cs
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.RazorTargetAssemblyInfo.cache
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CopyComplete
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.dll
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.xml
+D:\Proyecto Encuentralo\APIEncuentralo\04_App\App\obj\Release\netcoreapp2.2\App.pdb
