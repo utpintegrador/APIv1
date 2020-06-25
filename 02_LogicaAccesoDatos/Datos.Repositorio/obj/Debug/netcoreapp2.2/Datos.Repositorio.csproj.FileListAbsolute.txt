@@ -46,15 +46,3 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Da
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.pdb
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.deps.json
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csprojAssemblyReference.cache
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CoreCompileInputs.cache
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.AssemblyInfoInputs.cache
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.AssemblyInfo.cs
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.dll
-D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.pdb
