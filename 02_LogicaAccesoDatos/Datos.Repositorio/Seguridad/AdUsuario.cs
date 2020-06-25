@@ -43,7 +43,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public List<UsuarioObtenerDto> Obtener()
+        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerFiltroDto filtro)
         {
             List<UsuarioObtenerDto> resultado = new List<UsuarioObtenerDto>();
             try
@@ -57,7 +57,14 @@ namespace Datos.Repositorio.Seguridad
                         cn.Open();
                     }
 
-                    resultado = cn.Query<UsuarioObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<UsuarioObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 

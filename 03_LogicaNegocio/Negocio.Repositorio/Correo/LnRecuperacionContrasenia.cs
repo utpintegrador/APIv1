@@ -125,7 +125,7 @@ namespace Negocio.Repositorio.Servicio
                         objCorreo.Credentials = NC;
                         //MailAddress from = new MailAddress(desde, "After-Class");
 
-                        objMensaje.From = new MailAddress(desde, "After-Class");
+                        objMensaje.From = new MailAddress(desde, "EncuentraloYa");
                         objMensaje.IsBodyHtml = true;
                         objMensaje.Subject = asunto;
                         objMensaje.Body = cuerpoHtml;

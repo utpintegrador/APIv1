@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Entidad.Dto.Correo;
-using Entidad.Dto.Global;
-using Entidad.Dto.Response.Correo;
+using Entidad.Response;
+using Entidad.Response.Correo;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Servicio;
 

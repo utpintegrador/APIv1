@@ -13,9 +13,15 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.ObtenerPorLogin(modelo);
         }
 
-        public List<UsuarioObtenerDto> Obtener()
+        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerFiltroDto filtro)
         {
-            return _adUsuario.Obtener();
+            if (filtro == null) filtro = new UsuarioObtenerFiltroDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdUsuario";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            return _adUsuario.Obtener(filtro);
         }
 
         public Usuario ObtenerPorId(long id)

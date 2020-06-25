@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using App.Models;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Amazon;
-using Entidad.Dto.Global;
-using Entidad.Dto.Response.Amazon;
+using Entidad.Response;
+using Entidad.Response.Amazon;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Amazon;
 

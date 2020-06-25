@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Entidad.Dto.Global;
+using Entidad.Response;
 using Entidad.Dto.Interaccion;
-using Entidad.Dto.Response.Interaccion;
+using Entidad.Response.Interaccion;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Interaccion;
 

@@ -33,3 +33,15 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.pdb
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+D:\Integrador2\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.deps.json
+D:\Integrador2\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.dll
+D:\Integrador2\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.pdb
+D:\Integrador2\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Integrador2\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.AssemblyInfo.cs
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csproj.CopyComplete
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.dll
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.pdb
+D:\Integrador2\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csprojAssemblyReference.cache

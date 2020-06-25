@@ -21,10 +21,10 @@
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.hosting.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="NVelocity">
-      <HintPath>..\..\..\NVelocity.dll</HintPath>
+      <HintPath>..\..\NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="NVelocityTemplateEngine">
-      <HintPath>..\..\..\NVelocityTemplateEngine.dll</HintPath>
+      <HintPath>..\..\NVelocityTemplateEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
 

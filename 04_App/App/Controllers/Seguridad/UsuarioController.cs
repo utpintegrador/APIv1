@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using Entidad.Dto.Global;
-using Entidad.Dto.Response.Seguridad;
+using Entidad.Response;
+using Entidad.Response.Seguridad;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidad.Seguridad;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +23,11 @@ namespace App.Controllers.Seguridad
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<UsuarioResponseObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<UsuarioResponseObtenerDto>> Obtener([FromBody] UsuarioObtenerFiltroDto filtro)
         {
             UsuarioResponseObtenerDto respuesta = new UsuarioResponseObtenerDto();
-            var result = await Task.FromResult(_lnUsuario.Obtener());
+            var result = await Task.FromResult(_lnUsuario.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
             return Ok(respuesta);

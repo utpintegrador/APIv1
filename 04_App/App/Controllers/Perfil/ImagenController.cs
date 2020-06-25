@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using Entidad.Dto.Global;
+using Entidad.Response;
 using Entidad.Dto.Perfil;
-using Entidad.Dto.Response.Perfil;
+using Entidad.Response.Perfil;
 using Entidad.Entidad.Perfil;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Perfil;
