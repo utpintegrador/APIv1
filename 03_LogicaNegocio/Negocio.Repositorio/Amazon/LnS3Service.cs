@@ -16,8 +16,8 @@ namespace Negocio.Repositorio.Amazon
 {
     public class LnS3Service: Logger
     {
-        private readonly string _llaveAmazon = "AKIA2F7OY6EWJJ46KFVY";
-        private readonly string _claveAmazon = "EncdXICIiJOcFgwB1u2ISQt5s0mOr8nTZAO0RiMu";
+        private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.LlaveAws;
+        private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.ClaveAws;
         private readonly string _urlAmazon = "https://red-social.s3.us-east-2.amazonaws.com/";
         //private readonly string _urlImagenSinFoto = "https://red-social.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg";
 

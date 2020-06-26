@@ -4,6 +4,9 @@ namespace Entidad.Vo
 {
     public static class ConstanteVo
     {
+        public static string LlaveAws = "";
+        public static string ClaveAws = "";
+
         //public static string NombreDominio = "https://localhost:44314";
         public static string NombreDominio = "Indice de métodos: " +
             Environment.NewLine +
