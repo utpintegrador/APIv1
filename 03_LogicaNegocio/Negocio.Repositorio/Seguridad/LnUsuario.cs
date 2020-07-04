@@ -1,15 +1,25 @@
-﻿using Datos.Repositorio.Seguridad;
+﻿using Amazon;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Amazon.S3.Transfer;
+using Datos.Repositorio.Seguridad;
+using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidad.Seguridad;
+using Entidad.Vo;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Negocio.Repositorio.Seguridad
 {
-    public class LnUsuario
+    public class LnUsuario: Logger
     {
         private readonly AdUsuario _adUsuario = new AdUsuario();
         public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesDto modelo)
         {
+            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             return _adUsuario.ObtenerPorLogin(modelo);
         }
 
@@ -31,6 +41,7 @@ namespace Negocio.Repositorio.Seguridad
 
         public int Registrar(UsuarioRegistrarDto modelo, ref long idNuevo)
         {
+            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             return _adUsuario.Registrar(modelo, ref idNuevo);
         }
 
@@ -46,6 +57,7 @@ namespace Negocio.Repositorio.Seguridad
 
         public int ModificarContrasenia(UsuarioCambioContraseniaDto modelo)
         {
+            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adUsuario.ModificarContrasenia(modelo);
         }
 
@@ -59,11 +71,155 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.ObtenerUrlImagenPorId(id);
         }
 
-        public int EliminarUrlImagen(long id)
-        {
-            return _adUsuario.EliminarUrlImagen(id);
+        //public int EliminarUrlImagen(long id)
+        //{
+        //    return _adUsuario.EliminarUrlImagen(id);
+        //}
 
+        public int SubirImagenAws(UsuarioModificarImagenMetodo1FiltroDto entidad, ref string url)
+        {
+            int respuesta = 0;
+            try
+            {
+                var objetoImagenBd = _adUsuario.ObtenerUrlImagenPorId(entidad.IdUsuario);
+                if(objetoImagenBd == null)
+                {
+                    url = string.Empty;
+                    return -1;
+                }
+
+                url = ConstanteVo.UrlAmazon;
+                string nombreDirectorio = "Usuario";
+
+                int respuestaEliminar = EliminarImagenAws(objetoImagenBd.UrlImagen, entidad.IdUsuario);
+                if (respuestaEliminar > 0)
+                {
+                    using (var client = new AmazonS3Client(
+                        Entidad.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                        Entidad.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
+                        RegionEndpoint.USEast2))
+                    {
+                        string nombreArchivo = string.Format("{0}.{1}",
+                                entidad.IdUsuario,
+                                entidad.ExtensionSinPunto);
+                        url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
+
+                        using (var ms = new MemoryStream(entidad.ArchivoBytes))
+                        {
+                            var uploadRequest = new TransferUtilityUploadRequest
+                            {
+                                InputStream = ms,
+                                Key = nombreArchivo,
+                                BucketName = string.Format("encuentralo/{0}", nombreDirectorio),
+                                CannedACL = S3CannedACL.PublicRead
+                            };
+
+                            var fileTransferUtility = new TransferUtility(client);
+                            fileTransferUtility.Upload(uploadRequest);
+
+                            LnUsuario lnUsuario = new LnUsuario();
+                            respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(entidad.IdUsuario, url);
+                        }
+                    }
+                }
+            }
+            catch (AmazonS3Exception exSe)
+            {
+                Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, String.Format("Exception: {0}", ex));
+            }
+
+            return respuesta;
         }
 
+        public int EliminarImagen(long idUsuario, ref string urlImagen)
+        {
+            int respuesta = 0;
+            try
+            {
+                var objetoImagenBd = _adUsuario.ObtenerUrlImagenPorId(idUsuario);
+                if (objetoImagenBd == null)
+                {
+                    urlImagen = string.Empty;
+                    respuesta = -1;
+                }
+                else
+                {
+                    respuesta = EliminarImagenAws(objetoImagenBd.UrlImagen, idUsuario);
+                    int respuestaModificarImagenBd = _adUsuario.EliminarUrlImagen(idUsuario);
+                    if (respuestaModificarImagenBd > 0)
+                    {
+                        urlImagen = "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg";
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            return respuesta;
+        }
+
+        private int EliminarImagenAws(string urlImagenBd, long idUsuario)
+        {
+            int respuesta = 0;
+            try
+            {
+                if(!string.IsNullOrEmpty(urlImagenBd))
+                {
+                    if (urlImagenBd != "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg")
+                    {
+                        string nombreDirectorio = "Usuario";
+
+                        string url = string.Format("{0}{1}/", ConstanteVo.UrlAmazon, nombreDirectorio);
+                        string nombreArchivo = urlImagenBd.Replace(url, string.Empty);
+
+                        var deleteObjectRequest = new DeleteObjectRequest
+                        {
+                            Key = nombreArchivo,
+                            BucketName = string.Format("encuentralo/{0}", nombreDirectorio)
+                        };
+
+                        using (var client = new AmazonS3Client(
+                            Entidad.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                            Entidad.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
+                            RegionEndpoint.USEast2))
+                        {
+                            Task eliminar = Task.Run(() =>
+                            {
+                                client.DeleteObjectAsync(deleteObjectRequest);
+                            });
+
+                            eliminar.Wait();
+                            if (eliminar.IsCompleted)
+                            {
+                                respuesta = 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
+                }
+                else
+                {
+                    respuesta = 1;
+                }
+            }
+            catch (AmazonS3Exception exSe)
+            {
+                Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, String.Format("Exception: {0}", ex));
+            }
+
+            return respuesta;
+        }
     }
 }

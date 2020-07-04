@@ -13,8 +13,8 @@ namespace Negocio.Repositorio.Maestro
 {
     public class LnCategoria: Logger
     {
-        private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.LlaveAws;
-        private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.ClaveAws;
+        private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.AccessKeyAws;
+        private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.SecretAccessKeyAws;
         private readonly string _urlAmazon = "https://encuentralo.s3.us-east-2.amazonaws.com/";
 
         private readonly AdCategoria _adCategoria = new AdCategoria();

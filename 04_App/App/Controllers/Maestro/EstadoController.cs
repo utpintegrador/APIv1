@@ -10,6 +10,7 @@ using Entidad.Entidad.Maestro;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
+using Microsoft.AspNetCore.Authorization;
 
 namespace App.Controllers.Maestro
 {
@@ -35,6 +36,7 @@ namespace App.Controllers.Maestro
             return Ok(respuesta);
         }
 
+        [Authorize]
         [HttpGet("{id}", Name = "ObtenerEstadoPorId")]
         [ProducesResponseType(typeof(EstadoResponseObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(EstadoResponseObtenerPorIdDto), 200)]

@@ -33,7 +33,6 @@ namespace App.Controllers.Seguridad
             var result = await Task.FromResult(_lnUsuario.ObtenerPorLogin(usuario));
             if(result != null)
             {
-                result.UserName = usuario.Usuario;
                 return Ok(BuildToken(result));
             }
             else
@@ -47,7 +46,6 @@ namespace App.Controllers.Seguridad
                     Nombre = null,
                     Apellido = null,
                     CorreoElectronico = null,
-                    UserName = null,
                     UrlImagen = null
                 };
 
@@ -62,7 +60,7 @@ namespace App.Controllers.Seguridad
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, usuarioDto.Nombre),
-                new Claim(JwtRegisteredClaimNames.UniqueName, usuarioDto.UserName),
+                new Claim(JwtRegisteredClaimNames.UniqueName, usuarioDto.CorreoElectronico),
                 new Claim("apellido", usuarioDto.Apellido),
                 new Claim("idusuario", usuarioDto.IdUsuario.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
@@ -88,7 +86,6 @@ namespace App.Controllers.Seguridad
                 Nombre = usuarioDto.Nombre,
                 Apellido = usuarioDto.Apellido,
                 CorreoElectronico = usuarioDto.CorreoElectronico,
-                UserName = usuarioDto.UserName,
                 UrlImagen = usuarioDto.UrlImagen
             };
         }

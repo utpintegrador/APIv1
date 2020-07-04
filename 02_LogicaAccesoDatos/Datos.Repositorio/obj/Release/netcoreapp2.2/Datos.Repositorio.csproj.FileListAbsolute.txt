@@ -46,3 +46,15 @@ D:\Proyecto Encuentralo\APIEncuentralo\02_LogicaAccesoDatos\Datos.Repositorio\ob
 D:\Proyecto Encuentralo\APIEncuentralo\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
 D:\Proyecto Encuentralo\APIEncuentralo\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.dll
 D:\Proyecto Encuentralo\APIEncuentralo\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.deps.json
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Entidad.dll
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Entidad.pdb
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.csprojAssemblyReference.cache
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.csproj.CoreCompileInputs.cache
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.AssemblyInfoInputs.cache
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.AssemblyInfo.cs
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.dll
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.pdb

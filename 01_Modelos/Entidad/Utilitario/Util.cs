@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Entidad.Utilitario
 {
     public class Util
     {
+        private static string IV = "HS2257G%&V1kde2y";
+        private static string Key = "jrewg212IUKJjndht25ertg254dfgtrh";
+
         public static DateTime? ObtenerFechaDesdeString(string dato)
         {
             DateTime? fecha = null;
@@ -67,5 +72,43 @@ namespace Entidad.Utilitario
             }
             return fecha;
         }
+
+        public static string Encriptar(string textoDesencriptado)
+        {
+            byte[] textBytes = ASCIIEncoding.ASCII.GetBytes(textoDesencriptado);
+            AesCryptoServiceProvider encdec = new AesCryptoServiceProvider();
+            encdec.BlockSize = 128;
+            encdec.KeySize = 256;
+            encdec.Key = ASCIIEncoding.ASCII.GetBytes(Key);
+            encdec.IV = ASCIIEncoding.ASCII.GetBytes(IV);
+            encdec.Padding = PaddingMode.PKCS7;
+            encdec.Mode = CipherMode.CBC;
+
+            ICryptoTransform icrypt = encdec.CreateEncryptor(encdec.Key, encdec.IV);
+            byte[] enc = icrypt.TransformFinalBlock(textBytes, 0, textBytes.Length);
+            icrypt.Dispose();
+
+            return Convert.ToBase64String(enc);
+        }
+
+        public static string Desencriptar(string textoEncriptado)
+        {
+            byte[] textBytes = Convert.FromBase64String(textoEncriptado);
+            AesCryptoServiceProvider encdec = new AesCryptoServiceProvider();
+            encdec.BlockSize = 128;
+            encdec.KeySize = 256;
+            encdec.Key = ASCIIEncoding.ASCII.GetBytes(Key);
+            encdec.IV = ASCIIEncoding.ASCII.GetBytes(IV);
+            encdec.Padding = PaddingMode.PKCS7;
+            encdec.Mode = CipherMode.CBC;
+
+            ICryptoTransform icrypt = encdec.CreateDecryptor(encdec.Key, encdec.IV);
+            byte[] enc = icrypt.TransformFinalBlock(textBytes, 0, textBytes.Length);
+            icrypt.Dispose();
+
+            //return Encoding.Unicode.GetString(enc);
+            return ASCIIEncoding.ASCII.GetString(enc);
+        }
+
     }
 }

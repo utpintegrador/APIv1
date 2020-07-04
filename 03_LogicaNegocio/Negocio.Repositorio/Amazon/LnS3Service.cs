@@ -16,8 +16,8 @@ namespace Negocio.Repositorio.Amazon
 {
     public class LnS3Service: Logger
     {
-        private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.LlaveAws;
-        private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.ClaveAws;
+        private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.AccessKeyAws;
+        private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.SecretAccessKeyAws;
         private readonly string _urlAmazon = "https://red-social.s3.us-east-2.amazonaws.com/";
         //private readonly string _urlImagenSinFoto = "https://red-social.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg";
 
@@ -259,8 +259,8 @@ namespace Negocio.Repositorio.Amazon
                             var fileTransferUtility = new TransferUtility(client);
                             fileTransferUtility.Upload(uploadRequest);
 
-                            LnUsuario lnUsuario = new LnUsuario();
-                            respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(Convert.ToInt64(entidad.IdUsuario), url);
+                            //LnUsuario lnUsuario = new LnUsuario();
+                            //respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(Convert.ToInt64(entidad.IdUsuario), url);
 
                         }
                     }
@@ -622,7 +622,7 @@ namespace Negocio.Repositorio.Amazon
                         if (eliminar.IsCompleted)
                         {
                             //eliminar de la base de datos
-                            int resultadoEliminarBd = lnUsuario.EliminarUrlImagen(entidad.IdUsuario);
+                            int resultadoEliminarBd = 1;// lnUsuario.EliminarUrlImagen(entidad.IdUsuario);
                             if (resultadoEliminarBd > 0)
                             {
                                 respuesta = 1;

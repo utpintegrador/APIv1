@@ -4,8 +4,9 @@ namespace Entidad.Vo
 {
     public static class ConstanteVo
     {
-        public static string LlaveAws = "";
-        public static string ClaveAws = "";
+        public static string AccessKeyAws = "";
+        public static string SecretAccessKeyAws = "";
+        public static string UrlAmazon = "";
 
         //public static string NombreDominio = "https://localhost:44314";
         public static string NombreDominio = "Indice de métodos: " +
@@ -38,15 +39,15 @@ namespace Entidad.Vo
             Environment.NewLine +
             "Los parametros fecha deberan ser enviados en string con el formato:" +
             Environment.NewLine +
-            " * YYYYMMDD HH:MM:SS (Fecha y Hora)" +
+            " * yyyy/MM/dd HH:MM:SS (Fecha y Hora)" +
             Environment.NewLine +
-            " * YYYYMMDD (Solo Fecha)" +
+            " * yyyy/MM/dd (Solo Fecha)" +
             //Environment.NewLine +
             //Environment.NewLine +
             //"La base de datos de SOMEE queda deshabilitada, solo se usara la de control-zeta.net" +
             Environment.NewLine + 
             Environment.NewLine +
-            "Actualizado al 05/05/2020" +
+            "Actualizado al 04/07/2020" +
             Environment.NewLine +
             Environment.NewLine +
             "Los modelos en Android se deben generar desde esta pagina" +

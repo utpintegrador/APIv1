@@ -32,4 +32,8 @@
     <ProjectReference Include="..\..\03_LogicaNegocio\Negocio.Repositorio\Negocio.Repositorio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Transaccion\" />
+  </ItemGroup>
+
 </Project>

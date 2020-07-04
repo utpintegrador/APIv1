@@ -29,7 +29,7 @@ namespace Datos.Repositorio.Seguridad
                     /*los alias en el parametro son opcionales si la propiedad del modelo tiene la misma denominacion*/
                     resultado = cn.QuerySingleOrDefault<UsuarioLoginDto>(query, new
                     {
-                        UserName = modelo.Usuario,
+                        CorreoElectronico = modelo.CorreoElectronico,
                         modelo.Contrasenia
                     }, commandType: CommandType.StoredProcedure);
 
@@ -115,7 +115,7 @@ namespace Datos.Repositorio.Seguridad
                 var p = new DynamicParameters();
                 p.Add("IdUsuario", 0, DbType.Int64, ParameterDirection.Output);
                 p.Add("CorreoElectronico", modelo.CorreoElectronico);
-                p.Add("UserName", modelo.UserName);
+                //p.Add("UserName", modelo.UserName);
                 p.Add("Contrasenia", modelo.Contrasenia);
                 p.Add("Nombre", modelo.Nombre);
                 p.Add("Apellido", modelo.Apellido);
@@ -159,8 +159,7 @@ namespace Datos.Repositorio.Seguridad
                         modelo.IdUsuario,
                         modelo.CorreoElectronico,
                         modelo.Nombre,
-                        modelo.Apellido,
-                        modelo.UrlImagen
+                        modelo.Apellido
                     }, commandType: CommandType.StoredProcedure);
 
                 }

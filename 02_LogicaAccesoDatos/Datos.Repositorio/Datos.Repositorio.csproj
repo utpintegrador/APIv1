@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\01_Modelos\Entidad\Entidad.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Transaccion\" />
+  </ItemGroup>
+
 </Project>
