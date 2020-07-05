@@ -25,20 +25,63 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<NegocioResponseObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<NegocioResponseObtenerDto>> Obtener([FromBody] NegocioObtenerFiltroDto filtro)
         {
             NegocioResponseObtenerDto respuesta = new NegocioResponseObtenerDto();
-            var result = await Task.FromResult(_lnNegocio.Obtener());
+            var result = await Task.FromResult(_lnNegocio.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
+        }
+
+        /// <summary>
+        /// El parametro IdUsuario es obligatorio, pues se listaran los cercanos a ese usuario
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpPost("ObtenerCercanos")]
+        [ProducesResponseType(typeof(NegocioResponseObtenerCercanosDto), 200)]
+        public async Task<ActionResult<NegocioResponseObtenerCercanosDto>> ObtenerCercanos([FromBody] NegocioObtenerCercanosFiltroDto filtro)
+        {
+            NegocioResponseObtenerCercanosDto respuesta = new NegocioResponseObtenerCercanosDto();
+            if (filtro.IdUsuario == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "El parametro IdUsuario es requerido"
+                });
+                respuesta.CantidadTotalRegistros = 0;
+                respuesta.ProcesadoOk = 0;
+                respuesta.Cuerpo = null;
+            }
+            else
+            {
+                var result = await Task.FromResult(_lnNegocio.ObtenerCercanos(filtro));
+                respuesta.ProcesadoOk = 1;
+                respuesta.Cuerpo = result;
+
+                if (result.Any())
+                {
+                    respuesta.CantidadTotalRegistros = result.First().TotalItems;
+                }
+
+                return Ok(respuesta);
+            }
+            return BadRequest(respuesta);
         }
 
         [HttpGet("{id}", Name = "ObtenerNegocioPorId")]
         [ProducesResponseType(typeof(NegocioResponseObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(NegocioResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<NegocioResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        public async Task<ActionResult<NegocioResponseObtenerPorIdDto>> ObtenerPorId(long id)
         {
             NegocioResponseObtenerPorIdDto respuesta = new NegocioResponseObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(id));
@@ -65,7 +108,7 @@ namespace App.Controllers.Maestro
                 return BadRequest(respuesta);
             }
 
-            int nuevoId = 0;
+            long nuevoId = 0;
             var result = await Task.FromResult(_lnNegocio.Registrar(modelo, ref nuevoId));
             if (result == 0)
             {
@@ -80,11 +123,16 @@ namespace App.Controllers.Maestro
 
         }
 
+        /// <summary>
+        /// IdEstado: 1 es Activo  |   2 es Inactivo
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
         [HttpPut()]//"{id}")]
         [ProducesResponseType(typeof(NegocioResponseModificarDto), 404)]
         [ProducesResponseType(typeof(NegocioResponseModificarDto), 400)]
         [ProducesResponseType(typeof(NegocioResponseModificarDto), 200)]
-        public async Task<ActionResult<NegocioResponseModificarDto>> Modificar([FromBody] NegocioEnt modelo)
+        public async Task<ActionResult<NegocioResponseModificarDto>> Modificar([FromBody] NegocioModificarDto modelo)
         {
             NegocioResponseModificarDto respuesta = new NegocioResponseModificarDto();
             if (!ModelState.IsValid)

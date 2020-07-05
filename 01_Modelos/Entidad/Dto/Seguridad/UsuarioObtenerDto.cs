@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Entidad.Dto.Seguridad
 {
@@ -16,6 +17,7 @@ namespace Entidad.Dto.Seguridad
         public string FechaRegistro { get; set; }
         public string FechaActualizacion { get; set; }
         //public string UrlImagen { get; set; }
+        [IgnoreDataMember]
         public int TotalItems { get; set; }
     }
 }

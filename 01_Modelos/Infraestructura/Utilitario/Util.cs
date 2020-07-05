@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Entidad.Utilitario
+namespace Infraestructura.Utilitario
 {
     public class Util
     {
@@ -109,6 +109,5 @@ namespace Entidad.Utilitario
             //return Encoding.Unicode.GetString(enc);
             return ASCIIEncoding.ASCII.GetString(enc);
         }
-
     }
 }

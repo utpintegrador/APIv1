@@ -5169,6 +5169,7 @@
         "dependencies": {
           "Dapper": "2.0.4",
           "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0",
           "System.Data.SqlClient": "4.7.0-preview9.19421.4"
         },
         "compile": {
@@ -5192,6 +5193,16 @@
           "bin/placeholder/Entidad.dll": {}
         }
       },
+      "Infraestructura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Infraestructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infraestructura.dll": {}
+        }
+      },
       "Negocio.Repositorio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -5199,7 +5210,8 @@
           "AWSSDK.Extensions.NETCore.Setup": "3.3.100.1",
           "AWSSDK.S3": "3.3.106.6",
           "Datos.Repositorio": "1.0.0",
-          "Entidad": "1.0.0"
+          "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Negocio.Repositorio.dll": {}
@@ -14206,6 +14218,11 @@
       "type": "project",
       "path": "../../01_Modelos/Entidad/Entidad.csproj",
       "msbuildProject": "../../01_Modelos/Entidad/Entidad.csproj"
+    },
+    "Infraestructura/1.0.0": {
+      "type": "project",
+      "path": "../../01_Modelos/Infraestructura/Infraestructura.csproj",
+      "msbuildProject": "../../01_Modelos/Infraestructura/Infraestructura.csproj"
     },
     "Negocio.Repositorio/1.0.0": {
       "type": "project",

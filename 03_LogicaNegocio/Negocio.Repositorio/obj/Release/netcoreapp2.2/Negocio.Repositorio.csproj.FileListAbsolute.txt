@@ -80,3 +80,5 @@ D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp
 D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
 D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.dll
 D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Release\netcoreapp2.2\Negocio.Repositorio.pdb
+D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Infraestructura.dll
+D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Release\netcoreapp2.2\Infraestructura.pdb

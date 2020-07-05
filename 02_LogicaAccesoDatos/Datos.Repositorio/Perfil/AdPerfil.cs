@@ -74,7 +74,7 @@ namespace Datos.Repositorio.Perfil
             int resultado = 0;
             try
             {
-                DateTime? fechaNacimiento = Entidad.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
+                DateTime? fechaNacimiento = Infraestructura.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
                 const string query = "Perfil.usp_Perfil_Registrar";
 
                 var p = new DynamicParameters();
@@ -121,7 +121,7 @@ namespace Datos.Repositorio.Perfil
             int resultado = 0;
             try
             {
-                DateTime? fechaNacimiento = Entidad.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
+                DateTime? fechaNacimiento = Infraestructura.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
                 const string query = "Perfil.usp_Perfil_Modificar";
 
                 using (var cn = HelperClass.ObtenerConeccion())
@@ -344,7 +344,7 @@ namespace Datos.Repositorio.Perfil
             int resultado = 0;
             try
             {
-                DateTime? fechaNacimiento = Entidad.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
+                DateTime? fechaNacimiento = Infraestructura.Utilitario.Util.ObtenerFechaDesdeString(modelo.FechaNacimiento);
                 const string query = "Perfil.usp_Perfil_ModificarInformacion";
 
                 using (var cn = HelperClass.ObtenerConeccion())

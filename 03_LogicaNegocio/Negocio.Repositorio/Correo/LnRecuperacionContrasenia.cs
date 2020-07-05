@@ -191,7 +191,7 @@ namespace Negocio.Repositorio.Servicio
 
         public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaDto modelo)
         {
-            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia);
+            modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo);
         }
 

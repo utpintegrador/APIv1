@@ -4,12 +4,11 @@ using AutoMapper;
 using Entidad.Response;
 using Entidad.Response.Seguridad;
 using Entidad.Dto.Seguridad;
-using Entidad.Entidad.Seguridad;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Seguridad;
-using App.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Linq;
 
 namespace App.Controllers.Seguridad
 {
@@ -33,6 +32,12 @@ namespace App.Controllers.Seguridad
             var result = await Task.FromResult(_lnUsuario.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 
@@ -171,6 +176,11 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
+        /// <summary>
+        /// modelo.ArchivoBytes = byte[]
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
         [HttpPost("ImagenMetodo1")]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]
@@ -288,6 +298,11 @@ namespace App.Controllers.Seguridad
             
         }
 
+        /// <summary>
+        /// Se envia parametros mediante tipo multipart/form-data
+        /// Se requiere el parametro IdUsuario:long    y    Archivo:IFormFile
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("ImagenMetodo3")]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]

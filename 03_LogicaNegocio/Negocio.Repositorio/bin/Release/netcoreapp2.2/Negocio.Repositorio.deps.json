@@ -12,6 +12,7 @@
           "AWSSDK.S3": "3.3.106.6",
           "Datos.Repositorio": "1.0.0",
           "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.2.0.0",
           "NVelocity": "0.5.0.0",
           "NVelocityTemplateEngine": "1.0.0.0"
@@ -1127,6 +1128,7 @@
         "dependencies": {
           "Dapper": "2.0.4",
           "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0",
           "System.Data.SqlClient": "4.7.0-preview9.19421.4"
         },
         "runtime": {
@@ -1140,6 +1142,11 @@
         },
         "runtime": {
           "Entidad.dll": {}
+        }
+      },
+      "Infraestructura/1.0.0": {
+        "runtime": {
+          "Infraestructura.dll": {}
         }
       },
       "Microsoft.Extensions.Hosting.Abstractions/2.2.0.0": {
@@ -1782,6 +1789,11 @@
       "sha512": ""
     },
     "Entidad/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infraestructura/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

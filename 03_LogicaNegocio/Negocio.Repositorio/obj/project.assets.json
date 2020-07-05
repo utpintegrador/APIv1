@@ -1681,6 +1681,7 @@
         "dependencies": {
           "Dapper": "2.0.4",
           "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0",
           "System.Data.SqlClient": "4.7.0-preview9.19421.4"
         },
         "compile": {
@@ -1702,6 +1703,16 @@
         },
         "runtime": {
           "bin/placeholder/Entidad.dll": {}
+        }
+      },
+      "Infraestructura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Infraestructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infraestructura.dll": {}
         }
       }
     }
@@ -5980,6 +5991,11 @@
       "type": "project",
       "path": "../../01_Modelos/Entidad/Entidad.csproj",
       "msbuildProject": "../../01_Modelos/Entidad/Entidad.csproj"
+    },
+    "Infraestructura/1.0.0": {
+      "type": "project",
+      "path": "../../01_Modelos/Infraestructura/Infraestructura.csproj",
+      "msbuildProject": "../../01_Modelos/Infraestructura/Infraestructura.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5988,6 +6004,7 @@
       "AWSSDK.S3 >= 3.3.106.6",
       "Datos.Repositorio >= 1.0.0",
       "Entidad >= 1.0.0",
+      "Infraestructura >= 1.0.0",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
@@ -6023,6 +6040,9 @@
           "projectReferences": {
             "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
               "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
+            },
+            "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj": {
+              "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj"
             },
             "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {
               "projectPath": "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj"

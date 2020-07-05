@@ -119,113 +119,113 @@ namespace App.Controllers.Amazon
         //}
 
         //Invocarlo como multipart/form-data
-        [HttpPost("SubirImagenUsuario")]//, DisableRequestSizeLimit]
-        public async Task<ActionResult<AwsResponseRegistrarDto>> SubirImagenUsuario()
-        {
-            AwsResponseRegistrarDto respuesta = new AwsResponseRegistrarDto();
+        //[HttpPost("SubirImagenUsuario")]//, DisableRequestSizeLimit]
+        //public async Task<ActionResult<AwsResponseRegistrarDto>> SubirImagenUsuario()
+        //{
+        //    AwsResponseRegistrarDto respuesta = new AwsResponseRegistrarDto();
 
-            var archivoRequest = Request.Form.Files["Archivo"];
-            var accionRequest = Request.Form["Accion"];
-            var idUsuarioRequest = Request.Form["IdUsuario"];
+        //    var archivoRequest = Request.Form.Files["Archivo"];
+        //    var accionRequest = Request.Form["Accion"];
+        //    var idUsuarioRequest = Request.Form["IdUsuario"];
 
-            if(string.IsNullOrEmpty(accionRequest) || string.IsNullOrEmpty(idUsuarioRequest))
-            {
-                Logger.Log(Logger.Level.Error, "Los parametros de Accion y IdUsuario son requeridos");
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros de Accion y IdUsuario son requeridos" });
-                return BadRequest(respuesta);
-            }
+        //    if(string.IsNullOrEmpty(accionRequest) || string.IsNullOrEmpty(idUsuarioRequest))
+        //    {
+        //        Logger.Log(Logger.Level.Error, "Los parametros de Accion y IdUsuario son requeridos");
+        //        respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros de Accion y IdUsuario son requeridos" });
+        //        return BadRequest(respuesta);
+        //    }
 
             
-            try
-            {
-                switch (accionRequest.ToString().Trim())
-                {
-                    case "del":
-                        {
-                            AwsS3EliminarUsuarioDto prm = new AwsS3EliminarUsuarioDto();
-                            prm.IdUsuario = Convert.ToInt64(idUsuarioRequest.ToString());
-                            var result = await Task.FromResult(_lnS3Service.EliminarImagenUsuarioAwsS3(prm));
-                            if (result == 0)
-                            {
-                                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar eliminar" });
-                                return BadRequest(respuesta);
-                            }
+        //    try
+        //    {
+        //        switch (accionRequest.ToString().Trim())
+        //        {
+        //            case "del":
+        //                {
+        //                    AwsS3EliminarUsuarioDto prm = new AwsS3EliminarUsuarioDto();
+        //                    prm.IdUsuario = Convert.ToInt64(idUsuarioRequest.ToString());
+        //                    var result = await Task.FromResult(_lnS3Service.EliminarImagenUsuarioAwsS3(prm));
+        //                    if (result == 0)
+        //                    {
+        //                        respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar eliminar" });
+        //                        return BadRequest(respuesta);
+        //                    }
 
-                            respuesta.ProcesadoOk = 1;
+        //                    respuesta.ProcesadoOk = 1;
 
-                            return Ok(respuesta);
-                        }
-                    case "add":
-                        {
-                            var file = archivoRequest; //Request.Form.Files[0];
-                            if (file == null)
-                            {
-                                Logger.Log(Logger.Level.Error, "No se ha proporcionado un archivo de tipo imágen");
-                                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Se requiere un archivo tipo imagen" });
-                                return BadRequest(respuesta);
-                            }
-                            else if (file.Length > 0)
-                            {
-                                //var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                                var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                                //string nombreArchivo = file.FileName;
-                                string extension = Path.GetExtension(nombreArchivo).Trim().Replace(".", string.Empty).ToLower();
+        //                    return Ok(respuesta);
+        //                }
+        //            case "add":
+        //                {
+        //                    var file = archivoRequest; //Request.Form.Files[0];
+        //                    if (file == null)
+        //                    {
+        //                        Logger.Log(Logger.Level.Error, "No se ha proporcionado un archivo de tipo imágen");
+        //                        respuesta.ListaError.Add(new ErrorDto { Mensaje = "Se requiere un archivo tipo imagen" });
+        //                        return BadRequest(respuesta);
+        //                    }
+        //                    else if (file.Length > 0)
+        //                    {
+        //                        //var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        //                        var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        //                        //string nombreArchivo = file.FileName;
+        //                        string extension = Path.GetExtension(nombreArchivo).Trim().Replace(".", string.Empty).ToLower();
 
-                                if (extension.Equals("jpg") || extension.Equals("png") || extension.Equals("jpeg") || extension.Equals("bmp") || extension.Equals("gif"))
-                                {
-                                    byte[] archivo;
-                                    using (var memoryStream = new MemoryStream())
-                                    {
-                                        await file.CopyToAsync(memoryStream);
-                                        archivo = memoryStream.ToArray();
-                                    }
+        //                        if (extension.Equals("jpg") || extension.Equals("png") || extension.Equals("jpeg") || extension.Equals("bmp") || extension.Equals("gif"))
+        //                        {
+        //                            byte[] archivo;
+        //                            using (var memoryStream = new MemoryStream())
+        //                            {
+        //                                await file.CopyToAsync(memoryStream);
+        //                                archivo = memoryStream.ToArray();
+        //                            }
 
-                                    long nuevoId = 0;
-                                    string url = string.Empty;
-                                    if (archivo != null)
-                                    {
-                                        AwsS3RegistrarUsuarioDto prm = new AwsS3RegistrarUsuarioDto();
-                                        prm.Archivo = archivo;
-                                        prm.ExtensionSinPunto = extension;
-                                        prm.IdUsuario = Convert.ToInt64(idUsuarioRequest.ToString());
-                                        var result = await Task.FromResult(_lnS3Service.SubirImagenUsuarioAwsS3(prm, ref nuevoId, ref url));
-                                        if (result == 0)
-                                        {
-                                            respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
-                                            return BadRequest(respuesta);
-                                        }
+        //                            long nuevoId = 0;
+        //                            string url = string.Empty;
+        //                            if (archivo != null)
+        //                            {
+        //                                AwsS3RegistrarUsuarioDto prm = new AwsS3RegistrarUsuarioDto();
+        //                                prm.Archivo = archivo;
+        //                                prm.ExtensionSinPunto = extension;
+        //                                prm.IdUsuario = Convert.ToInt64(idUsuarioRequest.ToString());
+        //                                var result = await Task.FromResult(_lnS3Service.SubirImagenUsuarioAwsS3(prm, ref nuevoId, ref url));
+        //                                if (result == 0)
+        //                                {
+        //                                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+        //                                    return BadRequest(respuesta);
+        //                                }
 
-                                        respuesta.ProcesadoOk = 1;
-                                        respuesta.IdGenerado = nuevoId;
-                                        respuesta.UrlImagen = url;
-                                    }
+        //                                respuesta.ProcesadoOk = 1;
+        //                                respuesta.IdGenerado = nuevoId;
+        //                                respuesta.UrlImagen = url;
+        //                            }
 
-                                    return Ok(respuesta);
-                                }
-                                else
-                                {
-                                    Logger.Log(Logger.Level.Error, "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp");
-                                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp" });
-                                    return BadRequest(respuesta);
-                                }
+        //                            return Ok(respuesta);
+        //                        }
+        //                        else
+        //                        {
+        //                            Logger.Log(Logger.Level.Error, "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp");
+        //                            respuesta.ListaError.Add(new ErrorDto { Mensaje = "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp" });
+        //                            return BadRequest(respuesta);
+        //                        }
 
-                            }
-                            break;
-                        }
-                    default:
-                        Logger.Log(Logger.Level.Error, "El parametro Accion solo debe contener los valores de 'add' o 'del'");
-                        break;
-                }
+        //                    }
+        //                    break;
+        //                }
+        //            default:
+        //                Logger.Log(Logger.Level.Error, "El parametro Accion solo debe contener los valores de 'add' o 'del'");
+        //                break;
+        //        }
                 
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(Logger.Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = ex.InnerException == null ? ex.Message : ex.InnerException.Message });
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Log(Logger.Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+        //        respuesta.ListaError.Add(new ErrorDto { Mensaje = ex.InnerException == null ? ex.Message : ex.InnerException.Message });
+        //    }
 
-            return BadRequest(respuesta);
-        }
+        //    return BadRequest(respuesta);
+        //}
 
         //[HttpPost("SubirImagenUsuario2")]//, DisableRequestSizeLimit]
         //public async Task<ActionResult<AwsResponseRegistrarDto>> SubirImagenUsuario2()//[FromForm] ModelAwsS3RegistrarUsuario2 entidad)

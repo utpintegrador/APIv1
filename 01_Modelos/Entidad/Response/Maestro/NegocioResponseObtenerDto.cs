@@ -1,8 +1,6 @@
 ﻿using Entidad.Dto.Maestro;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace Entidad.Response.Maestro
 {
@@ -12,10 +10,12 @@ namespace Entidad.Response.Maestro
         [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<NegocioObtenerDto> Cuerpo { get; set; }
+        public int CantidadTotalRegistros { get; set; }
         public NegocioResponseObtenerDto()
         {
             ProcesadoOk = 0;
             ListaError = new List<ErrorDto>();
+            CantidadTotalRegistros = 0;
         }
     }
 }

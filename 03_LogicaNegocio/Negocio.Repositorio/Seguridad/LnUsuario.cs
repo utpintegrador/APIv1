@@ -20,7 +20,7 @@ namespace Negocio.Repositorio.Seguridad
         private readonly AdUsuario _adUsuario = new AdUsuario();
         public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesDto modelo)
         {
-            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
+            modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             return _adUsuario.ObtenerPorLogin(modelo);
         }
 
@@ -43,7 +43,7 @@ namespace Negocio.Repositorio.Seguridad
         public int Registrar(UsuarioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
-            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
+            modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             //Al guardar usuario tambien se guarda en la tabla RolUsuario por lo cual se emplea transaccion
             using (var scope = new TransactionScope())
             {
@@ -72,7 +72,7 @@ namespace Negocio.Repositorio.Seguridad
 
         public int ModificarContrasenia(UsuarioCambioContraseniaDto modelo)
         {
-            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia);
+            modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adUsuario.ModificarContrasenia(modelo);
         }
 
@@ -81,10 +81,10 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.ModificarUrlImagenPorIdUsuario(idUsuario, url);
         }
 
-        public UsuarioObtenerUrlImagenDto ObtenerUrlImagenPorId(long id)
-        {
-            return _adUsuario.ObtenerUrlImagenPorId(id);
-        }
+        //public UsuarioObtenerUrlImagenDto ObtenerUrlImagenPorId(long id)
+        //{
+        //    return _adUsuario.ObtenerUrlImagenPorId(id);
+        //}
 
         //public int EliminarUrlImagen(long id)
         //{
@@ -110,8 +110,8 @@ namespace Negocio.Repositorio.Seguridad
                 if (respuestaEliminar > 0)
                 {
                     using (var client = new AmazonS3Client(
-                        Entidad.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
-                        Entidad.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
+                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
                         RegionEndpoint.USEast2))
                     {
                         string nombreArchivo = string.Format("{0}.{1}",
@@ -132,8 +132,8 @@ namespace Negocio.Repositorio.Seguridad
                             var fileTransferUtility = new TransferUtility(client);
                             fileTransferUtility.Upload(uploadRequest);
 
-                            LnUsuario lnUsuario = new LnUsuario();
-                            respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(entidad.IdUsuario, url);
+                            //LnUsuario lnUsuario = new LnUsuario();
+                            respuesta = ModificarUrlImagenPorIdUsuario(entidad.IdUsuario, url);
                         }
                     }
                 }
@@ -199,8 +199,8 @@ namespace Negocio.Repositorio.Seguridad
                         };
 
                         using (var client = new AmazonS3Client(
-                            Entidad.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
-                            Entidad.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
+                            Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                            Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
                             RegionEndpoint.USEast2))
                         {
                             Task eliminar = Task.Run(() =>

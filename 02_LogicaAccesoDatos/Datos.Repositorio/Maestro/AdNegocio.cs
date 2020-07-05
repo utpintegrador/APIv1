@@ -12,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdNegocio: Logger
     {
-        public List<NegocioObtenerDto> Obtener()
+        public List<NegocioObtenerDto> Obtener(NegocioObtenerFiltroDto filtro)
         {
             List<NegocioObtenerDto> resultado = new List<NegocioObtenerDto>();
             try
@@ -26,7 +26,15 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<NegocioObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<NegocioObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdUsuario,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -38,9 +46,44 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public NegocioEnt ObtenerPorId(int id)
+        public List<NegocioObtenerCercanosDto> ObtenerCercanos(NegocioObtenerCercanosFiltroDto filtro)
         {
-            NegocioEnt resultado = new NegocioEnt();
+            List<NegocioObtenerCercanosDto> resultado = new List<NegocioObtenerCercanosDto>();
+            try
+            {
+                const string query = "Maestro.usp_Negocio_ObtenerCercanos";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<NegocioObtenerCercanosDto>(query, new
+                    {
+                        filtro.Buscar,
+                        filtro.CantidadKilometros,
+                        filtro.IdUsuario,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public NegocioObtenerPorIdDto ObtenerPorId(long id)
+        {
+            NegocioObtenerPorIdDto resultado = new NegocioObtenerPorIdDto();
             try
             {
                 const string query = "Maestro.usp_Negocio_ObtenerPorId";
@@ -52,7 +95,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<NegocioEnt>(query, new
+                    resultado = cn.QuerySingleOrDefault<NegocioObtenerPorIdDto>(query, new
                     {
                         IdNegocio = id
                     }, commandType: CommandType.StoredProcedure);
@@ -67,7 +110,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(NegocioRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(NegocioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -75,11 +118,11 @@ namespace Datos.Repositorio.Maestro
                 const string query = "Maestro.usp_Negocio_Registrar";
 
                 var p = new DynamicParameters();
-                p.Add("IdNegocio", 0, DbType.Int32, ParameterDirection.Output);
+                p.Add("IdNegocio", 0, DbType.Int64, ParameterDirection.Output);
                 p.Add("DocumentoIdentificacion", modelo.DocumentoIdentificacion);
                 p.Add("Nombre", modelo.Nombre);
                 p.Add("Resenia", modelo.Resenia);
-                p.Add("FechaRegistro", modelo.FechaRegistro);
+                p.Add("IdTipoDocumentoIdentificacion", modelo.IdTipoDocumentoIdentificacion);
                 p.Add("IdUsuario", modelo.IdUsuario);
 
                 using (var cn = HelperClass.ObtenerConeccion())
@@ -91,7 +134,7 @@ namespace Datos.Repositorio.Maestro
 
                     resultado = cn.Execute(query, commandType: CommandType.StoredProcedure, param: p);
 
-                    idNuevo = p.Get<int>("IdNegocio");
+                    idNuevo = p.Get<long>("IdNegocio");
 
                 }
             }
@@ -102,7 +145,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(NegocioEnt modelo)
+        public int Modificar(NegocioModificarDto modelo)
         {
             int resultado = 0;
             try
@@ -123,8 +166,8 @@ namespace Datos.Repositorio.Maestro
                         modelo.Nombre,
                         modelo.Resenia,
                         modelo.IdTipoDocumentoIdentificacion,
-                        modelo.FechaRegistro,
-                        modelo.IdUsuario
+                        modelo.IdUsuario,
+                        modelo.IdEstado
                     }, commandType: CommandType.StoredProcedure);
 
                 }

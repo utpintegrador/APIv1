@@ -58,3 +58,5 @@ D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcorea
 D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
 D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.dll
 D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Release\netcoreapp2.2\Datos.Repositorio.pdb
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Infraestructura.dll
+D:\Integrador2\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Release\netcoreapp2.2\Infraestructura.pdb

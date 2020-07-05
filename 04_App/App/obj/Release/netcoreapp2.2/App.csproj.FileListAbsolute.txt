@@ -119,3 +119,5 @@ D:\Integrador2\APIv1\04_App\App\obj\Release\netcoreapp2.2\App.csproj.CopyComplet
 D:\Integrador2\APIv1\04_App\App\obj\Release\netcoreapp2.2\App.dll
 D:\Integrador2\APIv1\04_App\App\obj\Release\netcoreapp2.2\App.xml
 D:\Integrador2\APIv1\04_App\App\obj\Release\netcoreapp2.2\App.pdb
+D:\Integrador2\APIv1\04_App\App\bin\Release\netcoreapp2.2\Infraestructura.dll
+D:\Integrador2\APIv1\04_App\App\bin\Release\netcoreapp2.2\Infraestructura.pdb

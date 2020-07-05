@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace Entidad.Response.Maestro
 {
@@ -10,7 +8,7 @@ namespace Entidad.Response.Maestro
         public int ProcesadoOk { get; set; }
         [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
-        public int IdGenerado { get; set; }
+        public long IdGenerado { get; set; }
         public NegocioResponseRegistrarDto()
         {
             ProcesadoOk = 0;

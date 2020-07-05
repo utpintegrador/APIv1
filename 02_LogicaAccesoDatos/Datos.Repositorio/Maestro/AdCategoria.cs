@@ -12,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdCategoria : Logger
     {
-        public List<CategoriaObtenerDto> Obtener()
+        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerFiltroDto filtro)
         {
             List<CategoriaObtenerDto> resultado = new List<CategoriaObtenerDto>();
             try
@@ -26,7 +26,14 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<CategoriaObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<CategoriaObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -98,7 +105,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(Categoria modelo)
+        public int Modificar(CategoriaModificarDto modelo)
         {
             int resultado = 0;
             try
@@ -115,7 +122,8 @@ namespace Datos.Repositorio.Maestro
                     resultado = cn.Execute(query, new
                     {
                         modelo.IdCategoria,
-                        modelo.Descripcion
+                        modelo.Descripcion,
+                        modelo.IdEstado
                     }, commandType: CommandType.StoredProcedure);
 
                 }
@@ -144,6 +152,92 @@ namespace Datos.Repositorio.Maestro
                     resultado = cn.Execute(query, new
                     {
                         IdCategoria = id,
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public int ModificarUrlImagenPorIdCategoria(long idCategoria, string url)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Maestro.usp_Categoria_ModificarUrlImagenPorIdCategoria";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Execute(query, new
+                    {
+                        IdCategoria = idCategoria,
+                        UrlImagen = url
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public CategoriaObtenerUrlImagenDto ObtenerUrlImagenPorId(long id)
+        {
+            CategoriaObtenerUrlImagenDto resultado = new CategoriaObtenerUrlImagenDto();
+            try
+            {
+                const string query = "Maestro.usp_Categoria_ObtenerUrlImagenPorId";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.QuerySingleOrDefault<CategoriaObtenerUrlImagenDto>(query, new
+                    {
+                        IdCategoria = id
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public int EliminarUrlImagen(long id)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Maestro.usp_Categoria_EliminarUrlImagen";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Execute(query, new
+                    {
+                        IdCategoria = id
                     }, commandType: CommandType.StoredProcedure);
 
                 }

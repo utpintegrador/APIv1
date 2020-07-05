@@ -29,31 +29,59 @@ namespace App.Controllers.Seguridad
         [HttpPost]
         //[ProducesResponseType(403)]
         [ProducesResponseType(typeof(UsuarioTokenDto), 200)]
+        [ProducesResponseType(typeof(UsuarioTokenDto), 401)]
         public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody]UsuarioCredencialesDto usuario)
         {
-            var result = await Task.FromResult(_lnUsuario.ObtenerPorLogin(usuario));
-            if(result != null)
+            string mensajeValidacion = string.Empty;
+            if (string.IsNullOrEmpty(usuario.CorreoElectronico) && string.IsNullOrEmpty(usuario.Contrasenia))
             {
-                return Ok(BuildToken(result));
+                mensajeValidacion = "No se ha enviado ningún parametro";
             }
             else
             {
-                //ModelState.AddModelError(string.Empty, "Intento de logeo invalido");
-                UsuarioTokenDto usuarioRetorno = new UsuarioTokenDto
+                if (string.IsNullOrEmpty(usuario.CorreoElectronico))
                 {
-                    IdUsuario = 0,
-                    Expiracion = null,
-                    Token = null,
-                    Nombre = null,
-                    Apellido = null,
-                    CorreoElectronico = null,
-                    UrlImagen = null
-                };
-
-                //return Unauthorized(usuarioRetorno);// StatusCode(401, usuarioRetorno);// ModelState);
-                return Ok(usuarioRetorno);
+                    mensajeValidacion = "Parametro correo electrónico es requerido";
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(usuario.Contrasenia))
+                    {
+                        mensajeValidacion = "Parametro contrasenia es requerido";
+                    }
+                }
             }
 
+            UsuarioLoginDto result;
+            if (string.IsNullOrEmpty(mensajeValidacion))
+            {
+                result = await Task.FromResult(_lnUsuario.ObtenerPorLogin(usuario));
+                if (result != null)
+                {
+                    return Ok(BuildToken(result));
+                }
+                else
+                {
+                    mensajeValidacion = "Error en las credenciales";
+                }
+            }
+
+            //ModelState.AddModelError(string.Empty, "Intento de logeo invalido");
+            UsuarioTokenDto usuarioRetorno = new UsuarioTokenDto
+            {
+                IdUsuario = 0,
+                Expiracion = null,
+                Token = null,
+                Nombre = null,
+                Apellido = null,
+                CorreoElectronico = null,
+                UrlImagen = null,
+                Resultado = mensajeValidacion
+            };
+
+            //return Unauthorized(usuarioRetorno);// StatusCode(401, usuarioRetorno);// ModelState);
+            return Unauthorized(usuarioRetorno);
+            
         }
 
         private UsuarioTokenDto BuildToken(UsuarioLoginDto usuarioDto)
@@ -103,7 +131,8 @@ namespace App.Controllers.Seguridad
                 Nombre = usuarioDto.Nombre,
                 Apellido = usuarioDto.Apellido,
                 CorreoElectronico = usuarioDto.CorreoElectronico,
-                UrlImagen = usuarioDto.UrlImagen
+                UrlImagen = usuarioDto.UrlImagen,
+                Resultado = "Ok"
             };
         }
 

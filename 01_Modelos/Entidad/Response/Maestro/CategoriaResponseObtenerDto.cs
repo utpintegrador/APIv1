@@ -11,10 +11,12 @@ namespace Entidad.Response.Maestro
         [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<CategoriaObtenerDto> Cuerpo { get; set; }
+        public int CantidadTotalRegistros { get; set; }
         public CategoriaResponseObtenerDto()
         {
             ProcesadoOk = 0;
             ListaError = new List<ErrorDto>();
+            CantidadTotalRegistros = 0;
         }
     }
 }

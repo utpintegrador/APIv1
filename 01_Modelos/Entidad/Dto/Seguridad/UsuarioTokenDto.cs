@@ -11,13 +11,6 @@ namespace Entidad.Dto.Seguridad
         public string Apellido { get; set; }
         public string CorreoElectronico { get; set; }
         public string UrlImagen { get; set; }
-        //public string UserName { get; set; }
-        //public string MensajeError { get; set; }
-        //public int HttpStatusCode { get; set; }
-
-        //public UsuarioTokenDto()
-        //{
-        //    HttpStatusCode = 200;
-        //}
+        public string Resultado { get; set; }
     }
 }

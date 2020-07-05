@@ -1,5 +1,4 @@
-﻿using Entidad.Response;
-using Entidad.Dto.Seguridad;
+﻿using Entidad.Dto.Seguridad;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -11,10 +10,12 @@ namespace Entidad.Response.Seguridad
         [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<UsuarioObtenerDto> Cuerpo { get; set; }
+        public int CantidadTotalRegistros { get; set; }
         public UsuarioResponseObtenerDto()
         {
             ProcesadoOk = 0;
             ListaError = new List<ErrorDto>();
+            CantidadTotalRegistros = 0;
         }
     }
 }

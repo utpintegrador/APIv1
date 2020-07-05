@@ -218,65 +218,65 @@ namespace Negocio.Repositorio.Amazon
         //    return respuesta;
         //}
 
-        public int SubirImagenUsuarioAwsS3(AwsS3RegistrarUsuarioDto entidad, ref long nuevoId, ref string url)
-        {
-            int respuesta = 0;
-            try
-            {
-                url = _urlAmazon;
-                string nombreDirectorio = "Usuario";
-                nuevoId = Convert.ToInt64(entidad.IdUsuario);
+        //public int SubirImagenUsuarioAwsS3(AwsS3RegistrarUsuarioDto entidad, ref long nuevoId, ref string url)
+        //{
+        //    int respuesta = 0;
+        //    try
+        //    {
+        //        url = _urlAmazon;
+        //        string nombreDirectorio = "Usuario";
+        //        nuevoId = Convert.ToInt64(entidad.IdUsuario);
 
-                AwsS3EliminarUsuarioDto prmEliminar = new AwsS3EliminarUsuarioDto();
-                prmEliminar.IdUsuario = entidad.IdUsuario;
-                int respuestaEliminar = EliminarImagenUsuarioAwsS3(prmEliminar);
-                if (respuestaEliminar > 0)
-                {
-                    using (var client = new AmazonS3Client(_llaveAmazon, _claveAmazon, RegionEndpoint.USEast2))
-                    {
-                        using (var ms = new MemoryStream(entidad.Archivo))
-                        {
-                            string nombreArchivo = string.Format("{0}_{1}{2}{3}_{4}{5}{6}.{7}",
-                                entidad.IdUsuario,
-                                DateTime.Now.Year.ToString("d4"),
-                                DateTime.Now.Month.ToString("d2"),
-                                DateTime.Now.Day.ToString("d2"),
-                                DateTime.Now.Hour.ToString("d2"),
-                                DateTime.Now.Minute.ToString("d2"),
-                                DateTime.Now.Second.ToString("d2"),
-                                entidad.ExtensionSinPunto);
+        //        AwsS3EliminarUsuarioDto prmEliminar = new AwsS3EliminarUsuarioDto();
+        //        prmEliminar.IdUsuario = entidad.IdUsuario;
+        //        int respuestaEliminar = EliminarImagenUsuarioAwsS3(prmEliminar);
+        //        if (respuestaEliminar > 0)
+        //        {
+        //            using (var client = new AmazonS3Client(_llaveAmazon, _claveAmazon, RegionEndpoint.USEast2))
+        //            {
+        //                using (var ms = new MemoryStream(entidad.Archivo))
+        //                {
+        //                    string nombreArchivo = string.Format("{0}_{1}{2}{3}_{4}{5}{6}.{7}",
+        //                        entidad.IdUsuario,
+        //                        DateTime.Now.Year.ToString("d4"),
+        //                        DateTime.Now.Month.ToString("d2"),
+        //                        DateTime.Now.Day.ToString("d2"),
+        //                        DateTime.Now.Hour.ToString("d2"),
+        //                        DateTime.Now.Minute.ToString("d2"),
+        //                        DateTime.Now.Second.ToString("d2"),
+        //                        entidad.ExtensionSinPunto);
 
-                            url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
+        //                    url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
 
-                            var uploadRequest = new TransferUtilityUploadRequest
-                            {
-                                InputStream = ms,
-                                Key = nombreArchivo,
-                                BucketName = string.Format("red-social/{0}", nombreDirectorio),
-                                CannedACL = S3CannedACL.PublicRead
-                            };
+        //                    var uploadRequest = new TransferUtilityUploadRequest
+        //                    {
+        //                        InputStream = ms,
+        //                        Key = nombreArchivo,
+        //                        BucketName = string.Format("red-social/{0}", nombreDirectorio),
+        //                        CannedACL = S3CannedACL.PublicRead
+        //                    };
 
-                            var fileTransferUtility = new TransferUtility(client);
-                            fileTransferUtility.Upload(uploadRequest);
+        //                    var fileTransferUtility = new TransferUtility(client);
+        //                    fileTransferUtility.Upload(uploadRequest);
 
-                            //LnUsuario lnUsuario = new LnUsuario();
-                            //respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(Convert.ToInt64(entidad.IdUsuario), url);
+        //                    //LnUsuario lnUsuario = new LnUsuario();
+        //                    //respuesta = lnUsuario.ModificarUrlImagenPorIdUsuario(Convert.ToInt64(entidad.IdUsuario), url);
 
-                        }
-                    }
-                }
-            }
-            catch (AmazonS3Exception exSe)
-            {
-                Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, String.Format("Exception: {0}", ex));
-            }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (AmazonS3Exception exSe)
+        //    {
+        //        Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, String.Format("Exception: {0}", ex));
+        //    }
 
-            return respuesta;
-        }
+        //    return respuesta;
+        //}
 
         public List<AwsS3ObtenerDto> ObtenerImagenUsuario(long idUsuario)
         {
@@ -590,63 +590,63 @@ namespace Negocio.Repositorio.Amazon
             return respuesta;
         }
 
-        public int EliminarImagenUsuarioAwsS3(AwsS3EliminarUsuarioDto entidad)
-        {
-            int respuesta = 0;
-            try
-            {
+        //public int EliminarImagenUsuarioAwsS3(AwsS3EliminarUsuarioDto entidad)
+        //{
+        //    int respuesta = 0;
+        //    try
+        //    {
 
-                string nombreDirectorio = "Usuario";
+        //        string nombreDirectorio = "Usuario";
 
-                string url = string.Format("{0}{1}/", _urlAmazon, nombreDirectorio);
-                LnUsuario lnUsuario = new LnUsuario();
-                var usuarioImagen = lnUsuario.ObtenerUrlImagenPorId(entidad.IdUsuario);
-                if (!string.IsNullOrEmpty(usuarioImagen.UrlImagen) && !usuarioImagen.UrlImagen.Equals("https://red-social.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg"))
-                {
-                    string nombreArchivo = usuarioImagen.UrlImagen.Replace(url, string.Empty);
-                    using (var client = new AmazonS3Client(_llaveAmazon, _claveAmazon, RegionEndpoint.USEast2))
-                    {
-                        var deleteObjectRequest = new DeleteObjectRequest
-                        {
-                            Key = nombreArchivo,
-                            BucketName = string.Format("red-social/{0}", nombreDirectorio)
-                        };
+        //        string url = string.Format("{0}{1}/", _urlAmazon, nombreDirectorio);
+        //        LnUsuario lnUsuario = new LnUsuario();
+        //        var usuarioImagen = lnUsuario.ObtenerUrlImagenPorId(entidad.IdUsuario);
+        //        if (!string.IsNullOrEmpty(usuarioImagen.UrlImagen) && !usuarioImagen.UrlImagen.Equals("https://red-social.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg"))
+        //        {
+        //            string nombreArchivo = usuarioImagen.UrlImagen.Replace(url, string.Empty);
+        //            using (var client = new AmazonS3Client(_llaveAmazon, _claveAmazon, RegionEndpoint.USEast2))
+        //            {
+        //                var deleteObjectRequest = new DeleteObjectRequest
+        //                {
+        //                    Key = nombreArchivo,
+        //                    BucketName = string.Format("red-social/{0}", nombreDirectorio)
+        //                };
 
-                        Task eliminar = Task.Run(() =>
-                        {
-                            client.DeleteObjectAsync(deleteObjectRequest);
-                        });
+        //                Task eliminar = Task.Run(() =>
+        //                {
+        //                    client.DeleteObjectAsync(deleteObjectRequest);
+        //                });
 
-                        eliminar.Wait();
+        //                eliminar.Wait();
 
-                        if (eliminar.IsCompleted)
-                        {
-                            //eliminar de la base de datos
-                            int resultadoEliminarBd = 1;// lnUsuario.EliminarUrlImagen(entidad.IdUsuario);
-                            if (resultadoEliminarBd > 0)
-                            {
-                                respuesta = 1;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    respuesta = 1;
-                }
+        //                if (eliminar.IsCompleted)
+        //                {
+        //                    //eliminar de la base de datos
+        //                    int resultadoEliminarBd = 1;// lnUsuario.EliminarUrlImagen(entidad.IdUsuario);
+        //                    if (resultadoEliminarBd > 0)
+        //                    {
+        //                        respuesta = 1;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            respuesta = 1;
+        //        }
 
-            }
-            catch (AmazonS3Exception exSe)
-            {
-                Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, String.Format("Exception: {0}", ex));
-            }
+        //    }
+        //    catch (AmazonS3Exception exSe)
+        //    {
+        //        Log(Level.Error, String.Format("AmazonS3Exception: {0}", exSe));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, String.Format("Exception: {0}", ex));
+        //    }
 
-            return respuesta;
-        }
+        //    return respuesta;
+        //}
 
     }
 }

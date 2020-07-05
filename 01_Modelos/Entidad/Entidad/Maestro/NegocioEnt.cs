@@ -1,14 +1,13 @@
-﻿using System;
-namespace Entidad.Entidad.Maestro
+﻿namespace Entidad.Entidad.Maestro
 {
     public class NegocioEnt
     {
-        public int IdNegocio { get; set; }
+        public long IdNegocio { get; set; }
         public string DocumentoIdentificacion { get; set; }
         public string Nombre { get; set; }
         public string Resenia { get; set; }
-        public string IdTipoDocumentoIdentificacion { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public int IdUsuario { get; set; }
+        public int IdTipoDocumentoIdentificacion { get; set; }
+        public long IdUsuario { get; set; }
+        public int IdEstado { get; set; }
     }
 }

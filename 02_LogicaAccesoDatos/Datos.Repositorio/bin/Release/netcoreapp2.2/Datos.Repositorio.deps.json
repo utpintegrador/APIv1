@@ -10,6 +10,7 @@
         "dependencies": {
           "Dapper": "2.0.4",
           "Entidad": "1.0.0",
+          "Infraestructura": "1.0.0",
           "System.Data.SqlClient": "4.7.0-preview9.19421.4"
         },
         "runtime": {
@@ -1056,6 +1057,11 @@
         "runtime": {
           "Entidad.dll": {}
         }
+      },
+      "Infraestructura/1.0.0": {
+        "runtime": {
+          "Infraestructura.dll": {}
+        }
       }
     }
   },
@@ -1619,6 +1625,11 @@
       "hashPath": "system.xml.xmldocument.4.0.1.nupkg.sha512"
     },
     "Entidad/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infraestructura/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -27,13 +27,19 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<CategoriaResponseObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<CategoriaResponseObtenerDto>> Obtener([FromBody] CategoriaObtenerFiltroDto filtro)
         {
             CategoriaResponseObtenerDto respuesta = new CategoriaResponseObtenerDto();
-            var result = await Task.FromResult(_lnCategoria.Obtener());
+            var result = await Task.FromResult(_lnCategoria.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 
@@ -59,119 +65,40 @@ namespace App.Controllers.Maestro
         [HttpPost]
         [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 200)]
-        public async Task<ActionResult<CategoriaResponseRegistrarDto>> Registrar()//[FromBody] Models.ModelRegistrarCategoria modelo)
+        public async Task<ActionResult<CategoriaResponseRegistrarDto>> Registrar([FromBody] CategoriaRegistrarDto modelo)
         {
             CategoriaResponseRegistrarDto respuesta = new CategoriaResponseRegistrarDto();
-
-            var archivoRequest = Request.Form.Files["Archivo"];
-            var accionRequest = Request.Form["Accion"];
-            var descripcionRequest = Request.Form["Descripcion"];
-
-            if (string.IsNullOrEmpty(accionRequest) || string.IsNullOrEmpty(descripcionRequest))
+            if (!ModelState.IsValid)
             {
-                Logger.Log(Logger.Level.Error, "Los parametros de Accion y Descripcion son requeridos");
-                //respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros de Accion y IdUsuario son requeridos" });
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
                 return BadRequest(respuesta);
             }
 
-
-            try
+            int nuevoId = 0;
+            var result = await Task.FromResult(_lnCategoria.Registrar(modelo, ref nuevoId));
+            if (result == 0)
             {
-                switch (accionRequest.ToString().Trim())
-                {
-                    //case "del":
-                    //    {
-                    //        AwsS3EliminarUsuarioDto prm = new AwsS3EliminarUsuarioDto();
-                    //        prm.IdUsuario = Convert.ToInt64(idUsuarioRequest.ToString());
-                    //        var result = await Task.FromResult(_lnS3Service.EliminarImagenUsuarioAwsS3(prm));
-                    //        if (result == 0)
-                    //        {
-                    //            //respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar eliminar" });
-                    //            return BadRequest(respuesta);
-                    //        }
-
-                    //        respuesta.ProcesadoOk = 1;
-
-                    //        return Ok(respuesta);
-                    //    }
-                    case "add":
-                        {
-                            var file = archivoRequest; //Request.Form.Files[0];
-                            if (file == null)
-                            {
-                                Logger.Log(Logger.Level.Error, "No se ha proporcionado un archivo de tipo imágen");
-                                //respuesta.ListaError.Add(new ErrorDto { Mensaje = "Se requiere un archivo tipo imagen" });
-                                return BadRequest(respuesta);
-                            }
-                            else if (file.Length > 0)
-                            {
-                                //var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                                var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                                //string nombreArchivo = file.FileName;
-                                string extension = Path.GetExtension(nombreArchivo).Trim().Replace(".", string.Empty).ToLower();
-
-                                if (extension.Equals("jpg") || extension.Equals("png") || extension.Equals("jpeg") || extension.Equals("bmp") || extension.Equals("gif"))
-                                {
-                                    byte[] archivo;
-                                    using (var memoryStream = new MemoryStream())
-                                    {
-                                        await file.CopyToAsync(memoryStream);
-                                        archivo = memoryStream.ToArray();
-                                    }
-
-                                    int nuevoId = 0;
-                                    string url = string.Empty;
-                                    if (archivo != null)
-                                    {
-                                        CategoriaRegistrarDto prm = new CategoriaRegistrarDto();
-                                        prm.Archivo = archivo;
-                                        prm.ExtensionSinPunto = extension;
-                                        prm.Descripcion = descripcionRequest.ToString();
-                                        var result = await Task.FromResult(_lnCategoria.Registrar(prm, ref nuevoId, ref url));
-                                        if (result == 0)
-                                        {
-                                            //respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
-                                            return BadRequest(respuesta);
-                                        }
-
-                                        respuesta.ProcesadoOk = 1;
-                                        respuesta.IdGenerado = nuevoId;
-                                        respuesta.UrlImagen = url;
-                                    }
-
-                                    return Ok(respuesta);
-                                }
-                                else
-                                {
-                                    Logger.Log(Logger.Level.Error, "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp");
-                                    //respuesta.ListaError.Add(new ErrorDto { Mensaje = "Solo se aceptan imagenes jpg, png, jpeg, gif y bmp" });
-                                    return BadRequest(respuesta);
-                                }
-
-                            }
-                            break;
-                        }
-                    default:
-                        Logger.Log(Logger.Level.Error, "El parametro Accion solo debe contener los valores de 'add' o 'del'");
-                        break;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(Logger.Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
-                //respuesta.ListaError.Add(new ErrorDto { Mensaje = ex.InnerException == null ? ex.Message : ex.InnerException.Message });
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
             }
 
-            return BadRequest(respuesta);
+            respuesta.ProcesadoOk = 1;
+            respuesta.IdGenerado = nuevoId;
+
+            return Ok(respuesta);
 
         }
 
+        /// <summary>
+        /// IdEstado: 1 es Activo  |   2 es Inactivo
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
         [HttpPut()]//"{id}")]
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 404)]
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 200)]
-        public async Task<ActionResult<CategoriaResponseModificarDto>> Modificar([FromBody] Categoria modelo)
+        public async Task<ActionResult<CategoriaResponseModificarDto>> Modificar([FromBody] CategoriaModificarDto modelo)
         {
             CategoriaResponseModificarDto respuesta = new CategoriaResponseModificarDto();
             if (!ModelState.IsValid)
@@ -222,5 +149,227 @@ namespace App.Controllers.Maestro
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        /// <summary>
+        /// modelo.ArchivoBytes = byte[]
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
+        [HttpPost("ImagenMetodo1")]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
+        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo1([FromBody] CategoriaModificarImagenMetodo1FiltroDto modelo)
+        {
+            string urlImagenNueva = string.Empty;
+
+            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+            if (!ModelState.IsValid)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                return BadRequest(respuesta);
+            }
+
+            if (modelo == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                return BadRequest(respuesta);
+            }
+
+            if (modelo.ArchivoBytes == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "El archivo de bytes es requerido" });
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnCategoria.SubirImagenAws(modelo, ref urlImagenNueva));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
+            }
+            if (result == -1)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "El IdCategoria proporcionado no es válido" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.UrlImagen = urlImagenNueva;
+
+            return Ok(respuesta);
+
+        }
+
+        [HttpPost("ImagenMetodo2")]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
+        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo2(IFormFile archivo, long idCategoria)
+        {
+            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+            try
+            {
+                if (archivo == null || idCategoria == 0)
+                {
+                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                    return BadRequest(respuesta);
+                }
+
+                //transformar IFormFile hacia bytes
+                var file = archivo;
+                if (file.Length == 0)
+                {
+                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                    return BadRequest(respuesta);
+                }
+
+                string urlImagenNueva = string.Empty;
+                var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                string extension = Path.GetExtension(nombreArchivo).Trim().Replace(".", string.Empty).ToLower();
+                byte[] archivoBytes;
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    archivoBytes = memoryStream.ToArray();
+                }
+                CategoriaModificarImagenMetodo1FiltroDto modelo = new CategoriaModificarImagenMetodo1FiltroDto
+                {
+                    ArchivoBytes = archivoBytes,
+                    ExtensionSinPunto = extension,
+                    IdCategoria = idCategoria
+                };
+                var result = await Task.FromResult(_lnCategoria.SubirImagenAws(modelo, ref urlImagenNueva));
+                if (result == 0)
+                {
+                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                    return BadRequest(respuesta);
+                }
+
+                respuesta.ProcesadoOk = 1;
+                respuesta.UrlImagen = urlImagenNueva;
+
+                return Ok(respuesta);
+            }
+            catch (InvalidOperationException invEx)
+            {
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "Los parametros 'Archivo' y 'IdCategoria' deben ser enviados mediante 'multipart/form-data'"
+                });
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = (string.IsNullOrEmpty(invEx.StackTrace) ? invEx.Message : invEx.StackTrace).Replace(Environment.NewLine, " ")
+                });
+                return BadRequest(respuesta);
+            }
+            catch (Exception ex)
+            {
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = (ex.InnerException == null ? ex.Message : ex.InnerException.Message).Replace(Environment.NewLine, " ")
+                });
+                return BadRequest(respuesta);
+            }
+
+        }
+
+        /// <summary>
+        /// Se envia parametros mediante tipo multipart/form-data
+        /// Se requiere el parametro IdCategoria:long    y    Archivo:IFormFile
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("ImagenMetodo3")]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
+        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo3()
+        {
+            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+
+            try
+            {
+                var archivoTemp = Request.Form.Files["Archivo"];
+                var idCategoriaTemp = Request.Form["IdCategoria"];
+            }
+            catch (InvalidOperationException invEx)
+            {
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "Los parametros 'Archivo' y 'IdCategoria' deben ser enviados mediante 'multipart/form-data'"
+                });
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = (string.IsNullOrEmpty(invEx.StackTrace) ? invEx.Message : invEx.StackTrace).Replace(Environment.NewLine, " ")
+                });
+                return BadRequest(respuesta);
+            }
+
+            var archivo = Request.Form.Files["Archivo"];
+            var idCategoria = Request.Form["IdCategoria"];
+
+            if (archivo == null || string.IsNullOrEmpty(idCategoria))
+            {
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "Los parametros 'Archivo' y 'IdCategoria' deben ser enviados mediante 'multipart/form-data'"
+                });
+                return BadRequest(respuesta);
+            }
+
+            //transformar IFormFile hacia bytes
+            var file = archivo;
+            if (file.Length == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                return BadRequest(respuesta);
+            }
+
+            string urlImagenNueva = string.Empty;
+            var nombreArchivo = System.Net.Http.Headers.ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            string extension = Path.GetExtension(nombreArchivo).Trim().Replace(".", string.Empty).ToLower();
+            byte[] archivoBytes;
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                archivoBytes = memoryStream.ToArray();
+            }
+            CategoriaModificarImagenMetodo1FiltroDto modelo = new CategoriaModificarImagenMetodo1FiltroDto
+            {
+                ArchivoBytes = archivoBytes,
+                ExtensionSinPunto = extension,
+                IdCategoria = Convert.ToInt64(idCategoria)
+            };
+            var result = await Task.FromResult(_lnCategoria.SubirImagenAws(modelo, ref urlImagenNueva));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.UrlImagen = urlImagenNueva;
+
+            return Ok(respuesta);
+
+        }
+
+        [HttpDelete("Imagen/{id}")]
+        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 404)]
+        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 400)]
+        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 200)]
+        public async Task<ActionResult<CategoriaResponseEliminarImagenDto>> Imagen(long id)
+        {
+            string urlImagen = string.Empty;
+            CategoriaResponseEliminarImagenDto respuesta = new CategoriaResponseEliminarImagenDto();
+            var entidad = await Task.FromResult(_lnCategoria.EliminarImagen(id, ref urlImagen));
+            if (entidad == -1)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.UrlImagen = urlImagen;
+            respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
     }
 }

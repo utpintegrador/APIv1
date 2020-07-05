@@ -4,5 +4,54 @@
         <name>App</name>
     </assembly>
     <members>
+        <member name="M:App.Controllers.Maestro.CategoriaController.Modificar(Entidad.Dto.Maestro.CategoriaModificarDto)">
+            <summary>
+            IdEstado: 1 es Activo  |   2 es Inactivo
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Maestro.CategoriaController.ImagenMetodo1(Entidad.Dto.Maestro.CategoriaModificarImagenMetodo1FiltroDto)">
+            <summary>
+            modelo.ArchivoBytes = byte[]
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Maestro.CategoriaController.ImagenMetodo3">
+            <summary>
+            Se envia parametros mediante tipo multipart/form-data
+            Se requiere el parametro IdCategoria:long    y    Archivo:IFormFile
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Maestro.NegocioController.ObtenerCercanos(Entidad.Dto.Maestro.NegocioObtenerCercanosFiltroDto)">
+            <summary>
+            El parametro IdUsuario es obligatorio, pues se listaran los cercanos a ese usuario
+            </summary>
+            <param name="filtro"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Maestro.NegocioController.Modificar(Entidad.Dto.Maestro.NegocioModificarDto)">
+            <summary>
+            IdEstado: 1 es Activo  |   2 es Inactivo
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Seguridad.UsuarioController.ImagenMetodo1(Entidad.Dto.Seguridad.UsuarioModificarImagenMetodo1FiltroDto)">
+            <summary>
+            modelo.ArchivoBytes = byte[]
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Seguridad.UsuarioController.ImagenMetodo3">
+            <summary>
+            Se envia parametros mediante tipo multipart/form-data
+            Se requiere el parametro IdUsuario:long    y    Archivo:IFormFile
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>
