@@ -79,6 +79,8 @@ namespace App
                     //}
                 });
 
+                //https://ppolyzos.com/2017/10/30/add-jwt-bearer-authorization-to-swagger-and-asp-net-core/
+                //version 2.x
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
                     {"Bearer", new string[] { }},

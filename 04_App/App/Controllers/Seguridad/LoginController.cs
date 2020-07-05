@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Negocio.Repositorio.Seguridad;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -57,7 +58,15 @@ namespace App.Controllers.Seguridad
 
         private UsuarioTokenDto BuildToken(UsuarioLoginDto usuarioDto)
         {
-            var claims = new[]
+            //var claims = new[]
+            //{
+            //    new Claim(ClaimTypes.Name, usuarioDto.Nombre),
+            //    new Claim(JwtRegisteredClaimNames.UniqueName, usuarioDto.CorreoElectronico),
+            //    new Claim("apellido", usuarioDto.Apellido),
+            //    new Claim("idusuario", usuarioDto.IdUsuario.ToString()),
+            //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            //};
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, usuarioDto.Nombre),
                 new Claim(JwtRegisteredClaimNames.UniqueName, usuarioDto.CorreoElectronico),
@@ -65,6 +74,14 @@ namespace App.Controllers.Seguridad
                 new Claim("idusuario", usuarioDto.IdUsuario.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            List<string> listaRoles = new List<string>();
+            listaRoles.Add("Administrador");
+            listaRoles.Add("Usuario");
+            foreach (var item in listaRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, item));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

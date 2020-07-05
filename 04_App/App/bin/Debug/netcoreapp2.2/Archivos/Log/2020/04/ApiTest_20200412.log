@@ -1,9 +1,0 @@
-01:00:56:518 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-01:04:22:477 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-12:29:16:621 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-12:47:30:695 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-14:16:35:090 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-19:21:38:837 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-19:22:52:363 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.
-19:24:03:819 INFO   [192.168.189.2] [<SubirImagenUsuario>d__6      ]    [MoveNext                                  ]    - {"Accion":"add","IdUsuario":71}
-19:55:06:095 INFO   [192.168.189.2] [ConfiguracionJson             ]    [EstablecerConfiguracion                   ]    - Se cargaron los parametros del archivo de configuración Configuracion.json correctamente.

@@ -17,73 +17,73 @@ namespace Negocio.Repositorio.Servicio
     {
         private readonly AdRecuperacionContrasenia _adRecuperacionContrasenia = new AdRecuperacionContrasenia();
                 
-        public Boolean ProcesarAlertaRecuperacionContrasenia()
-        {
-            try
-            {
-                var listado = ObtenerPendientesProceso();
-                if(listado != null)
-                {
-                    if (listado.Any())
-                    {
-                        foreach (var item in listado)
-                        {
-                            ProcesarAlertaRecuperacionIndividual(item);
-                        }
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
-            }
-            return false;
-        }
+        //public Boolean ProcesarAlertaRecuperacionContrasenia()
+        //{
+        //    try
+        //    {
+        //        var listado = ObtenerPendientesProceso();
+        //        if(listado != null)
+        //        {
+        //            if (listado.Any())
+        //            {
+        //                foreach (var item in listado)
+        //                {
+        //                    ProcesarAlertaRecuperacionIndividual(item);
+        //                }
+        //            }
+        //        }
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+        //    }
+        //    return false;
+        //}
 
-        private void ProcesarAlertaRecuperacionIndividual(RecuperacionContraseniaObtenerDto entidad)
-        {
-            try
-            {
-                string cuerpoHtml = ProcesarPlantillaVm(entidad, "RecuperacionContrasenia.vm");
-                if (string.IsNullOrEmpty(cuerpoHtml)) return;
-                if (cuerpoHtml.ToLower().Contains("encountered") ||
-                    cuerpoHtml.ToLower().Contains("lexical error"))
-                {
-                    //Log(Level.Error, String.Format("IdTransaccion: {0} ; error al procesar la plantilla: {1}",
-                    //    alerta.IdTransaccion,
-                    //    cuerpoHtml));
-                }
-                else
-                {
-                    List<string> destinatarios = new List<string>();
-                    destinatarios.Add(entidad.CorreoElectronico);
-                    if (EnviarMensaje(destinatarios,
-                        "Solicitud de recuperacion de contraseña",
-                        cuerpoHtml))
-                    {
-                        Log(Level.Info, string.Format("Se envió alerta informando datos erroneos en la trama recibida"));
+        //private void ProcesarAlertaRecuperacionIndividual(RecuperacionContraseniaObtenerDto entidad)
+        //{
+        //    try
+        //    {
+        //        string cuerpoHtml = ProcesarPlantillaVm(entidad, "RecuperacionContrasenia.vm");
+        //        if (string.IsNullOrEmpty(cuerpoHtml)) return;
+        //        if (cuerpoHtml.ToLower().Contains("encountered") ||
+        //            cuerpoHtml.ToLower().Contains("lexical error"))
+        //        {
+        //            //Log(Level.Error, String.Format("IdTransaccion: {0} ; error al procesar la plantilla: {1}",
+        //            //    alerta.IdTransaccion,
+        //            //    cuerpoHtml));
+        //        }
+        //        else
+        //        {
+        //            List<string> destinatarios = new List<string>();
+        //            destinatarios.Add(entidad.CorreoElectronico);
+        //            if (EnviarMensaje(destinatarios,
+        //                "Solicitud de recuperacion de contraseña",
+        //                cuerpoHtml))
+        //            {
+        //                Log(Level.Info, string.Format("Se envió alerta informando datos erroneos en la trama recibida"));
 
-                        int resultadoMarcarCorreoEnviado = ModificarEstadoEnviado(entidad.IdRecuperacionContrasenia);
-                        if (resultadoMarcarCorreoEnviado > 0)
-                        {
-                            Log(Level.Info, String.Format("Se actualizó el indicador de correo informando que se ha enviado satisfactoriamente"));
-                        }
+        //                int resultadoMarcarCorreoEnviado = ModificarEstadoEnviado(entidad.IdRecuperacionContrasenia);
+        //                if (resultadoMarcarCorreoEnviado > 0)
+        //                {
+        //                    Log(Level.Info, String.Format("Se actualizó el indicador de correo informando que se ha enviado satisfactoriamente"));
+        //                }
 
-                    }
-                    else
-                    {
-                        Log(Level.Warn, String.Format("No pudo enviarse alerta informando datos erroneos en la trama recibida"));
-                    }
+        //            }
+        //            else
+        //            {
+        //                Log(Level.Warn, String.Format("No pudo enviarse alerta informando datos erroneos en la trama recibida"));
+        //            }
 
-                }
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+        //    }
+        //}
 
         private string ProcesarPlantillaVm(RecuperacionContraseniaObtenerDto cuerpoMensaje, string nombrePlantilla)
         {
@@ -169,20 +169,20 @@ namespace Negocio.Repositorio.Servicio
             return _adRecuperacionContrasenia.Registrar(correoElectronico);
         }
 
-        private List<RecuperacionContraseniaObtenerDto> ObtenerPendientesProceso()
-        {
-            return _adRecuperacionContrasenia.ObtenerPendientesProceso();
-        }
+        //private List<RecuperacionContraseniaObtenerDto> ObtenerPendientesProceso()
+        //{
+        //    return _adRecuperacionContrasenia.ObtenerPendientesProceso();
+        //}
 
-        private int ModificarEstadoEnviado(long idRecuperacionContrasenia)
-        {
-            return _adRecuperacionContrasenia.ModificarEstadoEnviado(idRecuperacionContrasenia);
-        }
+        //private int ModificarEstadoEnviado(long idRecuperacionContrasenia)
+        //{
+        //    return _adRecuperacionContrasenia.ModificarEstadoEnviado(idRecuperacionContrasenia);
+        //}
 
-        public int EliminarProcesados()
-        {
-            return _adRecuperacionContrasenia.EliminarProcesados();
-        }
+        //public int EliminarProcesados()
+        //{
+        //    return _adRecuperacionContrasenia.EliminarProcesados();
+        //}
 
         public RecuperacionContraseniaObtenerPorCodigoDto ObtenerUsuarioPorCodigo(string codigo)
         {
@@ -191,6 +191,7 @@ namespace Negocio.Repositorio.Servicio
 
         public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaDto modelo)
         {
+            modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo);
         }
 

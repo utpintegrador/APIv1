@@ -9,7 +9,6 @@ namespace App.Controllers.Correo
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(IgnoreApi = true)]
     public class RecuperacionContraseniaController : ControllerBase
     {
         private readonly LnRecuperacionContrasenia _lnRecuperacionContrasenia = new LnRecuperacionContrasenia();

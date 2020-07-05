@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Negocio.Repositorio.Seguridad
 {
@@ -41,8 +42,22 @@ namespace Negocio.Repositorio.Seguridad
 
         public int Registrar(UsuarioRegistrarDto modelo, ref long idNuevo)
         {
+            int resultado = 0;
             modelo.Contrasenia = Entidad.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
-            return _adUsuario.Registrar(modelo, ref idNuevo);
+            //Al guardar usuario tambien se guarda en la tabla RolUsuario por lo cual se emplea transaccion
+            using (var scope = new TransactionScope())
+            {
+                resultado = _adUsuario.Registrar(modelo, ref idNuevo);
+                if (idNuevo > 0)
+                {
+                    scope.Complete();
+                }
+                else
+                {
+                    resultado = 0;
+                }
+            }
+            return resultado;
         }
 
         public int Modificar(UsuarioModificarDto modelo)

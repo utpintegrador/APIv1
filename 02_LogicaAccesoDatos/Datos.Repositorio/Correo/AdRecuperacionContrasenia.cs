@@ -43,84 +43,84 @@ namespace Datos.Repositorio.Correo
             return resultado;
         }
 
-        public List<RecuperacionContraseniaObtenerDto> ObtenerPendientesProceso()
-        {
-            List<RecuperacionContraseniaObtenerDto> resultado = new List<RecuperacionContraseniaObtenerDto>();
-            try
-            {
-                const string query = "Correo.usp_RecuperacionContrasenia_ObtenerPendientesEnvio";
+        //public List<RecuperacionContraseniaObtenerDto> ObtenerPendientesProceso()
+        //{
+        //    List<RecuperacionContraseniaObtenerDto> resultado = new List<RecuperacionContraseniaObtenerDto>();
+        //    try
+        //    {
+        //        const string query = "Correo.usp_RecuperacionContrasenia_ObtenerPendientesEnvio";
 
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
+        //        using (var cn = HelperClass.ObtenerConeccion())
+        //        {
+        //            if (cn.State == ConnectionState.Closed)
+        //            {
+        //                cn.Open();
+        //            }
 
-                    resultado = cn.Query<RecuperacionContraseniaObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+        //            resultado = cn.Query<RecuperacionContraseniaObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
 
-                }
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
-            }
-            return resultado;
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+        //    }
+        //    return resultado;
+        //}
 
-        public int ModificarEstadoEnviado(long idRecuperacionContrasenia)
-        {
-            int resultado = 0;
-            try
-            {
-                const string query = "Correo.usp_RecuperacionContrasenia_ModificarEstadoEnviado";
+        //public int ModificarEstadoEnviado(long idRecuperacionContrasenia)
+        //{
+        //    int resultado = 0;
+        //    try
+        //    {
+        //        const string query = "Correo.usp_RecuperacionContrasenia_ModificarEstadoEnviado";
 
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
+        //        using (var cn = HelperClass.ObtenerConeccion())
+        //        {
+        //            if (cn.State == ConnectionState.Closed)
+        //            {
+        //                cn.Open();
+        //            }
 
-                    resultado = cn.Execute(query, new
-                    {
-                        IdRecuperacionContrasenia = idRecuperacionContrasenia
-                    }, commandType: CommandType.StoredProcedure);
+        //            resultado = cn.Execute(query, new
+        //            {
+        //                IdRecuperacionContrasenia = idRecuperacionContrasenia
+        //            }, commandType: CommandType.StoredProcedure);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
-            }
-            return resultado;
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+        //    }
+        //    return resultado;
+        //}
 
-        public int EliminarProcesados()
-        {
-            int resultado = 0;
-            try
-            {
-                const string query = "Correo.usp_RecuperacionContrasenia_EliminarProcesados";
+        //public int EliminarProcesados()
+        //{
+        //    int resultado = 0;
+        //    try
+        //    {
+        //        const string query = "Correo.usp_RecuperacionContrasenia_EliminarProcesados";
 
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
+        //        using (var cn = HelperClass.ObtenerConeccion())
+        //        {
+        //            if (cn.State == ConnectionState.Closed)
+        //            {
+        //                cn.Open();
+        //            }
 
-                    resultado = cn.Execute(query, commandType: CommandType.StoredProcedure);
+        //            resultado = cn.Execute(query, commandType: CommandType.StoredProcedure);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
-            }
-            return resultado;
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+        //    }
+        //    return resultado;
+        //}
 
         public RecuperacionContraseniaObtenerPorCodigoDto ObtenerUsuarioPorCodigo(string codigo)
         {
