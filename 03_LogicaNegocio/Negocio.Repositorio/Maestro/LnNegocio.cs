@@ -1,10 +1,9 @@
 ﻿using Datos.Repositorio.Maestro;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
+using Entidad.Request.Maestro;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Transactions;
 
@@ -13,9 +12,9 @@ namespace Negocio.Repositorio.Maestro
     public class LnNegocio: Logger
     {
         private readonly AdNegocio _adNegocio = new AdNegocio();
-        public List<NegocioObtenerDto> Obtener(NegocioObtenerPrmDto filtro)
+        public List<NegocioObtenerDto> Obtener(RequestNegocioObtenerDto filtro)
         {
-            if (filtro == null) filtro = new NegocioObtenerPrmDto();
+            if (filtro == null) filtro = new RequestNegocioObtenerDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocio";
@@ -30,9 +29,9 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
-        public List<NegocioObtenerCercanosDto> ObtenerCercanos(NegocioObtenerCercanosPrmDto filtro)
+        public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto filtro)
         {
-            if (filtro == null) filtro = new NegocioObtenerCercanosPrmDto();
+            if (filtro == null) filtro = new RequestNegocioObtenerCercanosDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocio";
@@ -52,7 +51,7 @@ namespace Negocio.Repositorio.Maestro
             return _adNegocio.ObtenerPorId(id);
         }
 
-        public int Registrar(NegocioRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestNegocioRegistrarDto modelo, ref long idNuevo)
         {
             int respuesta = 0;
             try
@@ -96,7 +95,7 @@ namespace Negocio.Repositorio.Maestro
                 {
                     respuesta = _adNegocio.Registrar(modelo, ref idNuevo);
                     LnNegocioUbicacion lnNegocioUbicacion = new LnNegocioUbicacion();
-                    if (modelo.ListaUbicacion == null) modelo.ListaUbicacion = new List<NegocioRegistrarUbicacionRegistrarFiltroDto>();
+                    if (modelo.ListaUbicacion == null) modelo.ListaUbicacion = new List<RequestNegocioRegistrarUbicacionRegistrarDto>();
 
                     if (modelo.ListaUbicacion.Any())
                     {
@@ -104,7 +103,7 @@ namespace Negocio.Repositorio.Maestro
                         int cantidadUbicacionesOk = 0;
                         foreach (var negUbi in modelo.ListaUbicacion)
                         {
-                            var entUbi = new NegocioUbicacionRegistrarPrmDto
+                            var entUbi = new RequestNegocioUbicacionRegistrarDto
                             {
                                 IdNegocio = idNuevo,
                                 Descripcion = negUbi.Descripcion,
@@ -139,7 +138,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
-        public int Modificar(NegocioModificarPrmDto modelo)
+        public int Modificar(RequestNegocioModificarDto modelo)
         {
             return _adNegocio.Modificar(modelo);
         }

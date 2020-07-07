@@ -2,6 +2,7 @@
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdNegocioUbicacion: Logger
     {
-        public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(NegocioUbicacionObtenerPorIdNegocioPrmDto filtro)
+        public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
             List<NegocioUbicacionObtenerPorIdNegocioDto> resultado = new List<NegocioUbicacionObtenerPorIdNegocioDto>();
             try
@@ -74,7 +75,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(NegocioUbicacionRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestNegocioUbicacionRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -110,7 +111,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(NegocioUbicacionModificarPrmDto modelo)
+        public int Modificar(RequestNegocioUbicacionModificarDto modelo)
         {
             int resultado = 0;
             try

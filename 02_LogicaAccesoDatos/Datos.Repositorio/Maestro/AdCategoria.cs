@@ -3,6 +3,7 @@ using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
 using Entidad.Entidad.Maestro;
+using Entidad.Request.Maestro;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdCategoria : Logger
     {
-        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerPrmDto filtro)
+        public List<CategoriaObtenerDto> Obtener(RequestCategoriaObtenerDto filtro)
         {
             List<CategoriaObtenerDto> resultado = new List<CategoriaObtenerDto>();
             try
@@ -74,7 +75,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(CategoriaRegistrarPrmDto modelo, ref int idNuevo)
+        public int Registrar(RequestCategoriaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             try
@@ -105,7 +106,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(CategoriaModificarPrmDto modelo)
+        public int Modificar(RequestCategoriaModificarDto modelo)
         {
             int resultado = 0;
             try

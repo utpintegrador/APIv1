@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Entidad.Response;
-using Entidad.Dto.Maestro;
 using Entidad.Response.Maestro;
-using Entidad.Entidad.Maestro;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
+using Entidad.Request.Maestro;
 
 namespace App.Controllers.Maestro
 {
@@ -27,9 +22,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet]
-        public async Task<ActionResult<TipoEstadoResponseObtenerDto>> Obtener()
+        public async Task<ActionResult<ResponseTipoEstadoObtenerDto>> Obtener()
         {
-            TipoEstadoResponseObtenerDto respuesta = new TipoEstadoResponseObtenerDto();
+            ResponseTipoEstadoObtenerDto respuesta = new ResponseTipoEstadoObtenerDto();
             var result = await Task.FromResult(_lnTipoEstado.Obtener());
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -37,11 +32,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerTipoEstadoPorId")]
-        [ProducesResponseType(typeof(TipoEstadoResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(TipoEstadoResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<TipoEstadoResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseTipoEstadoObtenerPorIdDto>> ObtenerPorId(int id)
         {
-            TipoEstadoResponseObtenerPorIdDto respuesta = new TipoEstadoResponseObtenerPorIdDto();
+            ResponseTipoEstadoObtenerPorIdDto respuesta = new ResponseTipoEstadoObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -56,13 +51,13 @@ namespace App.Controllers.Maestro
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(TipoEstadoResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(TipoEstadoResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<TipoEstadoResponseRegistrarDto>> Registrar([FromBody] TipoEstadoRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseTipoEstadoRegistrarDto>> Registrar([FromBody] RequestTipoEstadoRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            TipoEstadoResponseRegistrarDto respuesta = new TipoEstadoResponseRegistrarDto();
+            ResponseTipoEstadoRegistrarDto respuesta = new ResponseTipoEstadoRegistrarDto();
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnTipoEstado.Registrar(modelo, ref nuevoId));
@@ -80,14 +75,14 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<TipoEstadoResponseModificarDto>> Modificar([FromBody] TipoEstadoModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseTipoEstadoModificarDto>> Modificar([FromBody] RequestTipoEstadoModificarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            TipoEstadoResponseModificarDto respuesta = new TipoEstadoResponseModificarDto();
+            ResponseTipoEstadoModificarDto respuesta = new ResponseTipoEstadoModificarDto();
 
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(modelo.IdTipoEstado));
             if (entidad == null)
@@ -108,12 +103,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(TipoEstadoResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(TipoEstadoResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(TipoEstadoResponseEliminarDto), 200)]
-        public async Task<ActionResult<TipoEstadoResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseTipoEstadoEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoEliminarDto), 200)]
+        public async Task<ActionResult<ResponseTipoEstadoEliminarDto>> Eliminar(int id)
         {
-            TipoEstadoResponseEliminarDto respuesta = new TipoEstadoResponseEliminarDto();
+            ResponseTipoEstadoEliminarDto respuesta = new ResponseTipoEstadoEliminarDto();
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(id));
             if (entidad == null)
             {

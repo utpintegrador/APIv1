@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.CustomHandler;
 using AutoMapper;
-using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 using Entidad.Response;
 using Entidad.Response.Maestro;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +24,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("Obtener")]
-        public async Task<ActionResult<NegocioResponseObtenerDto>> Obtener([FromBody] NegocioObtenerPrmDto filtro)
+        public async Task<ActionResult<ResponseNegocioObtenerDto>> Obtener([FromBody] RequestNegocioObtenerDto filtro)
         {
-            NegocioResponseObtenerDto respuesta = new NegocioResponseObtenerDto();
+            ResponseNegocioObtenerDto respuesta = new ResponseNegocioObtenerDto();
             var result = await Task.FromResult(_lnNegocio.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -45,14 +45,14 @@ namespace App.Controllers.Maestro
         /// <param name="filtro"></param>
         /// <returns></returns>
         [HttpPost("ObtenerCercanos")]
-        [ProducesResponseType(typeof(NegocioResponseObtenerCercanosDto), 200)]
-        [ProducesResponseType(typeof(NegocioResponseObtenerCercanosDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerCercanosDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerCercanosDto), 400)]
         [ValidationActionFilter]
-        public async Task<ActionResult<NegocioResponseObtenerCercanosDto>> ObtenerCercanos([FromBody] NegocioObtenerCercanosPrmDto filtro)
+        public async Task<ActionResult<ResponseNegocioObtenerCercanosDto>> ObtenerCercanos([FromBody] RequestNegocioObtenerCercanosDto filtro)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            NegocioResponseObtenerCercanosDto respuesta = new NegocioResponseObtenerCercanosDto();
+            ResponseNegocioObtenerCercanosDto respuesta = new ResponseNegocioObtenerCercanosDto();
             if (filtro.IdUsuario == 0)
             {
                 respuesta.ListaError = new List<ErrorDto>();
@@ -81,11 +81,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerNegocioPorId")]
-        [ProducesResponseType(typeof(NegocioResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(NegocioResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<NegocioResponseObtenerPorIdDto>> ObtenerPorId(long id)
+        [ProducesResponseType(typeof(ResponseNegocioObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseNegocioObtenerPorIdDto>> ObtenerPorId(long id)
         {
-            NegocioResponseObtenerPorIdDto respuesta = new NegocioResponseObtenerPorIdDto();
+            ResponseNegocioObtenerPorIdDto respuesta = new ResponseNegocioObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -99,13 +99,13 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(NegocioResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(NegocioResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<NegocioResponseRegistrarDto>> Registrar([FromBody] NegocioRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseNegocioRegistrarDto>> Registrar([FromBody] RequestNegocioRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            NegocioResponseRegistrarDto respuesta = new NegocioResponseRegistrarDto();
+            ResponseNegocioRegistrarDto respuesta = new ResponseNegocioRegistrarDto();
 
             long nuevoId = 0;
             var result = await Task.FromResult(_lnNegocio.Registrar(modelo, ref nuevoId));
@@ -128,15 +128,15 @@ namespace App.Controllers.Maestro
         /// <param name="modelo"></param>
         /// <returns></returns>
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(NegocioResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(NegocioResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(NegocioResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<NegocioResponseModificarDto>> Modificar([FromBody] NegocioModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseNegocioModificarDto>> Modificar([FromBody] RequestNegocioModificarDto modelo)
         {
             
             if (!ModelState.IsValid) return BadRequest();
-            NegocioResponseModificarDto respuesta = new NegocioResponseModificarDto();
+            ResponseNegocioModificarDto respuesta = new ResponseNegocioModificarDto();
 
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(modelo.IdNegocio));
             if (entidad == null)
@@ -157,12 +157,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(NegocioResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(NegocioResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(NegocioResponseEliminarDto), 200)]
-        public async Task<ActionResult<NegocioResponseEliminarDto>> Eliminar(long id)
+        [ProducesResponseType(typeof(ResponseNegocioEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioEliminarDto), 200)]
+        public async Task<ActionResult<ResponseNegocioEliminarDto>> Eliminar(long id)
         {
-            NegocioResponseEliminarDto respuesta = new NegocioResponseEliminarDto();
+            ResponseNegocioEliminarDto respuesta = new ResponseNegocioEliminarDto();
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(id));
             if (entidad == null)
             {

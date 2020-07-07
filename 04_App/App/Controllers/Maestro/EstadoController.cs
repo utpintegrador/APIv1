@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using Entidad.Response;
-using Entidad.Dto.Maestro;
 using Entidad.Response.Maestro;
-using Entidad.Entidad.Maestro;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using Microsoft.AspNetCore.Authorization;
 using App.CustomHandler;
+using Entidad.Request.Maestro;
 
 namespace App.Controllers.Maestro
 {
@@ -24,9 +23,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet]
-        public async Task<ActionResult<EstadoResponseObtenerDto>> Obtener()
+        public async Task<ActionResult<ResponseEstadoObtenerDto>> Obtener()
         {
-            EstadoResponseObtenerDto respuesta = new EstadoResponseObtenerDto();
+            ResponseEstadoObtenerDto respuesta = new ResponseEstadoObtenerDto();
             var result = await Task.FromResult(_lnEstado.Obtener());
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -35,11 +34,11 @@ namespace App.Controllers.Maestro
 
         [Authorize]
         [HttpGet("{id}", Name = "ObtenerEstadoPorId")]
-        [ProducesResponseType(typeof(EstadoResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(EstadoResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<EstadoResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseEstadoObtenerPorIdDto>> ObtenerPorId(int id)
         {
-            EstadoResponseObtenerPorIdDto respuesta = new EstadoResponseObtenerPorIdDto();
+            ResponseEstadoObtenerPorIdDto respuesta = new ResponseEstadoObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnEstado.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -54,11 +53,11 @@ namespace App.Controllers.Maestro
 
 
         [HttpGet("ObtenerPorIdTipoEstado/{id}")]
-        [ProducesResponseType(typeof(EstadoResponseObtenerPorIdTipoEstadoDto), 404)]
-        [ProducesResponseType(typeof(EstadoResponseObtenerPorIdTipoEstadoDto), 200)]
-        public async Task<ActionResult<EstadoResponseObtenerPorIdTipoEstadoDto>> ObtenerPorIdTipoEstado(int id)
+        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdTipoEstadoDto), 404)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdTipoEstadoDto), 200)]
+        public async Task<ActionResult<ResponseEstadoObtenerPorIdTipoEstadoDto>> ObtenerPorIdTipoEstado(int id)
         {
-            EstadoResponseObtenerPorIdTipoEstadoDto respuesta = new EstadoResponseObtenerPorIdTipoEstadoDto();
+            ResponseEstadoObtenerPorIdTipoEstadoDto respuesta = new ResponseEstadoObtenerPorIdTipoEstadoDto();
             var result = await Task.FromResult(_lnEstado.ObtenerPorIdTipoEstado(id));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -67,13 +66,13 @@ namespace App.Controllers.Maestro
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(EstadoResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(EstadoResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseEstadoRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<EstadoResponseRegistrarDto>> Registrar([FromBody] EstadoRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseEstadoRegistrarDto>> Registrar([FromBody] RequestEstadoRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            EstadoResponseRegistrarDto respuesta = new EstadoResponseRegistrarDto();
+            ResponseEstadoRegistrarDto respuesta = new ResponseEstadoRegistrarDto();
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnEstado.Registrar(modelo, ref nuevoId));
@@ -91,14 +90,14 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(EstadoResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(EstadoResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(EstadoResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseEstadoModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseEstadoModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<EstadoResponseModificarDto>> Modificar([FromBody] EstadoModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseEstadoModificarDto>> Modificar([FromBody] RequestEstadoModificarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            EstadoResponseModificarDto respuesta = new EstadoResponseModificarDto();
+            ResponseEstadoModificarDto respuesta = new ResponseEstadoModificarDto();
             
             var entidad = await Task.FromResult(_lnEstado.ObtenerPorId(modelo.IdEstado));
             if (entidad == null)
@@ -119,12 +118,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(EstadoResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(EstadoResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(EstadoResponseEliminarDto), 200)]
-        public async Task<ActionResult<EstadoResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseEstadoEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseEstadoEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoEliminarDto), 200)]
+        public async Task<ActionResult<ResponseEstadoEliminarDto>> Eliminar(int id)
         {
-            EstadoResponseEliminarDto respuesta = new EstadoResponseEliminarDto();
+            ResponseEstadoEliminarDto respuesta = new ResponseEstadoEliminarDto();
             var entidad = await Task.FromResult(_lnEstado.ObtenerPorId(id));
             if (entidad == null)
             {

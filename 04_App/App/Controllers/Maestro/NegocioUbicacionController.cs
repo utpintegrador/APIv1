@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using App.CustomHandler;
 using AutoMapper;
-using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 using Entidad.Response;
 using Entidad.Response.Maestro;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 
@@ -26,9 +23,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("ObtenerPorIdNegocio")]
-        public async Task<ActionResult<NegocioUbicacionResponseObtenerPorIdNegocioDto>> ObtenerPorIdNegocio([FromBody] NegocioUbicacionObtenerPorIdNegocioPrmDto filtro)
+        public async Task<ActionResult<ResponseNegocioUbicacionObtenerPorIdNegocioDto>> ObtenerPorIdNegocio([FromBody] RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
-            NegocioUbicacionResponseObtenerPorIdNegocioDto respuesta = new NegocioUbicacionResponseObtenerPorIdNegocioDto();
+            ResponseNegocioUbicacionObtenerPorIdNegocioDto respuesta = new ResponseNegocioUbicacionObtenerPorIdNegocioDto();
             var result = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorIdNegocio(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -42,11 +39,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerNegocioUbicacionPorId")]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<NegocioUbicacionResponseObtenerPorIdDto>> ObtenerPorId(long id)
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseNegocioUbicacionObtenerPorIdDto>> ObtenerPorId(long id)
         {
-            NegocioUbicacionResponseObtenerPorIdDto respuesta = new NegocioUbicacionResponseObtenerPorIdDto();
+            ResponseNegocioUbicacionObtenerPorIdDto respuesta = new ResponseNegocioUbicacionObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -60,13 +57,13 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<NegocioUbicacionResponseRegistrarDto>> Registrar([FromBody] NegocioUbicacionRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseNegocioUbicacionRegistrarDto>> Registrar([FromBody] RequestNegocioUbicacionRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            NegocioUbicacionResponseRegistrarDto respuesta = new NegocioUbicacionResponseRegistrarDto();
+            ResponseNegocioUbicacionRegistrarDto respuesta = new ResponseNegocioUbicacionRegistrarDto();
 
             long nuevoId = 0;
             var result = await Task.FromResult(_lnNegocioUbicacion.Registrar(modelo, ref nuevoId));
@@ -89,15 +86,15 @@ namespace App.Controllers.Maestro
         /// <param name="modelo"></param>
         /// <returns></returns>
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<NegocioUbicacionResponseModificarDto>> Modificar([FromBody] NegocioUbicacionModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseNegocioUbicacionModificarDto>> Modificar([FromBody] RequestNegocioUbicacionModificarDto modelo)
         {
 
             if (!ModelState.IsValid) return BadRequest();
-            NegocioUbicacionResponseModificarDto respuesta = new NegocioUbicacionResponseModificarDto();
+            ResponseNegocioUbicacionModificarDto respuesta = new ResponseNegocioUbicacionModificarDto();
 
             var entidad = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorId(modelo.IdNegocioUbicacion));
             if (entidad == null)
@@ -118,12 +115,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(NegocioUbicacionResponseEliminarDto), 200)]
-        public async Task<ActionResult<NegocioUbicacionResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionEliminarDto), 200)]
+        public async Task<ActionResult<ResponseNegocioUbicacionEliminarDto>> Eliminar(int id)
         {
-            NegocioUbicacionResponseEliminarDto respuesta = new NegocioUbicacionResponseEliminarDto();
+            ResponseNegocioUbicacionEliminarDto respuesta = new ResponseNegocioUbicacionEliminarDto();
             var entidad = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorId(id));
             if (entidad == null)
             {

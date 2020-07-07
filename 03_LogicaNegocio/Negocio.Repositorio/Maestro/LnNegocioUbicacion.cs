@@ -1,5 +1,6 @@
 ﻿using Datos.Repositorio.Maestro;
 using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 using System.Collections.Generic;
 
 namespace Negocio.Repositorio.Maestro
@@ -7,9 +8,9 @@ namespace Negocio.Repositorio.Maestro
     public class LnNegocioUbicacion
     {
         private readonly AdNegocioUbicacion _adNegocioUbicacion = new AdNegocioUbicacion();
-        public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(NegocioUbicacionObtenerPorIdNegocioPrmDto filtro)
+        public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
-            if (filtro == null) filtro = new NegocioUbicacionObtenerPorIdNegocioPrmDto();
+            if (filtro == null) filtro = new RequestNegocioUbicacionObtenerPorIdNegocioDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocioUbicacion";
@@ -28,12 +29,12 @@ namespace Negocio.Repositorio.Maestro
             return _adNegocioUbicacion.ObtenerPorId(id);
         }
 
-        public int Registrar(NegocioUbicacionRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestNegocioUbicacionRegistrarDto modelo, ref long idNuevo)
         {
             return _adNegocioUbicacion.Registrar(modelo, ref idNuevo);
         }
 
-        public int Modificar(NegocioUbicacionModificarPrmDto modelo)
+        public int Modificar(RequestNegocioUbicacionModificarDto modelo)
         {
             return _adNegocioUbicacion.Modificar(modelo);
         }

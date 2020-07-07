@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Entidad.Response;
 using Entidad.Response.Seguridad;
-using Entidad.Dto.Seguridad;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Seguridad;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Linq;
 using App.CustomHandler;
+using Entidad.Request.Seguridad;
 
 namespace App.Controllers.Seguridad
 {
@@ -27,9 +27,9 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpPost("Obtener")]
-        public async Task<ActionResult<UsuarioResponseObtenerDto>> Obtener([FromBody] UsuarioObtenerPrmDto filtro)
+        public async Task<ActionResult<ResponseUsuarioObtenerDto>> Obtener([FromBody] RequestUsuarioObtenerDto filtro)
         {
-            UsuarioResponseObtenerDto respuesta = new UsuarioResponseObtenerDto();
+            ResponseUsuarioObtenerDto respuesta = new ResponseUsuarioObtenerDto();
             var result = await Task.FromResult(_lnUsuario.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -43,11 +43,11 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpGet("{id}", Name = "ObtenerUsuarioPorId")]
-        [ProducesResponseType(typeof(UsuarioResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(UsuarioResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<UsuarioResponseObtenerPorIdDto>> ObtenerPorId(long id)
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioObtenerPorIdDto>> ObtenerPorId(long id)
         {
-            UsuarioResponseObtenerPorIdDto respuesta = new UsuarioResponseObtenerPorIdDto();
+            ResponseUsuarioObtenerPorIdDto respuesta = new ResponseUsuarioObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnUsuario.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -61,12 +61,12 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseEliminarDto>> Eliminar(long id)
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioEliminarDto>> Eliminar(long id)
         {
-            UsuarioResponseEliminarDto respuesta = new UsuarioResponseEliminarDto();
+            ResponseUsuarioEliminarDto respuesta = new ResponseUsuarioEliminarDto();
             var entidad = await Task.FromResult(_lnUsuario.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -86,12 +86,12 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(UsuarioResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseUsuarioRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<UsuarioResponseRegistrarDto>> Registrar([FromBody] UsuarioRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseUsuarioRegistrarDto>> Registrar([FromBody] RequestUsuarioRegistrarDto modelo)
         {
-            UsuarioResponseRegistrarDto respuesta = new UsuarioResponseRegistrarDto();
+            ResponseUsuarioRegistrarDto respuesta = new ResponseUsuarioRegistrarDto();
             if (!ModelState.IsValid)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
@@ -114,12 +114,12 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseModificarDto>> Modificar([FromBody] UsuarioModificarPrmDto modelo)
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioModificarDto>> Modificar([FromBody] RequestUsuarioModificarDto modelo)
         {
-            UsuarioResponseModificarDto respuesta = new UsuarioResponseModificarDto();
+            ResponseUsuarioModificarDto respuesta = new ResponseUsuarioModificarDto();
             if (!ModelState.IsValid)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
@@ -148,12 +148,12 @@ namespace App.Controllers.Seguridad
 
         /****************************************************************************/
         [HttpPut("ModificarContrasenia")]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseModificarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseModificarDto>> ModificarContrasenia([FromBody] UsuarioCambioContraseniaPrmDto modelo)
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioModificarDto>> ModificarContrasenia([FromBody] RequestUsuarioCambioContraseniaDto modelo)
         {
-            UsuarioResponseModificarDto respuesta = new UsuarioResponseModificarDto();
+            ResponseUsuarioModificarDto respuesta = new ResponseUsuarioModificarDto();
             if (!ModelState.IsValid)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
@@ -184,13 +184,13 @@ namespace App.Controllers.Seguridad
         /// <param name="modelo"></param>
         /// <returns></returns>
         [HttpPost("ImagenMetodo1")]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<UsuarioResponseSubirImagenDto>> ImagenMetodo1([FromBody] UsuarioModificarImagenMetodo1PrmDto modelo)
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioSubirImagenDto>> ImagenMetodo1([FromBody] RequestUsuarioModificarImagenMetodo1Dto modelo)
         {
             string urlImagenNueva = string.Empty;
 
-            UsuarioResponseSubirImagenDto respuesta = new UsuarioResponseSubirImagenDto();
+            ResponseUsuarioSubirImagenDto respuesta = new ResponseUsuarioSubirImagenDto();
             if (!ModelState.IsValid)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
@@ -229,11 +229,11 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpPost("ImagenMetodo2")]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<UsuarioResponseSubirImagenDto>> ImagenMetodo2(IFormFile archivo, long idUsuario)
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioSubirImagenDto>> ImagenMetodo2(IFormFile archivo, long idUsuario)
         {
-            UsuarioResponseSubirImagenDto respuesta = new UsuarioResponseSubirImagenDto();
+            ResponseUsuarioSubirImagenDto respuesta = new ResponseUsuarioSubirImagenDto();
             try
             {
                 if (archivo == null || idUsuario == 0)
@@ -259,7 +259,7 @@ namespace App.Controllers.Seguridad
                     await file.CopyToAsync(memoryStream);
                     archivoBytes = memoryStream.ToArray();
                 }
-                UsuarioModificarImagenMetodo1PrmDto modelo = new UsuarioModificarImagenMetodo1PrmDto
+                RequestUsuarioModificarImagenMetodo1Dto modelo = new RequestUsuarioModificarImagenMetodo1Dto
                 {
                     ArchivoBytes = archivoBytes,
                     ExtensionSinPunto = extension,
@@ -306,11 +306,11 @@ namespace App.Controllers.Seguridad
         /// </summary>
         /// <returns></returns>
         [HttpPost("ImagenMetodo3")]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<UsuarioResponseSubirImagenDto>> ImagenMetodo3()
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioSubirImagenDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioSubirImagenDto>> ImagenMetodo3()
         {
-            UsuarioResponseSubirImagenDto respuesta = new UsuarioResponseSubirImagenDto();
+            ResponseUsuarioSubirImagenDto respuesta = new ResponseUsuarioSubirImagenDto();
 
             try
             {
@@ -359,7 +359,7 @@ namespace App.Controllers.Seguridad
                 await file.CopyToAsync(memoryStream);
                 archivoBytes = memoryStream.ToArray();
             }
-            UsuarioModificarImagenMetodo1PrmDto modelo = new UsuarioModificarImagenMetodo1PrmDto
+            RequestUsuarioModificarImagenMetodo1Dto modelo = new RequestUsuarioModificarImagenMetodo1Dto
             {
                 ArchivoBytes = archivoBytes,
                 ExtensionSinPunto = extension,
@@ -380,13 +380,13 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpDelete("Imagen/{id}")]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarImagenDto), 404)]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarImagenDto), 400)]
-        [ProducesResponseType(typeof(UsuarioResponseEliminarImagenDto), 200)]
-        public async Task<ActionResult<UsuarioResponseEliminarImagenDto>> Imagen(long id)
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarImagenDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioEliminarImagenDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioEliminarImagenDto>> Imagen(long id)
         {
             string urlImagen = string.Empty;
-            UsuarioResponseEliminarImagenDto respuesta = new UsuarioResponseEliminarImagenDto();
+            ResponseUsuarioEliminarImagenDto respuesta = new ResponseUsuarioEliminarImagenDto();
             var entidad = await Task.FromResult(_lnUsuario.EliminarImagen(id, ref urlImagen));
             if (entidad == -1)
             {

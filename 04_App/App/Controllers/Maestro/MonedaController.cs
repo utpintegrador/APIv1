@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using App.CustomHandler;
 using AutoMapper;
-using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
+using Entidad.Request.Maestro;
 using Entidad.Response;
 using Entidad.Response.Maestro;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +22,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet]
-        public async Task<ActionResult<MonedaResponseObtenerDto>> Obtener()
+        public async Task<ActionResult<ResponseMonedaObtenerDto>> Obtener()
         {
-            MonedaResponseObtenerDto respuesta = new MonedaResponseObtenerDto();
+            ResponseMonedaObtenerDto respuesta = new ResponseMonedaObtenerDto();
             var result = await Task.FromResult(_lnMoneda.Obtener());
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -33,11 +32,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerMonedaPorId")]
-        [ProducesResponseType(typeof(MonedaResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(MonedaResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<MonedaResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        [ProducesResponseType(typeof(ResponseMonedaObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseMonedaObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseMonedaObtenerPorIdDto>> ObtenerPorId(int id)
         {
-            MonedaResponseObtenerPorIdDto respuesta = new MonedaResponseObtenerPorIdDto();
+            ResponseMonedaObtenerPorIdDto respuesta = new ResponseMonedaObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -52,13 +51,13 @@ namespace App.Controllers.Maestro
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(MonedaResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(MonedaResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseMonedaRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseMonedaRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<MonedaResponseRegistrarDto>> Registrar([FromBody] MonedaRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseMonedaRegistrarDto>> Registrar([FromBody] RequestMonedaRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            MonedaResponseRegistrarDto respuesta = new MonedaResponseRegistrarDto();
+            ResponseMonedaRegistrarDto respuesta = new ResponseMonedaRegistrarDto();
             
             int nuevoId = 0;
             var result = await Task.FromResult(_lnMoneda.Registrar(modelo, ref nuevoId));
@@ -76,14 +75,14 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPut()]
-        [ProducesResponseType(typeof(MonedaResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(MonedaResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(MonedaResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseMonedaModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseMonedaModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseMonedaModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<MonedaResponseModificarDto>> Modificar([FromBody] MonedaModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseMonedaModificarDto>> Modificar([FromBody] RequestMonedaModificarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            MonedaResponseModificarDto respuesta = new MonedaResponseModificarDto();
+            ResponseMonedaModificarDto respuesta = new ResponseMonedaModificarDto();
             
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(modelo.IdMoneda));
             if (entidad == null)
@@ -104,12 +103,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(MonedaResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(MonedaResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(MonedaResponseEliminarDto), 200)]
-        public async Task<ActionResult<MonedaResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseMonedaEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseMonedaEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseMonedaEliminarDto), 200)]
+        public async Task<ActionResult<ResponseMonedaEliminarDto>> Eliminar(int id)
         {
-            MonedaResponseEliminarDto respuesta = new MonedaResponseEliminarDto();
+            ResponseMonedaEliminarDto respuesta = new ResponseMonedaEliminarDto();
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(id));
             if (entidad == null)
             {

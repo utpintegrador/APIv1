@@ -6,6 +6,7 @@ using Datos.Repositorio.Seguridad;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidad.Seguridad;
+using Entidad.Request.Seguridad;
 using Entidad.Vo;
 using System;
 using System.Collections.Generic;
@@ -18,15 +19,15 @@ namespace Negocio.Repositorio.Seguridad
     public class LnUsuario: Logger
     {
         private readonly AdUsuario _adUsuario = new AdUsuario();
-        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesPrmDto modelo)
+        public UsuarioLoginDto ObtenerPorLogin(RequestUsuarioCredencialesDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             return _adUsuario.ObtenerPorLogin(modelo);
         }
 
-        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerPrmDto filtro)
+        public List<UsuarioObtenerDto> Obtener(RequestUsuarioObtenerDto filtro)
         {
-            if (filtro == null) filtro = new UsuarioObtenerPrmDto();
+            if (filtro == null) filtro = new RequestUsuarioObtenerDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdUsuario";
@@ -40,7 +41,7 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.ObtenerPorId(id);
         }
 
-        public int Registrar(UsuarioRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestUsuarioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
@@ -60,7 +61,7 @@ namespace Negocio.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Modificar(UsuarioModificarPrmDto modelo)
+        public int Modificar(RequestUsuarioModificarDto modelo)
         {
             return _adUsuario.Modificar(modelo);
         }
@@ -70,7 +71,7 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.Eliminar(id);
         }
 
-        public int ModificarContrasenia(UsuarioCambioContraseniaPrmDto modelo)
+        public int ModificarContrasenia(RequestUsuarioCambioContraseniaDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adUsuario.ModificarContrasenia(modelo);
@@ -91,7 +92,7 @@ namespace Negocio.Repositorio.Seguridad
         //    return _adUsuario.EliminarUrlImagen(id);
         //}
 
-        public int SubirImagenAws(UsuarioModificarImagenMetodo1PrmDto entidad, ref string url)
+        public int SubirImagenAws(RequestUsuarioModificarImagenMetodo1Dto entidad, ref string url)
         {
             int respuesta = 0;
             try

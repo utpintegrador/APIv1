@@ -1,5 +1,4 @@
-﻿using Entidad.Entidad.Maestro;
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using Datos.Helper;
@@ -7,12 +6,13 @@ using Dapper;
 using System.Linq;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 
 namespace Datos.Repositorio.Maestro
 {
     public class AdNegocio: Logger
     {
-        public List<NegocioObtenerDto> Obtener(NegocioObtenerPrmDto filtro)
+        public List<NegocioObtenerDto> Obtener(RequestNegocioObtenerDto filtro)
         {
             List<NegocioObtenerDto> resultado = new List<NegocioObtenerDto>();
             try
@@ -46,7 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public List<NegocioObtenerCercanosDto> ObtenerCercanos(NegocioObtenerCercanosPrmDto filtro)
+        public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto filtro)
         {
             List<NegocioObtenerCercanosDto> resultado = new List<NegocioObtenerCercanosDto>();
             try
@@ -110,7 +110,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(NegocioRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestNegocioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -145,7 +145,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int RegistrarConUbicaciones(NegocioRegistrarPrmDto modelo, DataTable dtUbicaciones, ref long idNuevo)
+        public int RegistrarConUbicaciones(RequestNegocioRegistrarDto modelo, DataTable dtUbicaciones, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -181,7 +181,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(NegocioModificarPrmDto modelo)
+        public int Modificar(RequestNegocioModificarDto modelo)
         {
             int resultado = 0;
             try

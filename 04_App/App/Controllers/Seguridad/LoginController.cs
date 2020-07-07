@@ -1,8 +1,7 @@
 ﻿using App.CustomHandler;
 using Entidad.Dto.Seguridad;
-using Entidad.Entidad.Seguridad;
+using Entidad.Request.Seguridad;
 using Entidad.Response;
-using Entidad.Response.Comun;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +34,7 @@ namespace App.Controllers.Seguridad
         [ProducesResponseType(typeof(UsuarioTokenDto), 400)]
         [ProducesResponseType(typeof(UsuarioTokenDto), 401)]
         [ValidationActionFilter2]
-        public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody]UsuarioCredencialesPrmDto usuario)
+        public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody]RequestUsuarioCredencialesDto usuario)
         {
             if (!ModelState.IsValid)
             {

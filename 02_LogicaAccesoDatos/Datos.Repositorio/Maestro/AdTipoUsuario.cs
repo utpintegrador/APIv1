@@ -7,6 +7,7 @@ using Dapper;
 using System.Linq;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
+using Entidad.Request.Maestro;
 
 namespace Datos.Repositorio.Maestro
 {
@@ -67,7 +68,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(TipoUsuarioRegistrarPrmDto modelo, ref int idNuevo)
+        public int Registrar(RequestTipoUsuarioRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             try
@@ -98,7 +99,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(TipoUsuarioModificarPrmDto modelo)
+        public int Modificar(RequestTipoUsuarioModificarDto modelo)
         {
             int resultado = 0;
             try

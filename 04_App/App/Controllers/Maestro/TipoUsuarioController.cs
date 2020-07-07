@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Entidad.Response;
-using Entidad.Dto.Maestro;
 using Entidad.Response.Maestro;
-using Entidad.Entidad.Maestro;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
+using Entidad.Request.Maestro;
 
 namespace App.Controllers.Maestro
 {
@@ -27,9 +22,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet]
-        public async Task<ActionResult<TipoUsuarioResponseObtenerDto>> Obtener()
+        public async Task<ActionResult<ResponseTipoUsuarioObtenerDto>> Obtener()
         {
-            TipoUsuarioResponseObtenerDto respuesta = new TipoUsuarioResponseObtenerDto();
+            ResponseTipoUsuarioObtenerDto respuesta = new ResponseTipoUsuarioObtenerDto();
             var result = await Task.FromResult(_lnTipoUsuario.Obtener());
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -37,11 +32,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerTipoUsuarioPorId")]
-        [ProducesResponseType(typeof(TipoUsuarioResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<TipoUsuarioResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        [ProducesResponseType(typeof(ResponseTipoUsuarioObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseTipoUsuarioObtenerPorIdDto>> ObtenerPorId(int id)
         {
-            TipoUsuarioResponseObtenerPorIdDto respuesta = new TipoUsuarioResponseObtenerPorIdDto();
+            ResponseTipoUsuarioObtenerPorIdDto respuesta = new ResponseTipoUsuarioObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnTipoUsuario.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -56,13 +51,13 @@ namespace App.Controllers.Maestro
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(TipoUsuarioResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<TipoUsuarioResponseRegistrarDto>> Registrar([FromBody] TipoUsuarioRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseTipoUsuarioRegistrarDto>> Registrar([FromBody] RequestTipoUsuarioRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            TipoUsuarioResponseRegistrarDto respuesta = new TipoUsuarioResponseRegistrarDto();
+            ResponseTipoUsuarioRegistrarDto respuesta = new ResponseTipoUsuarioRegistrarDto();
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnTipoUsuario.Registrar(modelo, ref nuevoId));
@@ -80,14 +75,14 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(TipoUsuarioResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<TipoUsuarioResponseModificarDto>> Modificar([FromBody] TipoUsuarioModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseTipoUsuarioModificarDto>> Modificar([FromBody] RequestTipoUsuarioModificarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            TipoUsuarioResponseModificarDto respuesta = new TipoUsuarioResponseModificarDto();
+            ResponseTipoUsuarioModificarDto respuesta = new ResponseTipoUsuarioModificarDto();
 
             var entidad = await Task.FromResult(_lnTipoUsuario.ObtenerPorId(modelo.IdTipoUsuario));
             if (entidad == null)
@@ -108,12 +103,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(TipoUsuarioResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(TipoUsuarioResponseEliminarDto), 200)]
-        public async Task<ActionResult<TipoUsuarioResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseTipoUsuarioEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoUsuarioEliminarDto), 200)]
+        public async Task<ActionResult<ResponseTipoUsuarioEliminarDto>> Eliminar(int id)
         {
-            TipoUsuarioResponseEliminarDto respuesta = new TipoUsuarioResponseEliminarDto();
+            ResponseTipoUsuarioEliminarDto respuesta = new ResponseTipoUsuarioEliminarDto();
             var entidad = await Task.FromResult(_lnTipoUsuario.ObtenerPorId(id));
             if (entidad == null)
             {

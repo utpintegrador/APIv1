@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using App.CustomHandler;
 using Entidad.Dto.Correo;
+using Entidad.Request.Correo;
 using Entidad.Response;
 using Entidad.Response.Correo;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,13 @@ namespace App.Controllers.Correo
         private readonly LnRecuperacionContrasenia _lnRecuperacionContrasenia = new LnRecuperacionContrasenia();
 
         [HttpPost]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<RecuperacionContraseniaResponseRegistrarDto>> Registrar([FromBody] RecuperacionContraseniaRegistrarFiltroDto modelo)
+        public async Task<ActionResult<ResponseRecuperacionContraseniaRegistrarDto>> Registrar([FromBody] RequestRecuperacionContraseniaRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            RecuperacionContraseniaResponseRegistrarDto respuesta = new RecuperacionContraseniaResponseRegistrarDto();
+            ResponseRecuperacionContraseniaRegistrarDto respuesta = new ResponseRecuperacionContraseniaRegistrarDto();
             
             var result = await Task.FromResult(_lnRecuperacionContrasenia.Registrar(modelo.CorreoElectronico));
             if (result == null)
@@ -41,11 +42,11 @@ namespace App.Controllers.Correo
         }
 
         [HttpGet("ObtenerUsuarioPorCodigo/{codigo}")] 
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseObtenerPorCodigoDto), 404)]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseObtenerPorCodigoDto), 200)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaObtenerPorCodigoDto), 404)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaObtenerPorCodigoDto), 200)]
         public async Task<ActionResult<RecuperacionContraseniaObtenerPorCodigoDto>> ObtenerUsuarioPorCodigo(string codigo)
         {
-            RecuperacionContraseniaResponseObtenerPorCodigoDto respuesta = new RecuperacionContraseniaResponseObtenerPorCodigoDto();
+            ResponseRecuperacionContraseniaObtenerPorCodigoDto respuesta = new ResponseRecuperacionContraseniaObtenerPorCodigoDto();
             var listado = await Task.FromResult(_lnRecuperacionContrasenia.ObtenerUsuarioPorCodigo(codigo));
             if (listado == null)
             {
@@ -60,14 +61,14 @@ namespace App.Controllers.Correo
 
 
         [HttpPut("ModificarContraseniaMedianteCodigo")]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 404)]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 400)]
-        [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 200)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaModificarContraseniaDto), 404)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaModificarContraseniaDto), 400)]
+        [ProducesResponseType(typeof(ResponseRecuperacionContraseniaModificarContraseniaDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<RecuperacionContraseniaResponseModificarContraseniaDto>> ModificarContraseniaMedianteCodigo([FromBody] RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
+        public async Task<ActionResult<ResponseRecuperacionContraseniaModificarContraseniaDto>> ModificarContraseniaMedianteCodigo([FromBody] RequestRecuperacionContraseniaModificarContraseniaDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            RecuperacionContraseniaResponseModificarContraseniaDto respuesta = new RecuperacionContraseniaResponseModificarContraseniaDto();
+            ResponseRecuperacionContraseniaModificarContraseniaDto respuesta = new ResponseRecuperacionContraseniaModificarContraseniaDto();
             
             var result = await Task.FromResult(_lnRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo));
             if (result == 0)

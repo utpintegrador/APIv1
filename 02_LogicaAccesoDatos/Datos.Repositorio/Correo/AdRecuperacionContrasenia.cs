@@ -2,10 +2,9 @@
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Correo;
+using Entidad.Request.Correo;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace Datos.Repositorio.Correo
 {
@@ -151,7 +150,7 @@ namespace Datos.Repositorio.Correo
             return resultado;
         }
 
-        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
+        public int ModificarContraseniaMedianteCodigo(RequestRecuperacionContraseniaModificarContraseniaDto modelo)
         {
             int resultado = 0;
             try

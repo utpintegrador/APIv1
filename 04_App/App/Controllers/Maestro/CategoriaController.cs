@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Entidad.Configuracion.Proceso;
 using Entidad.Response;
-using Entidad.Dto.Maestro;
 using Entidad.Response.Maestro;
-using Entidad.Entidad.Maestro;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
+using Entidad.Request.Maestro;
 
 namespace App.Controllers.Maestro
 {
@@ -29,9 +26,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("Obtener")]
-        public async Task<ActionResult<CategoriaResponseObtenerDto>> Obtener([FromBody] CategoriaObtenerPrmDto filtro)
+        public async Task<ActionResult<ResponseCategoriaObtenerDto>> Obtener([FromBody] RequestCategoriaObtenerDto filtro)
         {
-            CategoriaResponseObtenerDto respuesta = new CategoriaResponseObtenerDto();
+            ResponseCategoriaObtenerDto respuesta = new ResponseCategoriaObtenerDto();
             var result = await Task.FromResult(_lnCategoria.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -45,11 +42,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpGet("{id}", Name = "ObtenerCategoriaPorId")]
-        [ProducesResponseType(typeof(CategoriaResponseObtenerPorIdDto), 404)]
-        [ProducesResponseType(typeof(CategoriaResponseObtenerPorIdDto), 200)]
-        public async Task<ActionResult<CategoriaResponseObtenerPorIdDto>> ObtenerPorId(int id)
+        [ProducesResponseType(typeof(ResponseCategoriaObtenerPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseCategoriaObtenerPorIdDto), 200)]
+        public async Task<ActionResult<ResponseCategoriaObtenerPorIdDto>> ObtenerPorId(int id)
         {
-            CategoriaResponseObtenerPorIdDto respuesta = new CategoriaResponseObtenerPorIdDto();
+            ResponseCategoriaObtenerPorIdDto respuesta = new ResponseCategoriaObtenerPorIdDto();
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -64,13 +61,13 @@ namespace App.Controllers.Maestro
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 200)]
+        [ProducesResponseType(typeof(ResponseCategoriaRegistrarDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaRegistrarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<CategoriaResponseRegistrarDto>> Registrar([FromBody] CategoriaRegistrarPrmDto modelo)
+        public async Task<ActionResult<ResponseCategoriaRegistrarDto>> Registrar([FromBody] RequestCategoriaRegistrarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            CategoriaResponseRegistrarDto respuesta = new CategoriaResponseRegistrarDto();
+            ResponseCategoriaRegistrarDto respuesta = new ResponseCategoriaRegistrarDto();
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnCategoria.Registrar(modelo, ref nuevoId));
@@ -93,14 +90,14 @@ namespace App.Controllers.Maestro
         /// <param name="modelo"></param>
         /// <returns></returns>
         [HttpPut()]//"{id}")]
-        [ProducesResponseType(typeof(CategoriaResponseModificarDto), 404)]
-        [ProducesResponseType(typeof(CategoriaResponseModificarDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseModificarDto), 200)]
+        [ProducesResponseType(typeof(ResponseCategoriaModificarDto), 404)]
+        [ProducesResponseType(typeof(ResponseCategoriaModificarDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaModificarDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<CategoriaResponseModificarDto>> Modificar([FromBody] CategoriaModificarPrmDto modelo)
+        public async Task<ActionResult<ResponseCategoriaModificarDto>> Modificar([FromBody] RequestCategoriaModificarDto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
-            CategoriaResponseModificarDto respuesta = new CategoriaResponseModificarDto();
+            ResponseCategoriaModificarDto respuesta = new ResponseCategoriaModificarDto();
 
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(modelo.IdCategoria));
             if (entidad == null)
@@ -121,12 +118,12 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarDto), 404)]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarDto), 200)]
-        public async Task<ActionResult<CategoriaResponseEliminarDto>> Eliminar(int id)
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarDto), 404)]
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarDto), 200)]
+        public async Task<ActionResult<ResponseCategoriaEliminarDto>> Eliminar(int id)
         {
-            CategoriaResponseEliminarDto respuesta = new CategoriaResponseEliminarDto();
+            ResponseCategoriaEliminarDto respuesta = new ResponseCategoriaEliminarDto();
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -151,15 +148,15 @@ namespace App.Controllers.Maestro
         /// <param name="modelo"></param>
         /// <returns></returns>
         [HttpPost("ImagenMetodo1")]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 200)]
         [ValidationActionFilter]
-        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo1([FromBody] CategoriaModificarImagenMetodo1PrmDto modelo)
+        public async Task<ActionResult<ResponseCategoriaSubirImagenDto>> ImagenMetodo1([FromBody] RequestCategoriaModificarImagenMetodo1Dto modelo)
         {
             if (!ModelState.IsValid) return BadRequest();
             string urlImagenNueva = string.Empty;
 
-            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+            ResponseCategoriaSubirImagenDto respuesta = new ResponseCategoriaSubirImagenDto();
 
             if (modelo == null)
             {
@@ -193,11 +190,11 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("ImagenMetodo2")]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo2(IFormFile archivo, int idCategoria)
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 200)]
+        public async Task<ActionResult<ResponseCategoriaSubirImagenDto>> ImagenMetodo2(IFormFile archivo, int idCategoria)
         {
-            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+            ResponseCategoriaSubirImagenDto respuesta = new ResponseCategoriaSubirImagenDto();
             try
             {
                 if (archivo == null || idCategoria == 0)
@@ -223,7 +220,7 @@ namespace App.Controllers.Maestro
                     await file.CopyToAsync(memoryStream);
                     archivoBytes = memoryStream.ToArray();
                 }
-                CategoriaModificarImagenMetodo1PrmDto modelo = new CategoriaModificarImagenMetodo1PrmDto
+                RequestCategoriaModificarImagenMetodo1Dto modelo = new RequestCategoriaModificarImagenMetodo1Dto
                 {
                     ArchivoBytes = archivoBytes,
                     ExtensionSinPunto = extension,
@@ -270,11 +267,11 @@ namespace App.Controllers.Maestro
         /// </summary>
         /// <returns></returns>
         [HttpPost("ImagenMetodo3")]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo3()
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaSubirImagenDto), 200)]
+        public async Task<ActionResult<ResponseCategoriaSubirImagenDto>> ImagenMetodo3()
         {
-            CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
+            ResponseCategoriaSubirImagenDto respuesta = new ResponseCategoriaSubirImagenDto();
 
             try
             {
@@ -323,7 +320,7 @@ namespace App.Controllers.Maestro
                 await file.CopyToAsync(memoryStream);
                 archivoBytes = memoryStream.ToArray();
             }
-            CategoriaModificarImagenMetodo1PrmDto modelo = new CategoriaModificarImagenMetodo1PrmDto
+            RequestCategoriaModificarImagenMetodo1Dto modelo = new RequestCategoriaModificarImagenMetodo1Dto
             {
                 ArchivoBytes = archivoBytes,
                 ExtensionSinPunto = extension,
@@ -344,13 +341,13 @@ namespace App.Controllers.Maestro
         }
 
         [HttpDelete("Imagen/{id}")]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 404)]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 400)]
-        [ProducesResponseType(typeof(CategoriaResponseEliminarImagenDto), 200)]
-        public async Task<ActionResult<CategoriaResponseEliminarImagenDto>> Imagen(long id)
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarImagenDto), 404)]
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarImagenDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaEliminarImagenDto), 200)]
+        public async Task<ActionResult<ResponseCategoriaEliminarImagenDto>> Imagen(long id)
         {
             string urlImagen = string.Empty;
-            CategoriaResponseEliminarImagenDto respuesta = new CategoriaResponseEliminarImagenDto();
+            ResponseCategoriaEliminarImagenDto respuesta = new ResponseCategoriaEliminarImagenDto();
             var entidad = await Task.FromResult(_lnCategoria.EliminarImagen(id, ref urlImagen));
             if (entidad == -1)
             {

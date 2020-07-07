@@ -4,14 +4,14 @@
         <name>App</name>
     </assembly>
     <members>
-        <member name="M:App.Controllers.Maestro.CategoriaController.Modificar(Entidad.Dto.Maestro.CategoriaModificarDto)">
+        <member name="M:App.Controllers.Maestro.CategoriaController.Modificar(Entidad.Request.Maestro.RequestCategoriaModificarDto)">
             <summary>
             IdEstado: 1 es Activo  |   2 es Inactivo
             </summary>
             <param name="modelo"></param>
             <returns></returns>
         </member>
-        <member name="M:App.Controllers.Maestro.CategoriaController.ImagenMetodo1(Entidad.Dto.Maestro.CategoriaModificarImagenMetodo1FiltroDto)">
+        <member name="M:App.Controllers.Maestro.CategoriaController.ImagenMetodo1(Entidad.Request.Maestro.RequestCategoriaModificarImagenMetodo1Dto)">
             <summary>
             modelo.ArchivoBytes = byte[]
             </summary>
@@ -21,25 +21,39 @@
         <member name="M:App.Controllers.Maestro.CategoriaController.ImagenMetodo3">
             <summary>
             Se envia parametros mediante tipo multipart/form-data
-            Se requiere el parametro IdCategoria:long    y    Archivo:IFormFile
+            Se requiere el parametro IdCategoria:int    y    Archivo:IFormFile
             </summary>
             <returns></returns>
         </member>
-        <member name="M:App.Controllers.Maestro.NegocioController.ObtenerCercanos(Entidad.Dto.Maestro.NegocioObtenerCercanosFiltroDto)">
+        <member name="M:App.Controllers.Maestro.NegocioController.ObtenerCercanos(Entidad.Request.Maestro.RequestNegocioObtenerCercanosDto)">
             <summary>
             El parametro IdUsuario es obligatorio, pues se listaran los cercanos a ese usuario
             </summary>
             <param name="filtro"></param>
             <returns></returns>
         </member>
-        <member name="M:App.Controllers.Maestro.NegocioController.Modificar(Entidad.Dto.Maestro.NegocioModificarDto)">
+        <member name="M:App.Controllers.Maestro.NegocioController.Modificar(Entidad.Request.Maestro.RequestNegocioModificarDto)">
             <summary>
             IdEstado: 1 es Activo  |   2 es Inactivo
             </summary>
             <param name="modelo"></param>
             <returns></returns>
         </member>
-        <member name="M:App.Controllers.Seguridad.UsuarioController.ImagenMetodo1(Entidad.Dto.Seguridad.UsuarioModificarImagenMetodo1FiltroDto)">
+        <member name="M:App.Controllers.Maestro.NegocioUbicacionController.Modificar(Entidad.Request.Maestro.RequestNegocioUbicacionModificarDto)">
+            <summary>
+            IdEstado: 1 es Activo  |   2 es Inactivo
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Maestro.ProductoController.Modificar(Entidad.Request.Maestro.RequestProductoModificarDto)">
+            <summary>
+            IdEstado: 1 es Activo  |   2 es Inactivo
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:App.Controllers.Seguridad.UsuarioController.ImagenMetodo1(Entidad.Request.Seguridad.RequestUsuarioModificarImagenMetodo1Dto)">
             <summary>
             modelo.ArchivoBytes = byte[]
             </summary>

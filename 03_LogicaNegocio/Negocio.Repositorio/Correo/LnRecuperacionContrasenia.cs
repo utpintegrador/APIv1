@@ -1,6 +1,7 @@
 ﻿using Datos.Repositorio.Correo;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Correo;
+using Entidad.Request.Correo;
 using NVelocityTemplateEngine;
 using System;
 using System.Collections;
@@ -189,7 +190,7 @@ namespace Negocio.Repositorio.Servicio
             return _adRecuperacionContrasenia.ObtenerUsuarioPorCodigo(codigo);
         }
 
-        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
+        public int ModificarContraseniaMedianteCodigo(RequestRecuperacionContraseniaModificarContraseniaDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo);

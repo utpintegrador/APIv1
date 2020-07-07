@@ -5,8 +5,8 @@ using Amazon.S3.Transfer;
 using Datos.Repositorio.Maestro;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
-using Entidad.Dto.Seguridad;
 using Entidad.Entidad.Maestro;
+using Entidad.Request.Maestro;
 using Entidad.Vo;
 using System;
 using System.Collections.Generic;
@@ -23,9 +23,9 @@ namespace Negocio.Repositorio.Maestro
 
         private readonly AdCategoria _adCategoria = new AdCategoria();
 
-        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerPrmDto filtro)
+        public List<CategoriaObtenerDto> Obtener(RequestCategoriaObtenerDto filtro)
         {
-            if (filtro == null) filtro = new CategoriaObtenerPrmDto();
+            if (filtro == null) filtro = new RequestCategoriaObtenerDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "Descripcion";
@@ -43,14 +43,14 @@ namespace Negocio.Repositorio.Maestro
             return _adCategoria.ObtenerPorId(id);
         }
 
-        public int Registrar(CategoriaRegistrarPrmDto modelo, ref int idNuevo)
+        public int Registrar(RequestCategoriaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             resultado = _adCategoria.Registrar(modelo, ref idNuevo);
             return resultado;
         }
 
-        public int Modificar(CategoriaModificarPrmDto modelo)
+        public int Modificar(RequestCategoriaModificarDto modelo)
         {
             if(modelo.IdEstado > 2 || modelo.IdEstado < 1)
             {
@@ -69,7 +69,7 @@ namespace Negocio.Repositorio.Maestro
             return _adCategoria.ModificarUrlImagenPorIdCategoria(idCategoria, url);
         }
 
-        public int SubirImagenAws(CategoriaModificarImagenMetodo1PrmDto entidad, ref string url)
+        public int SubirImagenAws(RequestCategoriaModificarImagenMetodo1Dto entidad, ref string url)
         {
             int respuesta = 0;
             try

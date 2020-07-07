@@ -68,7 +68,7 @@ namespace App.CustomHandler
                             }
                         }
 
-                        ValidacionModeloResponseDto response = new ValidacionModeloResponseDto
+                        ResponseValidacionModeloDto response = new ResponseValidacionModeloDto
                         {
                             ListaError = ListaError,
                             ProcesadoOk = 0,

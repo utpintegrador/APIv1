@@ -1,6 +1,7 @@
 ﻿using Datos.Repositorio.Maestro;
 using Entidad.Dto.Maestro;
 using Entidad.Entidad.Maestro;
+using Entidad.Request.Maestro;
 using System.Collections.Generic;
 
 namespace Negocio.Repositorio.Maestro
@@ -19,12 +20,12 @@ namespace Negocio.Repositorio.Maestro
             return _adTipoUsuario.ObtenerPorId(id);
         }
 
-        public int Registrar(TipoUsuarioRegistrarPrmDto modelo, ref int idNuevo)
+        public int Registrar(RequestTipoUsuarioRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoUsuario.Registrar(modelo, ref idNuevo);
         }
 
-        public int Modificar(TipoUsuarioModificarPrmDto modelo)
+        public int Modificar(RequestTipoUsuarioModificarDto modelo)
         {
             return _adTipoUsuario.Modificar(modelo);
         }

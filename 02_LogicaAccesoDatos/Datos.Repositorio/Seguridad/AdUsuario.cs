@@ -3,6 +3,7 @@ using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidad.Seguridad;
+using Entidad.Request.Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Datos.Repositorio.Seguridad
 {
     public class AdUsuario: Logger
     {
-        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesPrmDto modelo)
+        public UsuarioLoginDto ObtenerPorLogin(RequestUsuarioCredencialesDto modelo)
         {
             UsuarioLoginDto resultado = new UsuarioLoginDto();
             try
@@ -43,7 +44,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerPrmDto filtro)
+        public List<UsuarioObtenerDto> Obtener(RequestUsuarioObtenerDto filtro)
         {
             List<UsuarioObtenerDto> resultado = new List<UsuarioObtenerDto>();
             try
@@ -105,7 +106,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Registrar(UsuarioRegistrarPrmDto modelo, ref long idNuevo)
+        public int Registrar(RequestUsuarioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -133,7 +134,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Modificar(UsuarioModificarPrmDto modelo)
+        public int Modificar(RequestUsuarioModificarDto modelo)
         {
             int resultado = 0;
             try
@@ -192,7 +193,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int ModificarContrasenia(UsuarioCambioContraseniaPrmDto modelo)
+        public int ModificarContrasenia(RequestUsuarioCambioContraseniaDto modelo)
         {
             int resultado = 0;
             try

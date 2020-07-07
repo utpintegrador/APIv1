@@ -1,4 +1,6 @@
 using Entidad.Configuracion.Proceso;
+using Entidad.Request.Maestro;
+using Entidad.Request.Seguridad;
 using Negocio.Repositorio.Maestro;
 using Negocio.Repositorio.Seguridad;
 using NUnit.Framework;
@@ -18,7 +20,7 @@ namespace Tests
         {
             LnNegocio lnNegocio = new LnNegocio();
             long idNuevo = 0;
-            lnNegocio.Registrar(new Entidad.Dto.Maestro.NegocioRegistrarPrmDto
+            lnNegocio.Registrar(new RequestNegocioRegistrarDto
             {
                 Nombre = "Frank2",
                 DocumentoIdentificacion = "99999999999",
@@ -33,7 +35,7 @@ namespace Tests
         public void Negocio_Obtener()
         {
             LnNegocio lnNegocio = new LnNegocio();
-            var listaResultado = lnNegocio.Obtener(new Entidad.Dto.Maestro.NegocioObtenerPrmDto
+            var listaResultado = lnNegocio.Obtener(new RequestNegocioObtenerDto
             {
                 Buscar = "",
                 IdUsuario = 0,
@@ -51,7 +53,7 @@ namespace Tests
         {
             LnUsuario lnUsuario = new LnUsuario();
             long idNuevo = 0;
-            lnUsuario.Registrar(new Entidad.Dto.Seguridad.UsuarioRegistrarPrmDto
+            lnUsuario.Registrar(new RequestUsuarioRegistrarDto
             {
                 CorreoElectronico = "correo30@correo.com",
                 Nombre = "Juanito",
