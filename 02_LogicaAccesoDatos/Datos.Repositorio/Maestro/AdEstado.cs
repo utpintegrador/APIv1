@@ -67,7 +67,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(EstadoRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(EstadoRegistrarPrmDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             try
@@ -99,7 +99,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(Estado modelo)
+        public int Modificar(EstadoModificarPrmDto modelo)
         {
             int resultado = 0;
             try

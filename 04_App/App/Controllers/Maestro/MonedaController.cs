@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using App.CustomHandler;
 using AutoMapper;
 using Entidad.Dto.Maestro;
 using Entidad.Entidad.Maestro;
@@ -53,15 +54,12 @@ namespace App.Controllers.Maestro
         [HttpPost]
         [ProducesResponseType(typeof(MonedaResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(MonedaResponseRegistrarDto), 200)]
-        public async Task<ActionResult<MonedaResponseRegistrarDto>> Registrar([FromBody] MonedaRegistrarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<MonedaResponseRegistrarDto>> Registrar([FromBody] MonedaRegistrarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             MonedaResponseRegistrarDto respuesta = new MonedaResponseRegistrarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
-
+            
             int nuevoId = 0;
             var result = await Task.FromResult(_lnMoneda.Registrar(modelo, ref nuevoId));
             if (result == 0)
@@ -81,15 +79,12 @@ namespace App.Controllers.Maestro
         [ProducesResponseType(typeof(MonedaResponseModificarDto), 404)]
         [ProducesResponseType(typeof(MonedaResponseModificarDto), 400)]
         [ProducesResponseType(typeof(MonedaResponseModificarDto), 200)]
-        public async Task<ActionResult<MonedaResponseModificarDto>> Modificar([FromBody] Moneda modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<MonedaResponseModificarDto>> Modificar([FromBody] MonedaModificarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             MonedaResponseModificarDto respuesta = new MonedaResponseModificarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
-
+            
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(modelo.IdMoneda));
             if (entidad == null)
             {

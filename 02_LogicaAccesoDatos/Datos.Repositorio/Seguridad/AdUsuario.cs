@@ -12,7 +12,7 @@ namespace Datos.Repositorio.Seguridad
 {
     public class AdUsuario: Logger
     {
-        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesDto modelo)
+        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesPrmDto modelo)
         {
             UsuarioLoginDto resultado = new UsuarioLoginDto();
             try
@@ -43,7 +43,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerFiltroDto filtro)
+        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerPrmDto filtro)
         {
             List<UsuarioObtenerDto> resultado = new List<UsuarioObtenerDto>();
             try
@@ -105,32 +105,25 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Registrar(UsuarioRegistrarDto modelo, ref long idNuevo)
+        public int Registrar(UsuarioRegistrarPrmDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
             {
                 const string query = "Seguridad.usp_Usuario_Registrar";
-
                 var p = new DynamicParameters();
                 p.Add("IdUsuario", 0, DbType.Int64, ParameterDirection.Output);
                 p.Add("CorreoElectronico", modelo.CorreoElectronico);
-                //p.Add("UserName", modelo.UserName);
                 p.Add("Contrasenia", modelo.Contrasenia);
                 p.Add("Nombre", modelo.Nombre);
                 p.Add("Apellido", modelo.Apellido);
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
+                    if (cn.State == ConnectionState.Closed) cn.Open();
 
                     resultado = cn.Execute(query, commandType: CommandType.StoredProcedure, param: p);
-
                     idNuevo = p.Get<long>("IdUsuario");
-
                 }
             }
             catch (Exception ex)
@@ -140,7 +133,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Modificar(UsuarioModificarDto modelo)
+        public int Modificar(UsuarioModificarPrmDto modelo)
         {
             int resultado = 0;
             try
@@ -199,7 +192,7 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public int ModificarContrasenia(UsuarioCambioContraseniaDto modelo)
+        public int ModificarContrasenia(UsuarioCambioContraseniaPrmDto modelo)
         {
             int resultado = 0;
             try

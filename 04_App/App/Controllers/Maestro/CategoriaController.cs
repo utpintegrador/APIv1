@@ -12,6 +12,7 @@ using Entidad.Entidad.Maestro;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
+using App.CustomHandler;
 
 namespace App.Controllers.Maestro
 {
@@ -28,7 +29,7 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("Obtener")]
-        public async Task<ActionResult<CategoriaResponseObtenerDto>> Obtener([FromBody] CategoriaObtenerFiltroDto filtro)
+        public async Task<ActionResult<CategoriaResponseObtenerDto>> Obtener([FromBody] CategoriaObtenerPrmDto filtro)
         {
             CategoriaResponseObtenerDto respuesta = new CategoriaResponseObtenerDto();
             var result = await Task.FromResult(_lnCategoria.Obtener(filtro));
@@ -65,14 +66,11 @@ namespace App.Controllers.Maestro
         [HttpPost]
         [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseRegistrarDto), 200)]
-        public async Task<ActionResult<CategoriaResponseRegistrarDto>> Registrar([FromBody] CategoriaRegistrarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<CategoriaResponseRegistrarDto>> Registrar([FromBody] CategoriaRegistrarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             CategoriaResponseRegistrarDto respuesta = new CategoriaResponseRegistrarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnCategoria.Registrar(modelo, ref nuevoId));
@@ -98,14 +96,11 @@ namespace App.Controllers.Maestro
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 404)]
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseModificarDto), 200)]
-        public async Task<ActionResult<CategoriaResponseModificarDto>> Modificar([FromBody] CategoriaModificarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<CategoriaResponseModificarDto>> Modificar([FromBody] CategoriaModificarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             CategoriaResponseModificarDto respuesta = new CategoriaResponseModificarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
 
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(modelo.IdCategoria));
             if (entidad == null)
@@ -158,16 +153,13 @@ namespace App.Controllers.Maestro
         [HttpPost("ImagenMetodo1")]
         [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo1([FromBody] CategoriaModificarImagenMetodo1FiltroDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo1([FromBody] CategoriaModificarImagenMetodo1PrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             string urlImagenNueva = string.Empty;
 
             CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
 
             if (modelo == null)
             {
@@ -203,7 +195,7 @@ namespace App.Controllers.Maestro
         [HttpPost("ImagenMetodo2")]
         [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 400)]
         [ProducesResponseType(typeof(CategoriaResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo2(IFormFile archivo, long idCategoria)
+        public async Task<ActionResult<CategoriaResponseSubirImagenDto>> ImagenMetodo2(IFormFile archivo, int idCategoria)
         {
             CategoriaResponseSubirImagenDto respuesta = new CategoriaResponseSubirImagenDto();
             try
@@ -231,7 +223,7 @@ namespace App.Controllers.Maestro
                     await file.CopyToAsync(memoryStream);
                     archivoBytes = memoryStream.ToArray();
                 }
-                CategoriaModificarImagenMetodo1FiltroDto modelo = new CategoriaModificarImagenMetodo1FiltroDto
+                CategoriaModificarImagenMetodo1PrmDto modelo = new CategoriaModificarImagenMetodo1PrmDto
                 {
                     ArchivoBytes = archivoBytes,
                     ExtensionSinPunto = extension,
@@ -274,7 +266,7 @@ namespace App.Controllers.Maestro
 
         /// <summary>
         /// Se envia parametros mediante tipo multipart/form-data
-        /// Se requiere el parametro IdCategoria:long    y    Archivo:IFormFile
+        /// Se requiere el parametro IdCategoria:int    y    Archivo:IFormFile
         /// </summary>
         /// <returns></returns>
         [HttpPost("ImagenMetodo3")]
@@ -331,11 +323,11 @@ namespace App.Controllers.Maestro
                 await file.CopyToAsync(memoryStream);
                 archivoBytes = memoryStream.ToArray();
             }
-            CategoriaModificarImagenMetodo1FiltroDto modelo = new CategoriaModificarImagenMetodo1FiltroDto
+            CategoriaModificarImagenMetodo1PrmDto modelo = new CategoriaModificarImagenMetodo1PrmDto
             {
                 ArchivoBytes = archivoBytes,
                 ExtensionSinPunto = extension,
-                IdCategoria = Convert.ToInt64(idCategoria)
+                IdCategoria = Convert.ToInt32(idCategoria)
             };
             var result = await Task.FromResult(_lnCategoria.SubirImagenAws(modelo, ref urlImagenNueva));
             if (result == 0)

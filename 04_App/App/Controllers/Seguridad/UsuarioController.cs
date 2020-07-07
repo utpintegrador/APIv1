@@ -9,6 +9,7 @@ using Negocio.Repositorio.Seguridad;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Linq;
+using App.CustomHandler;
 
 namespace App.Controllers.Seguridad
 {
@@ -26,7 +27,7 @@ namespace App.Controllers.Seguridad
         }
 
         [HttpPost("Obtener")]
-        public async Task<ActionResult<UsuarioResponseObtenerDto>> Obtener([FromBody] UsuarioObtenerFiltroDto filtro)
+        public async Task<ActionResult<UsuarioResponseObtenerDto>> Obtener([FromBody] UsuarioObtenerPrmDto filtro)
         {
             UsuarioResponseObtenerDto respuesta = new UsuarioResponseObtenerDto();
             var result = await Task.FromResult(_lnUsuario.Obtener(filtro));
@@ -87,7 +88,8 @@ namespace App.Controllers.Seguridad
         [HttpPost]
         [ProducesResponseType(typeof(UsuarioResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseRegistrarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseRegistrarDto>> Registrar([FromBody] UsuarioRegistrarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<UsuarioResponseRegistrarDto>> Registrar([FromBody] UsuarioRegistrarPrmDto modelo)
         {
             UsuarioResponseRegistrarDto respuesta = new UsuarioResponseRegistrarDto();
             if (!ModelState.IsValid)
@@ -115,7 +117,7 @@ namespace App.Controllers.Seguridad
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 404)]
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseModificarDto>> Modificar([FromBody] UsuarioModificarDto modelo)
+        public async Task<ActionResult<UsuarioResponseModificarDto>> Modificar([FromBody] UsuarioModificarPrmDto modelo)
         {
             UsuarioResponseModificarDto respuesta = new UsuarioResponseModificarDto();
             if (!ModelState.IsValid)
@@ -149,7 +151,7 @@ namespace App.Controllers.Seguridad
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 404)]
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseModificarDto), 200)]
-        public async Task<ActionResult<UsuarioResponseModificarDto>> ModificarContrasenia([FromBody] UsuarioCambioContraseniaDto modelo)
+        public async Task<ActionResult<UsuarioResponseModificarDto>> ModificarContrasenia([FromBody] UsuarioCambioContraseniaPrmDto modelo)
         {
             UsuarioResponseModificarDto respuesta = new UsuarioResponseModificarDto();
             if (!ModelState.IsValid)
@@ -184,7 +186,7 @@ namespace App.Controllers.Seguridad
         [HttpPost("ImagenMetodo1")]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 400)]
         [ProducesResponseType(typeof(UsuarioResponseSubirImagenDto), 200)]
-        public async Task<ActionResult<UsuarioResponseSubirImagenDto>> ImagenMetodo1([FromBody] UsuarioModificarImagenMetodo1FiltroDto modelo)
+        public async Task<ActionResult<UsuarioResponseSubirImagenDto>> ImagenMetodo1([FromBody] UsuarioModificarImagenMetodo1PrmDto modelo)
         {
             string urlImagenNueva = string.Empty;
 
@@ -257,7 +259,7 @@ namespace App.Controllers.Seguridad
                     await file.CopyToAsync(memoryStream);
                     archivoBytes = memoryStream.ToArray();
                 }
-                UsuarioModificarImagenMetodo1FiltroDto modelo = new UsuarioModificarImagenMetodo1FiltroDto
+                UsuarioModificarImagenMetodo1PrmDto modelo = new UsuarioModificarImagenMetodo1PrmDto
                 {
                     ArchivoBytes = archivoBytes,
                     ExtensionSinPunto = extension,
@@ -357,7 +359,7 @@ namespace App.Controllers.Seguridad
                 await file.CopyToAsync(memoryStream);
                 archivoBytes = memoryStream.ToArray();
             }
-            UsuarioModificarImagenMetodo1FiltroDto modelo = new UsuarioModificarImagenMetodo1FiltroDto
+            UsuarioModificarImagenMetodo1PrmDto modelo = new UsuarioModificarImagenMetodo1PrmDto
             {
                 ArchivoBytes = archivoBytes,
                 ExtensionSinPunto = extension,

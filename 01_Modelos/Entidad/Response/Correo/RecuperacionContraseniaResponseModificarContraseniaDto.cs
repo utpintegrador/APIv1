@@ -1,13 +1,10 @@
-﻿using Entidad.Response;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 
 namespace Entidad.Response.Correo
 {
     public class RecuperacionContraseniaResponseModificarContraseniaDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
 
         public RecuperacionContraseniaResponseModificarContraseniaDto()

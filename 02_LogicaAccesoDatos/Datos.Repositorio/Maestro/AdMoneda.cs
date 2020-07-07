@@ -67,7 +67,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(MonedaRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(MonedaRegistrarPrmDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             try
@@ -98,7 +98,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(Moneda modelo)
+        public int Modificar(MonedaModificarPrmDto modelo)
         {
             int resultado = 0;
             try

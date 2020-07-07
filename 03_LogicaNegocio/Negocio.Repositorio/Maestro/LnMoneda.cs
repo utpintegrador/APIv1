@@ -18,12 +18,12 @@ namespace Negocio.Repositorio.Maestro
             return _adMoneda.ObtenerPorId(id);
         }
 
-        public int Registrar(MonedaRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(MonedaRegistrarPrmDto modelo, ref int idNuevo)
         {
             return _adMoneda.Registrar(modelo, ref idNuevo);
         }
 
-        public int Modificar(Moneda modelo)
+        public int Modificar(MonedaModificarPrmDto modelo)
         {
             return _adMoneda.Modificar(modelo);
         }

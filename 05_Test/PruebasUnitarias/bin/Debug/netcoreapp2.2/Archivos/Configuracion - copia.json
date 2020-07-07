@@ -1,0 +1,8 @@
+{
+  "Servidor": "sql5046.site4now.net",
+  "BaseDatos": "DB_A25F3D_RedSocial",
+  "Usuario": "DB_A25F3D_RedSocial_admin",
+  "Contrasenia": "d3sarrollo",
+  "RutaLog": "",
+  "NombreLog": "ApiTest"
+}

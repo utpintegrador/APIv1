@@ -10,6 +10,7 @@ using Entidad.Entidad.Maestro;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
+using App.CustomHandler;
 
 namespace App.Controllers.Maestro
 {
@@ -57,14 +58,11 @@ namespace App.Controllers.Maestro
         [HttpPost]
         [ProducesResponseType(typeof(TipoEstadoResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(TipoEstadoResponseRegistrarDto), 200)]
-        public async Task<ActionResult<TipoEstadoResponseRegistrarDto>> Registrar([FromBody] TipoEstadoRegistrarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<TipoEstadoResponseRegistrarDto>> Registrar([FromBody] TipoEstadoRegistrarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             TipoEstadoResponseRegistrarDto respuesta = new TipoEstadoResponseRegistrarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
 
             int nuevoId = 0;
             var result = await Task.FromResult(_lnTipoEstado.Registrar(modelo, ref nuevoId));
@@ -85,14 +83,11 @@ namespace App.Controllers.Maestro
         [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 404)]
         [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 400)]
         [ProducesResponseType(typeof(TipoEstadoResponseModificarDto), 200)]
-        public async Task<ActionResult<TipoEstadoResponseModificarDto>> Modificar([FromBody] TipoEstado modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<TipoEstadoResponseModificarDto>> Modificar([FromBody] TipoEstadoModificarPrmDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             TipoEstadoResponseModificarDto respuesta = new TipoEstadoResponseModificarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
 
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(modelo.IdTipoEstado));
             if (entidad == null)

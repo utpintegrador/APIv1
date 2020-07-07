@@ -9,7 +9,6 @@ namespace Entidad.Response.Maestro
     public class EstadoResponseRegistrarDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public int IdGenerado { get; set; }
         public EstadoResponseRegistrarDto()

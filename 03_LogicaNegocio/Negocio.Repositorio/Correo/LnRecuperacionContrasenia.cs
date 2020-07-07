@@ -189,7 +189,7 @@ namespace Negocio.Repositorio.Servicio
             return _adRecuperacionContrasenia.ObtenerUsuarioPorCodigo(codigo);
         }
 
-        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaDto modelo)
+        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo);

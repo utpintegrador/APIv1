@@ -19,13 +19,13 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.AccessKeyAws;
         private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.SecretAccessKeyAws;
-        private readonly string _urlAmazon = "https://encuentralo.s3.us-east-2.amazonaws.com/";
+        //private readonly string _urlAmazon = "https://encuentralo.s3.us-east-2.amazonaws.com/";
 
         private readonly AdCategoria _adCategoria = new AdCategoria();
 
-        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerFiltroDto filtro)
+        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerPrmDto filtro)
         {
-            if (filtro == null) filtro = new CategoriaObtenerFiltroDto();
+            if (filtro == null) filtro = new CategoriaObtenerPrmDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "Descripcion";
@@ -43,14 +43,14 @@ namespace Negocio.Repositorio.Maestro
             return _adCategoria.ObtenerPorId(id);
         }
 
-        public int Registrar(CategoriaRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(CategoriaRegistrarPrmDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             resultado = _adCategoria.Registrar(modelo, ref idNuevo);
             return resultado;
         }
 
-        public int Modificar(CategoriaModificarDto modelo)
+        public int Modificar(CategoriaModificarPrmDto modelo)
         {
             if(modelo.IdEstado > 2 || modelo.IdEstado < 1)
             {
@@ -69,7 +69,7 @@ namespace Negocio.Repositorio.Maestro
             return _adCategoria.ModificarUrlImagenPorIdCategoria(idCategoria, url);
         }
 
-        public int SubirImagenAws(CategoriaModificarImagenMetodo1FiltroDto entidad, ref string url)
+        public int SubirImagenAws(CategoriaModificarImagenMetodo1PrmDto entidad, ref string url)
         {
             int respuesta = 0;
             try

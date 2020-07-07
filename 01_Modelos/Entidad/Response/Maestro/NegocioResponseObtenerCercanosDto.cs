@@ -1,13 +1,11 @@
 ﻿using Entidad.Dto.Maestro;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Entidad.Response.Maestro
 {
     public class NegocioResponseObtenerCercanosDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<NegocioObtenerCercanosDto> Cuerpo { get; set; }
         public int CantidadTotalRegistros { get; set; }

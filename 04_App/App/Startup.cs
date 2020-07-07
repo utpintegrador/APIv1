@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using Amazon.S3;
+using App.CustomHandler;
 using AutoMapper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Vo;
@@ -34,6 +37,12 @@ namespace App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddAutoMapper();
 
             //services.AddCors(options =>
@@ -142,11 +151,14 @@ namespace App
                 app.UseHsts();
             }
 
+            //app.ConfigureCustomExceptionMiddleware();
+
             app.UseHttpsRedirection();
             app.UseCors("EnableCORS");
             app.UseAuthentication();
             app.UseMvc();
             
         }
+
     }
 }

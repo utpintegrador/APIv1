@@ -12,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdCategoria : Logger
     {
-        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerFiltroDto filtro)
+        public List<CategoriaObtenerDto> Obtener(CategoriaObtenerPrmDto filtro)
         {
             List<CategoriaObtenerDto> resultado = new List<CategoriaObtenerDto>();
             try
@@ -74,7 +74,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(CategoriaRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(CategoriaRegistrarPrmDto modelo, ref int idNuevo)
         {
             int resultado = 0;
             try
@@ -105,7 +105,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(CategoriaModificarDto modelo)
+        public int Modificar(CategoriaModificarPrmDto modelo)
         {
             int resultado = 0;
             try

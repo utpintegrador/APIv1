@@ -19,12 +19,12 @@ namespace Negocio.Repositorio.Maestro
             return _adEstado.ObtenerPorId(id);
         }
 
-        public int Registrar(EstadoRegistrarDto modelo, ref int idNuevo)
+        public int Registrar(EstadoRegistrarPrmDto modelo, ref int idNuevo)
         {
             return _adEstado.Registrar(modelo, ref idNuevo);
         }
 
-        public int Modificar(Estado modelo)
+        public int Modificar(EstadoModificarPrmDto modelo)
         {
             return _adEstado.Modificar(modelo);
         }

@@ -18,15 +18,15 @@ namespace Negocio.Repositorio.Seguridad
     public class LnUsuario: Logger
     {
         private readonly AdUsuario _adUsuario = new AdUsuario();
-        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesDto modelo)
+        public UsuarioLoginDto ObtenerPorLogin(UsuarioCredencialesPrmDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
             return _adUsuario.ObtenerPorLogin(modelo);
         }
 
-        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerFiltroDto filtro)
+        public List<UsuarioObtenerDto> Obtener(UsuarioObtenerPrmDto filtro)
         {
-            if (filtro == null) filtro = new UsuarioObtenerFiltroDto();
+            if (filtro == null) filtro = new UsuarioObtenerPrmDto();
             if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdUsuario";
@@ -40,7 +40,7 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.ObtenerPorId(id);
         }
 
-        public int Registrar(UsuarioRegistrarDto modelo, ref long idNuevo)
+        public int Registrar(UsuarioRegistrarPrmDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
@@ -60,7 +60,7 @@ namespace Negocio.Repositorio.Seguridad
             return resultado;
         }
 
-        public int Modificar(UsuarioModificarDto modelo)
+        public int Modificar(UsuarioModificarPrmDto modelo)
         {
             return _adUsuario.Modificar(modelo);
         }
@@ -70,7 +70,7 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.Eliminar(id);
         }
 
-        public int ModificarContrasenia(UsuarioCambioContraseniaDto modelo)
+        public int ModificarContrasenia(UsuarioCambioContraseniaPrmDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia);
             return _adUsuario.ModificarContrasenia(modelo);
@@ -91,7 +91,7 @@ namespace Negocio.Repositorio.Seguridad
         //    return _adUsuario.EliminarUrlImagen(id);
         //}
 
-        public int SubirImagenAws(UsuarioModificarImagenMetodo1FiltroDto entidad, ref string url)
+        public int SubirImagenAws(UsuarioModificarImagenMetodo1PrmDto entidad, ref string url)
         {
             int respuesta = 0;
             try

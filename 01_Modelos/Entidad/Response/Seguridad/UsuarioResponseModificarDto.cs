@@ -1,13 +1,10 @@
-﻿using Entidad.Response;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 
 namespace Entidad.Response.Seguridad
 {
     public class UsuarioResponseModificarDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public UsuarioResponseModificarDto()
         {

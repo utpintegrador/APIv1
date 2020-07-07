@@ -12,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdNegocio: Logger
     {
-        public List<NegocioObtenerDto> Obtener(NegocioObtenerFiltroDto filtro)
+        public List<NegocioObtenerDto> Obtener(NegocioObtenerPrmDto filtro)
         {
             List<NegocioObtenerDto> resultado = new List<NegocioObtenerDto>();
             try
@@ -46,7 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public List<NegocioObtenerCercanosDto> ObtenerCercanos(NegocioObtenerCercanosFiltroDto filtro)
+        public List<NegocioObtenerCercanosDto> ObtenerCercanos(NegocioObtenerCercanosPrmDto filtro)
         {
             List<NegocioObtenerCercanosDto> resultado = new List<NegocioObtenerCercanosDto>();
             try
@@ -110,7 +110,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Registrar(NegocioRegistrarDto modelo, ref long idNuevo)
+        public int Registrar(NegocioRegistrarPrmDto modelo, ref long idNuevo)
         {
             int resultado = 0;
             try
@@ -145,7 +145,43 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Modificar(NegocioModificarDto modelo)
+        public int RegistrarConUbicaciones(NegocioRegistrarPrmDto modelo, DataTable dtUbicaciones, ref long idNuevo)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Maestro.usp_Negocio_RegistrarConUbicaciones";
+
+                var p = new DynamicParameters();
+                p.Add("IdNegocio", 0, DbType.Int64, ParameterDirection.Output);
+                p.Add("DocumentoIdentificacion", modelo.DocumentoIdentificacion);
+                p.Add("Nombre", modelo.Nombre);
+                p.Add("Resenia", modelo.Resenia);
+                p.Add("IdTipoDocumentoIdentificacion", modelo.IdTipoDocumentoIdentificacion);
+                p.Add("IdUsuario", modelo.IdUsuario);
+                p.Add("TbUbicaciones", dtUbicaciones);
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Execute(query, commandType: CommandType.StoredProcedure, param: p);
+
+                    idNuevo = p.Get<long>("IdNegocio");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public int Modificar(NegocioModificarPrmDto modelo)
         {
             int resultado = 0;
             try
@@ -179,7 +215,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public int Eliminar(int id)
+        public int Eliminar(long id)
         {
             int resultado = 0;
             try

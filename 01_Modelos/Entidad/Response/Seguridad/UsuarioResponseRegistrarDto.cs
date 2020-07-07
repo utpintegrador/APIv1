@@ -1,14 +1,10 @@
-﻿using Entidad.Response;
-using Entidad.Entidad.Seguridad;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 
 namespace Entidad.Response.Seguridad
 {
     public class UsuarioResponseRegistrarDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public long IdGenerado { get; set; }
         public UsuarioResponseRegistrarDto()

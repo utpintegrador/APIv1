@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidad.Response;
+using System;
+using System.Collections.Generic;
 
 namespace Entidad.Dto.Seguridad
 {
@@ -11,6 +13,10 @@ namespace Entidad.Dto.Seguridad
         public string Apellido { get; set; }
         public string CorreoElectronico { get; set; }
         public string UrlImagen { get; set; }
-        public string Resultado { get; set; }
+        public List<ErrorDto> ListaError { get; set; }
+        public UsuarioTokenDto()
+        {
+            ListaError = new List<ErrorDto>();
+        }
     }
 }

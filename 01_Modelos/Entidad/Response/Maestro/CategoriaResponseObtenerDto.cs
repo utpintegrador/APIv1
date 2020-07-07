@@ -8,7 +8,6 @@ namespace Entidad.Response.Maestro
     public class CategoriaResponseObtenerDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<CategoriaObtenerDto> Cuerpo { get; set; }
         public int CantidadTotalRegistros { get; set; }

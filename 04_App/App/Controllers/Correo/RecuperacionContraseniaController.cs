@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using App.CustomHandler;
 using Entidad.Dto.Correo;
 using Entidad.Response;
 using Entidad.Response.Correo;
@@ -16,15 +17,12 @@ namespace App.Controllers.Correo
         [HttpPost]
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseRegistrarDto), 400)]
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseRegistrarDto), 200)]
-        public async Task<ActionResult<RecuperacionContraseniaResponseRegistrarDto>> Registrar([FromBody] RecuperacionContraseniaRegistrarDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<RecuperacionContraseniaResponseRegistrarDto>> Registrar([FromBody] RecuperacionContraseniaRegistrarFiltroDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             RecuperacionContraseniaResponseRegistrarDto respuesta = new RecuperacionContraseniaResponseRegistrarDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
-
+            
             var result = await Task.FromResult(_lnRecuperacionContrasenia.Registrar(modelo.CorreoElectronico));
             if (result == null)
             {
@@ -65,15 +63,12 @@ namespace App.Controllers.Correo
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 404)]
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 400)]
         [ProducesResponseType(typeof(RecuperacionContraseniaResponseModificarContraseniaDto), 200)]
-        public async Task<ActionResult<RecuperacionContraseniaResponseModificarContraseniaDto>> ModificarContraseniaMedianteCodigo([FromBody] RecuperacionContraseniaModificarContraseniaDto modelo)
+        [ValidationActionFilter]
+        public async Task<ActionResult<RecuperacionContraseniaResponseModificarContraseniaDto>> ModificarContraseniaMedianteCodigo([FromBody] RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
         {
+            if (!ModelState.IsValid) return BadRequest();
             RecuperacionContraseniaResponseModificarContraseniaDto respuesta = new RecuperacionContraseniaResponseModificarContraseniaDto();
-            if (!ModelState.IsValid)
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
-                return BadRequest(respuesta);
-            }
-
+            
             var result = await Task.FromResult(_lnRecuperacionContrasenia.ModificarContraseniaMedianteCodigo(modelo));
             if (result == 0)
             {

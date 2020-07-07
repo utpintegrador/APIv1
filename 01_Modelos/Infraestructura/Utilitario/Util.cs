@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,7 +12,6 @@ namespace Infraestructura.Utilitario
     {
         private static string IV = "HS2257G%&V1kde2y";
         private static string Key = "jrewg212IUKJjndht25ertg254dfgtrh";
-
         public static DateTime? ObtenerFechaDesdeString(string dato)
         {
             DateTime? fecha = null;
@@ -108,6 +110,52 @@ namespace Infraestructura.Utilitario
 
             //return Encoding.Unicode.GetString(enc);
             return ASCIIEncoding.ASCII.GetString(enc);
+        }
+
+        public static DataTable ToDataTable<T>(IList<T> data)
+        {
+            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+            {
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            }
+            //for (int i = 0; i < properties.Count -1; i++)
+            //{
+            //    PropertyDescriptor prop = properties[i];
+            //    table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            //}
+
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
+
+            /*
+             Dim props As PropertyDescriptorCollection = TypeDescriptor.GetProperties(GetType(T))
+            Dim table As New DataTable()
+            For i As Integer = 0 To props.Count - 1
+                Dim prop As PropertyDescriptor = props(i)
+                'table.Columns.Add(prop.Name, prop.PropertyType);
+
+                table.Columns.Add(prop.Name, If(Nullable.GetUnderlyingType(prop.PropertyType), prop.PropertyType))
+            Next
+            Dim values As Object() = New Object(props.Count - 1) {}
+            For Each item As T In data
+                For i As Integer = 0 To values.Length - 1
+                    values(i) = props(i).GetValue(item)
+                Next
+                table.Rows.Add(values)
+            Next
+            Return table
+             */
+
+
         }
     }
 }

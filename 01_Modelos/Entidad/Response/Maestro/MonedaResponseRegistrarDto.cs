@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Entidad.Response.Maestro
 {
     public class MonedaResponseRegistrarDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public int IdGenerado { get; set; }
         public MonedaResponseRegistrarDto()

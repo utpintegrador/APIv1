@@ -151,7 +151,7 @@ namespace Datos.Repositorio.Correo
             return resultado;
         }
 
-        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaDto modelo)
+        public int ModificarContraseniaMedianteCodigo(RecuperacionContraseniaModificarContraseniaFiltroDto modelo)
         {
             int resultado = 0;
             try

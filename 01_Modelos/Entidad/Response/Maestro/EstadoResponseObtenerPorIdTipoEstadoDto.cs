@@ -8,7 +8,6 @@ namespace Entidad.Response.Maestro
     public class EstadoResponseObtenerPorIdTipoEstadoDto
     {
         public int ProcesadoOk { get; set; }
-        [DisplayName("ListaErrores")]
         public List<ErrorDto> ListaError { get; set; }
         public List<EstadoObtenerPorIdTipoEstadoDto> Cuerpo { get; set; }
         public EstadoResponseObtenerPorIdTipoEstadoDto()
