@@ -148,5 +148,15 @@ namespace Negocio.Repositorio.Maestro
             return _adNegocio.Eliminar(id);
         }
 
+        public List<NegocioObtenerComboDto> ObtenerCombo(long idUsuario, int idEstado)
+        {
+            var listado = _adNegocio.ObtenerCombo(idUsuario, idEstado);
+            if (listado == null)
+            {
+                listado = new List<NegocioObtenerComboDto>();
+            }
+            return listado;
+        }
+
     }
 }

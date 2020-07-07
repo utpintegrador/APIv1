@@ -214,5 +214,15 @@ namespace Negocio.Repositorio.Maestro
 
             return respuesta;
         }
+
+        public List<CategoriaObtenerComboDto> ObtenerCombo(int idEstado)
+        {
+            var listado = _adCategoria.ObtenerCombo(idEstado);
+            if(listado == null)
+            {
+                listado = new List<CategoriaObtenerComboDto>();
+            }
+            return listado;
+        }
     }
 }

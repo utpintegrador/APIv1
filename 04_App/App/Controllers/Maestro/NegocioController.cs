@@ -180,5 +180,29 @@ namespace App.Controllers.Maestro
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerCombo/{idUsuario}")]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseNegocioObtenerComboDto>> ObtenerCombo(int idUsuario)
+        {
+            ResponseNegocioObtenerComboDto respuesta = new ResponseNegocioObtenerComboDto();
+            if (idUsuario == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "IdUsuario: parametro es requerido"
+                });
+                respuesta.ProcesadoOk = 0;
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnNegocio.ObtenerCombo(idUsuario, 0));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
     }
 }

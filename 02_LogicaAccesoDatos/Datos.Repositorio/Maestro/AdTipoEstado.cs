@@ -155,5 +155,31 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        public List<TipoEstadoObtenerComboDto> ObtenerCombo()
+        {
+            List<TipoEstadoObtenerComboDto> resultado = new List<TipoEstadoObtenerComboDto>();
+            try
+            {
+                const string query = "Maestro.usp_TipoEstado_ObtenerCombo";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<TipoEstadoObtenerComboDto>(query, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
     }
 }

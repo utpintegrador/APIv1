@@ -242,5 +242,35 @@ namespace Datos.Repositorio.Maestro
             }
             return resultado;
         }
+
+        public List<NegocioObtenerComboDto> ObtenerCombo(long idUsuario, int idEstado)
+        {
+            List<NegocioObtenerComboDto> resultado = new List<NegocioObtenerComboDto>();
+            try
+            {
+                const string query = "Maestro.usp_Negocio_ObtenerCombo";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<NegocioObtenerComboDto>(query, new
+                    {
+                        IdUsuario = idUsuario,
+                        IdEstado = idEstado
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Entidad.Response.Maestro
         public int ProcesadoOk { get; set; }
         public List<ErrorDto> ListaError { get; set; }
         public List<NegocioObtenerDto> Cuerpo { get; set; }
-        public int CantidadTotalRegistros { get; set; }
+        public long CantidadTotalRegistros { get; set; }
         public ResponseNegocioObtenerDto()
         {
             ProcesadoOk = 0;

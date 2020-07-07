@@ -237,5 +237,15 @@ namespace Negocio.Repositorio.Seguridad
 
             return respuesta;
         }
+
+        public List<UsuarioObtenerComboDto> ObtenerCombo(int idEstado)
+        {
+            var listado = _adUsuario.ObtenerCombo(idEstado);
+            if (listado == null)
+            {
+                listado = new List<UsuarioObtenerComboDto>();
+            }
+            return listado;
+        }
     }
 }

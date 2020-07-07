@@ -35,5 +35,15 @@ namespace Negocio.Repositorio.Maestro
             return _adTipoEstado.Eliminar(id);
         }
 
+        public List<TipoEstadoObtenerComboDto> ObtenerCombo()
+        {
+            var listado = _adTipoEstado.ObtenerCombo();
+            if (listado == null)
+            {
+                listado = new List<TipoEstadoObtenerComboDto>();
+            }
+            return listado;
+        }
+
     }
 }

@@ -33,5 +33,15 @@ namespace Negocio.Repositorio.Maestro
         {
             return _adMoneda.Eliminar(id);
         }
+
+        public List<MonedaObtenerComboDto> ObtenerCombo()
+        {
+            var listado = _adMoneda.ObtenerCombo();
+            if (listado == null)
+            {
+                listado = new List<MonedaObtenerComboDto>();
+            }
+            return listado;
+        }
     }
 }

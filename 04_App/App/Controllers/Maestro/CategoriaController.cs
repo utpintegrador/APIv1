@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
 using Entidad.Request.Maestro;
+using System.Collections.Generic;
 
 namespace App.Controllers.Maestro
 {
@@ -357,6 +358,31 @@ namespace App.Controllers.Maestro
 
             respuesta.UrlImagen = urlImagen;
             respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+
+        [HttpGet("ObtenerCombo/{idEstado}")]
+        [ProducesResponseType(typeof(ResponseCategoriaObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseCategoriaObtenerComboDto), 400)]
+        [ProducesResponseType(typeof(ResponseCategoriaObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseCategoriaObtenerComboDto>> ObtenerCombo(int idEstado)
+        {
+            ResponseCategoriaObtenerComboDto respuesta = new ResponseCategoriaObtenerComboDto();
+            if (idEstado == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "IdEstado: parametro es requerido"
+                });
+                respuesta.ProcesadoOk = 0;
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnCategoria.ObtenerCombo(idEstado));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
             return Ok(respuesta);
         }
 

@@ -126,5 +126,19 @@ namespace App.Controllers.Maestro
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerCombo")]
+        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 400)]
+        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseTipoEstadoObtenerComboDto>> ObtenerCombo()
+        {
+            ResponseTipoEstadoObtenerComboDto respuesta = new ResponseTipoEstadoObtenerComboDto();
+
+            var result = await Task.FromResult(_lnTipoEstado.ObtenerCombo());
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
     }
 }

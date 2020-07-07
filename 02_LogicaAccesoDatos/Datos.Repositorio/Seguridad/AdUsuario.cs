@@ -308,5 +308,33 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
+        public List<UsuarioObtenerComboDto> ObtenerCombo(int idEstado)
+        {
+            List<UsuarioObtenerComboDto> resultado = new List<UsuarioObtenerComboDto>();
+            try
+            {
+                const string query = "Seguridad.usp_Usuario_ObtenerCombo";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<UsuarioObtenerComboDto>(query, new
+                    {
+                        IdEstado = idEstado
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

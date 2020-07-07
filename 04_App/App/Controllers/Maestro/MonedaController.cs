@@ -126,5 +126,18 @@ namespace App.Controllers.Maestro
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerCombo")]
+        [ProducesResponseType(typeof(ResponseMonedaObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseMonedaObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseMonedaObtenerComboDto>> ObtenerCombo()
+        {
+            ResponseMonedaObtenerComboDto respuesta = new ResponseMonedaObtenerComboDto();
+
+            var result = await Task.FromResult(_lnMoneda.ObtenerCombo());
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
     }
 }

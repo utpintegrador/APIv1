@@ -158,12 +158,12 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public List<EstadoObtenerPorIdTipoEstadoDto> ObtenerPorIdTipoEstado(int idTipoEstado)
+        public List<EstadoObtenerComboDto> ObtenerCombo(int idTipoEstado)
         {
-            List<EstadoObtenerPorIdTipoEstadoDto> resultado = new List<EstadoObtenerPorIdTipoEstadoDto>();
+            List<EstadoObtenerComboDto> resultado = new List<EstadoObtenerComboDto>();
             try
             {
-                const string query = "Maestro.usp_Estado_ObtenerPorIdTipoEstado";
+                const string query = "Maestro.usp_Estado_ObtenerCombo";
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
@@ -172,7 +172,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<EstadoObtenerPorIdTipoEstadoDto>(query,new {
+                    resultado = cn.Query<EstadoObtenerComboDto>(query,new {
                         IdTipoEstado = idTipoEstado
                     }, commandType: CommandType.StoredProcedure).ToList();
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Entidad.Response.Maestro
 {
-    public class ResponseEstadoObtenerPorIdTipoEstadoDto
+    public class ResponseNegocioObtenerComboDto
     {
         public int ProcesadoOk { get; set; }
         public List<ErrorDto> ListaError { get; set; }
-        public List<EstadoObtenerPorIdTipoEstadoDto> Cuerpo { get; set; }
-        public ResponseEstadoObtenerPorIdTipoEstadoDto()
+        public List<NegocioObtenerComboDto> Cuerpo { get; set; }
+        public ResponseNegocioObtenerComboDto()
         {
             ProcesadoOk = 0;
             ListaError = new List<ErrorDto>();

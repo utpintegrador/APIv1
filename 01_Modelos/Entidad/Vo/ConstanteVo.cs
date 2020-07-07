@@ -30,7 +30,7 @@ namespace Entidad.Vo
             " * yyyy/MM/dd (Solo Fecha)" +
             Environment.NewLine +
             Environment.NewLine +
-            "Actualizado al 05/07/2020" +
+            "Actualizado al 07/07/2020" +
             Environment.NewLine +
             Environment.NewLine +
             "<h4><b>Los modelos en Android se deben generar desde esta pagina:</b></h4>" +

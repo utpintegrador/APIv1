@@ -13,7 +13,7 @@ namespace Entidad.Dto.Maestro
         public string FechaRegistro { get; set; }
         public string CorreoElectronico { get; set; }
         [IgnoreDataMember]
-        public int TotalItems { get; set; }
+        public long TotalItems { get; set; }
 
     }
 }

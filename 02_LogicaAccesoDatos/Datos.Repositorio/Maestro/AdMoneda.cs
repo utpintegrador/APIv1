@@ -78,6 +78,7 @@ namespace Datos.Repositorio.Maestro
                 var p = new DynamicParameters();
                 p.Add("IdMoneda", 0, DbType.Int32, ParameterDirection.Output);
                 p.Add("Descripcion", modelo.Descripcion);
+                p.Add("Simbolo", modelo.Simbolo);
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
@@ -116,7 +117,8 @@ namespace Datos.Repositorio.Maestro
                     resultado = cn.Execute(query, new
                     {
                         modelo.IdMoneda,
-                        modelo.Descripcion
+                        modelo.Descripcion,
+                        modelo.Simbolo
                     }, commandType: CommandType.StoredProcedure);
 
                 }
@@ -148,6 +150,32 @@ namespace Datos.Repositorio.Maestro
                     }, commandType: CommandType.StoredProcedure);
 
                 }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<MonedaObtenerComboDto> ObtenerCombo()
+        {
+            List<MonedaObtenerComboDto> resultado = new List<MonedaObtenerComboDto>();
+            try
+            {
+                const string query = "Maestro.usp_Moneda_ObtenerCombo";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<MonedaObtenerComboDto>(query, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
             }
             catch (Exception ex)
             {

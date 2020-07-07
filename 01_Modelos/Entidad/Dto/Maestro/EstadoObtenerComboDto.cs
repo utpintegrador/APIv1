@@ -1,6 +1,6 @@
 ﻿namespace Entidad.Dto.Maestro
 {
-    public class EstadoObtenerPorIdTipoEstadoDto
+    public class EstadoObtenerComboDto
     {
         public int IdEstado { get; set; }
         public string Descripcion { get; set; }

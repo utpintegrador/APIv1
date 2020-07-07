@@ -398,5 +398,18 @@ namespace App.Controllers.Seguridad
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerCombo/{idEstado}")]
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseUsuarioObtenerComboDto>> ObtenerCombo(int idEstado)
+        {
+            ResponseUsuarioObtenerComboDto respuesta = new ResponseUsuarioObtenerComboDto();
+
+            var result = await Task.FromResult(_lnUsuario.ObtenerCombo(idEstado));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
     }
 }

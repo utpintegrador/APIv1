@@ -7,6 +7,7 @@ using Negocio.Repositorio.Maestro;
 using Microsoft.AspNetCore.Authorization;
 using App.CustomHandler;
 using Entidad.Request.Maestro;
+using System.Collections.Generic;
 
 namespace App.Controllers.Maestro
 {
@@ -50,21 +51,7 @@ namespace App.Controllers.Maestro
             respuesta.Cuerpo = entidad;
             return Ok(respuesta);
         }
-
-
-        [HttpGet("ObtenerPorIdTipoEstado/{id}")]
-        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdTipoEstadoDto), 404)]
-        [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdTipoEstadoDto), 200)]
-        public async Task<ActionResult<ResponseEstadoObtenerPorIdTipoEstadoDto>> ObtenerPorIdTipoEstado(int id)
-        {
-            ResponseEstadoObtenerPorIdTipoEstadoDto respuesta = new ResponseEstadoObtenerPorIdTipoEstadoDto();
-            var result = await Task.FromResult(_lnEstado.ObtenerPorIdTipoEstado(id));
-            respuesta.ProcesadoOk = 1;
-            respuesta.Cuerpo = result;
-            return Ok(respuesta);
-        }
-
-
+        
         [HttpPost]
         [ProducesResponseType(typeof(ResponseEstadoRegistrarDto), 400)]
         [ProducesResponseType(typeof(ResponseEstadoRegistrarDto), 200)]
@@ -139,6 +126,30 @@ namespace App.Controllers.Maestro
             }
 
             respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerCombo/{idTipoEstado}")]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboDto), 200)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboDto), 404)]
+        public async Task<ActionResult<ResponseEstadoObtenerComboDto>> ObtenerCombo(int idTipoEstado)
+        {
+            ResponseEstadoObtenerComboDto respuesta = new ResponseEstadoObtenerComboDto();
+            if (idTipoEstado == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "IdTipoEstado: parametro es requerido"
+                });
+                respuesta.ProcesadoOk = 0;
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnEstado.ObtenerCombo(idTipoEstado));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
             return Ok(respuesta);
         }
     }

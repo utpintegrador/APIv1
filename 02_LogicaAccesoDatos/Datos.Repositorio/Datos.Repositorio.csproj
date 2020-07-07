@@ -16,8 +16,4 @@
     <ProjectReference Include="..\..\01_Modelos\Infraestructura\Infraestructura.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Transaccion\" />
-  </ItemGroup>
-
 </Project>
