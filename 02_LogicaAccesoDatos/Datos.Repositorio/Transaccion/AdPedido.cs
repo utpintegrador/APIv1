@@ -165,5 +165,56 @@ namespace Datos.Repositorio.Transaccion
             }
             return resultado;
         }
+
+        public int ModificarEstadoPorParteDeComprador(RequestPedidoModificarEstadoPorParteDeCompradorDto modelo)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ModificarEstadoPorParteDeComprador";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed) cn.Open();
+
+                    resultado = cn.Execute(query,new {
+                        modelo.IdPedido,
+                        modelo.IdNegocioComprador,
+                        modelo.IdEstado
+                    }, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public int ModificarEstadoPorParteDeVendedor(RequestPedidoModificarEstadoPorParteDeVendedorDto modelo)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ModificarEstadoPorParteDeVendedor";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed) cn.Open();
+
+                    resultado = cn.Execute(query, new
+                    {
+                        modelo.IdPedido,
+                        modelo.IdNegocioVendedor,
+                        modelo.IdEstado
+                    }, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

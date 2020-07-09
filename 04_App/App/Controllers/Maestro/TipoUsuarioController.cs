@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
 using Entidad.Request.Maestro;
+using System.Linq;
 
 namespace App.Controllers.Maestro
 {
@@ -21,13 +22,19 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<ResponseTipoUsuarioObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<ResponseTipoUsuarioObtenerDto>> Obtener(RequestTipoUsuarioObtenerDto filtro)
         {
             ResponseTipoUsuarioObtenerDto respuesta = new ResponseTipoUsuarioObtenerDto();
-            var result = await Task.FromResult(_lnTipoUsuario.Obtener());
+            var result = await Task.FromResult(_lnTipoUsuario.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 

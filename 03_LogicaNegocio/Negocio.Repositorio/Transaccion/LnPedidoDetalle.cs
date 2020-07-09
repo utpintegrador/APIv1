@@ -1,5 +1,7 @@
 ﻿using Datos.Repositorio.Transaccion;
+using Entidad.Dto.Transaccion;
 using Entidad.Request.Transaccion;
+using System.Collections.Generic;
 using System.Transactions;
 
 namespace Negocio.Repositorio.Transaccion
@@ -79,6 +81,16 @@ namespace Negocio.Repositorio.Transaccion
                 }
             }
             return respuesta;
+        }
+
+        public List<PedidoDetalleObtenerPorIdPedidoDto> ObtenerPorIdPedido(long idPedido)
+        {
+            var listado = _adPedidoDetalle.ObtenerPorIdPedido(idPedido);
+            if(listado == null)
+            {
+                listado = new List<PedidoDetalleObtenerPorIdPedidoDto>();
+            }
+            return listado;
         }
 
         public int Registrar(RequestPedidoDetalleRegistrarDto modelo, ref long idNuevo)

@@ -92,13 +92,6 @@ namespace App.Controllers.Transaccion
             if (!ModelState.IsValid) return BadRequest();
             ResponsePedidoRegistrarDto respuesta = new ResponsePedidoRegistrarDto();
 
-            if (modelo.ListaPedidoDetalle == null) modelo.ListaPedidoDetalle = new List<RequestPedidoRegistrarPedidoDetalleRegistrarDto>();
-            if (!modelo.ListaPedidoDetalle.Any())
-            {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Se requiere como mínimo un detalle" });
-                return BadRequest(respuesta);
-            }
-
             long nuevoId = 0;
             var result = await Task.FromResult(_lnPedido.Registrar(modelo, ref nuevoId));
             if (result == 0)
@@ -114,6 +107,11 @@ namespace App.Controllers.Transaccion
 
         }
 
+        /// <summary>
+        /// Accion: read, add, upd, del
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
         [HttpPut()]//"{id}")]
         [ProducesResponseType(typeof(ResponsePedidoModificarDto), 404)]
         [ProducesResponseType(typeof(ResponsePedidoModificarDto), 400)]
@@ -125,6 +123,14 @@ namespace App.Controllers.Transaccion
             if (!ModelState.IsValid) return BadRequest();
             ResponsePedidoModificarDto respuesta = new ResponsePedidoModificarDto();
 
+            bool validacionItems = false;
+            var listaValidada = CustomValidation.ValidacionProductoDetalle.ValidarListaModificar(modelo, ref validacionItems);
+            if (!validacionItems)
+            {
+                respuesta.ListaError.AddRange(listaValidada);
+                return BadRequest(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnPedido.ObtenerPorId(modelo.IdPedido));
             if (entidad == null)
             {
@@ -133,6 +139,93 @@ namespace App.Controllers.Transaccion
             }
 
             var result = await Task.FromResult(_lnPedido.Modificar(modelo));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar modificar" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+        /// <summary>
+        /// 7   Generado
+        /// 12  Cancelado
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
+        [HttpPut("ModificarEstadoPorParteDeComprador")]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeCompradorDto), 404)]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeCompradorDto), 400)]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeCompradorDto), 200)]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponsePedidoModificarEstadoPorParteDeCompradorDto>> ModificarEstadoPorParteDeComprador([FromBody] RequestPedidoModificarEstadoPorParteDeCompradorDto modelo)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponsePedidoModificarEstadoPorParteDeCompradorDto respuesta = new ResponsePedidoModificarEstadoPorParteDeCompradorDto();
+            //7 12
+            if(modelo.IdEstado != 7 && modelo.IdEstado != 12)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "IdEstado proporcionado no es válido" });
+                return BadRequest(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnPedido.ObtenerPorId(modelo.IdPedido));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnPedido.ModificarEstadoPorParteDeComprador(modelo));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar modificar" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+        /// <summary>
+        /// 8     Aceptado
+        /// 9     Preparando
+        /// 10    Entregando
+        /// 11    Entregado
+        /// 13    Rechazado
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
+        [HttpPut("ModificarEstadoPorParteDeVendedor")]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeVendedorDto), 404)]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeVendedorDto), 400)]
+        [ProducesResponseType(typeof(ResponsePedidoModificarEstadoPorParteDeVendedorDto), 200)]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponsePedidoModificarEstadoPorParteDeVendedorDto>> ModificarEstadoPorParteDeVendedor([FromBody] RequestPedidoModificarEstadoPorParteDeVendedorDto modelo)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponsePedidoModificarEstadoPorParteDeVendedorDto respuesta = new ResponsePedidoModificarEstadoPorParteDeVendedorDto();
+            //8     Aceptado    3 *
+            //9     Preparando  3 *
+            //10    Entregando  3 *
+            //11    Entregado   3 *
+            //13    Rechazado   3 *
+            if (modelo.IdEstado != 8 && modelo.IdEstado != 9 && modelo.IdEstado != 10 && modelo.IdEstado != 11 && modelo.IdEstado != 13)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "IdEstado proporcionado no es válido" });
+                return BadRequest(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnPedido.ObtenerPorId(modelo.IdPedido));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnPedido.ModificarEstadoPorParteDeVendedor(modelo));
             if (result == 0)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar modificar" });

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using App.CustomHandler;
 using AutoMapper;
 using Entidad.Request.Maestro;
@@ -21,13 +22,19 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<ResponseMonedaObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<ResponseMonedaObtenerDto>> Obtener(RequestMonedaObtenerDto filtro)
         {
             ResponseMonedaObtenerDto respuesta = new ResponseMonedaObtenerDto();
-            var result = await Task.FromResult(_lnMoneda.Obtener());
+            var result = await Task.FromResult(_lnMoneda.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 

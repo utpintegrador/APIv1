@@ -8,10 +8,12 @@ namespace Entidad.Response.Maestro
         public int ProcesadoOk { get; set; }
         public List<ErrorDto> ListaError { get; set; }
         public List<EstadoObtenerDto> Cuerpo { get; set; }
+        public int CantidadTotalRegistros { get; set; }
         public ResponseEstadoObtenerDto()
         {
             ProcesadoOk = 0;
             ListaError = new List<ErrorDto>();
+            CantidadTotalRegistros = 0;
         }
     }
 }

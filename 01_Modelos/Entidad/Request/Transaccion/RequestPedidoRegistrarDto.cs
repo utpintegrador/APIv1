@@ -21,8 +21,10 @@ namespace Entidad.Request.Transaccion
         [Range(1, long.MaxValue, ErrorMessage = "{0}: debe tener un valor mayor o igual a {1}")]
         public long IdUsuarioRegistro { get; set; }
 
-
+        [Required(ErrorMessage = "{0}: parametro es requerido")]
+        [MinLength(1, ErrorMessage = "{0}: se requiere {1} elemento(s) como mínimo")]
         public List<RequestPedidoRegistrarPedidoDetalleRegistrarDto> ListaPedidoDetalle { get; set; }
+
         public RequestPedidoRegistrarDto()
         {
             ListaPedidoDetalle = new List<RequestPedidoRegistrarPedidoDetalleRegistrarDto>();

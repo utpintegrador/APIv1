@@ -1,6 +1,5 @@
 ﻿using Datos.Repositorio.Maestro;
 using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
 using Entidad.Request.Maestro;
 using System.Collections.Generic;
 
@@ -10,12 +9,23 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoEstado _adTipoEstado = new AdTipoEstado();
 
-        public List<TipoEstadoObtenerDto> Obtener()
+        public List<TipoEstadoObtenerDto> Obtener(RequestTipoEstadoObtenerDto filtro)
         {
-            return _adTipoEstado.Obtener();
+            if (filtro == null) filtro = new RequestTipoEstadoObtenerDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdTipoEstado";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            var listado = _adTipoEstado.Obtener(filtro);
+            if (listado == null)
+            {
+                listado = new List<TipoEstadoObtenerDto>();
+            }
+            return listado;
         }
 
-        public TipoEstado ObtenerPorId(int id)
+        public TipoEstadoObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoEstado.ObtenerPorId(id);
         }

@@ -1,14 +1,46 @@
 ﻿using Dapper;
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
+using Entidad.Dto.Transaccion;
 using Entidad.Request.Transaccion;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Datos.Repositorio.Transaccion
 {
     public class AdPedidoDetalle: Logger
     {
+        public List<PedidoDetalleObtenerPorIdPedidoDto> ObtenerPorIdPedido(long idPedido)
+        {
+            List<PedidoDetalleObtenerPorIdPedidoDto> resultado = new List<PedidoDetalleObtenerPorIdPedidoDto>();
+            try
+            {
+                const string query = "Transaccion.usp_PedidoDetalle_ObtenerPorIdPedido";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<PedidoDetalleObtenerPorIdPedidoDto>(query, new
+                    {
+                        IdPedido = idPedido
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
         public int Registrar(RequestPedidoDetalleRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;

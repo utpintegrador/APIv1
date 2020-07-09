@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Maestro;
 using App.CustomHandler;
 using Entidad.Request.Maestro;
+using System.Linq;
 
 namespace App.Controllers.Maestro
 {
@@ -21,13 +22,19 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<ResponseTipoEstadoObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<ResponseTipoEstadoObtenerDto>> Obtener(RequestTipoEstadoObtenerDto filtro)
         {
             ResponseTipoEstadoObtenerDto respuesta = new ResponseTipoEstadoObtenerDto();
-            var result = await Task.FromResult(_lnTipoEstado.Obtener());
+            var result = await Task.FromResult(_lnTipoEstado.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 
@@ -129,7 +136,6 @@ namespace App.Controllers.Maestro
 
         [HttpGet("ObtenerCombo")]
         [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 200)]
-        [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 400)]
         [ProducesResponseType(typeof(ResponseTipoEstadoObtenerComboDto), 404)]
         public async Task<ActionResult<ResponseTipoEstadoObtenerComboDto>> ObtenerCombo()
         {

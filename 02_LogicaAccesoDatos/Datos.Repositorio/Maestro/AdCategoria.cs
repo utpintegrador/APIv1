@@ -2,7 +2,6 @@
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
 using Entidad.Request.Maestro;
 using System;
 using System.Collections.Generic;
@@ -46,9 +45,9 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public Categoria ObtenerPorId(int id)
+        public CategoriaObtenerPorIdDto ObtenerPorId(int id)
         {
-            Categoria resultado = new Categoria();
+            CategoriaObtenerPorIdDto resultado = new CategoriaObtenerPorIdDto();
             try
             {
                 const string query = "Maestro.usp_Categoria_ObtenerPorId";
@@ -60,7 +59,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<Categoria>(query, new
+                    resultado = cn.QuerySingleOrDefault<CategoriaObtenerPorIdDto>(query, new
                     {
                         IdCategoria = id
                     }, commandType: CommandType.StoredProcedure);

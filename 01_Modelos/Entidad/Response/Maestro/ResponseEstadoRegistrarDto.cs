@@ -1,8 +1,4 @@
-﻿using Entidad.Response;
-using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 
 namespace Entidad.Response.Maestro
 {

@@ -26,6 +26,8 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
+        /// <param name="filtro">"NumeroPagina": 1, "CantidadRegistros": 10, "ColumnaOrden": "IdCategoria", "DireccionOrden": "desc"</param>
+        /// <returns></returns>
         [HttpPost("Obtener")]
         public async Task<ActionResult<ResponseCategoriaObtenerDto>> Obtener([FromBody] RequestCategoriaObtenerDto filtro)
         {

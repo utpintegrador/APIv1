@@ -2,7 +2,6 @@
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Seguridad;
-using Entidad.Entidad.Seguridad;
 using Entidad.Request.Seguridad;
 using System;
 using System.Collections.Generic;
@@ -77,9 +76,9 @@ namespace Datos.Repositorio.Seguridad
             return resultado;
         }
 
-        public Usuario ObtenerPorId(long id)
+        public UsuarioObtenerPorIdDto ObtenerPorId(long id)
         {
-            Usuario resultado = new Usuario();
+            UsuarioObtenerPorIdDto resultado = new UsuarioObtenerPorIdDto();
             try
             {
                 const string query = "Seguridad.usp_Usuario_ObtenerPorId";
@@ -91,7 +90,7 @@ namespace Datos.Repositorio.Seguridad
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<Usuario>(query, new
+                    resultado = cn.QuerySingleOrDefault<UsuarioObtenerPorIdDto>(query, new
                     {
                         IdUsuario = id
                     }, commandType: CommandType.StoredProcedure);

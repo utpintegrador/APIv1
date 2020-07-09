@@ -5,7 +5,6 @@ using Amazon.S3.Transfer;
 using Datos.Repositorio.Seguridad;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Seguridad;
-using Entidad.Entidad.Seguridad;
 using Entidad.Request.Seguridad;
 using Entidad.Vo;
 using System;
@@ -36,7 +35,7 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.Obtener(filtro);
         }
 
-        public Usuario ObtenerPorId(long id)
+        public UsuarioObtenerPorIdDto ObtenerPorId(long id)
         {
             return _adUsuario.ObtenerPorId(id);
         }

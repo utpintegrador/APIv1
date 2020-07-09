@@ -5,7 +5,6 @@ using Amazon.S3.Transfer;
 using Datos.Repositorio.Maestro;
 using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
 using Entidad.Request.Maestro;
 using Entidad.Vo;
 using System;
@@ -38,7 +37,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
-        public Categoria ObtenerPorId(int id)
+        public CategoriaObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adCategoria.ObtenerPorId(id);
         }
@@ -145,7 +144,7 @@ namespace Negocio.Repositorio.Maestro
                     int respuestaModificarImagenBd = _adCategoria.EliminarUrlImagen(idCategoria);
                     if (respuestaModificarImagenBd > 0)
                     {
-                        urlImagen = "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg";
+                        urlImagen = "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/categoria_sin_imagen.jpg";
                     }
                 }
             }
@@ -163,7 +162,7 @@ namespace Negocio.Repositorio.Maestro
             {
                 if (!string.IsNullOrEmpty(urlImagenBd))
                 {
-                    if (urlImagenBd != "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/sin_foto_perfil.jpg")
+                    if (urlImagenBd != "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/categoria_sin_imagen.jpg")
                     {
                         string nombreDirectorio = "Categoria";
 

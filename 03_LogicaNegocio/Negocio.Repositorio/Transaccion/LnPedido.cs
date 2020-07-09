@@ -92,12 +92,101 @@ namespace Negocio.Repositorio.Transaccion
 
         public int Modificar(RequestPedidoModificarDto modelo)
         {
-            return _adPedido.Modificar(modelo);
+            //return _adPedido.Modificar(modelo);
+            int respuesta = 0;
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    respuesta = _adPedido.Modificar(modelo);
+                    LnPedidoDetalle lnPedidoDetalle = new LnPedidoDetalle();
+                    if (modelo.ListaPedidoDetalle == null) modelo.ListaPedidoDetalle = new List<RequestPedidoModificarPedidoDetalleModificarDto>();
+                    modelo.ListaPedidoDetalle = modelo.ListaPedidoDetalle
+                        .Where(x => x.Accion == "add" || x.Accion == "upd" || x.Accion == "del").ToList();
+
+                    if (modelo.ListaPedidoDetalle.Any())
+                    {
+                        int cantidadOkEsperadas = modelo.ListaPedidoDetalle.Count;
+                        int cantidadDetallesOk = 0;
+                        foreach (var det in modelo.ListaPedidoDetalle)
+                        {
+                            switch (det.Accion)
+                            {
+                                case "add":
+                                    {
+                                        var entUbi = new RequestPedidoDetalleRegistrarDto
+                                        {
+                                            IdPedido = modelo.IdPedido,
+                                            Cantidad = det.Cantidad,
+                                            IdProducto = det.IdProducto,
+                                            PrecioUnitario = det.PrecioUnitario
+                                        };
+
+                                        long idNuevoDetalle = 0;
+                                        int resultadoDetalle = lnPedidoDetalle.Registrar(entUbi, ref idNuevoDetalle);
+                                        if (resultadoDetalle > 0 && idNuevoDetalle > 0)
+                                        {
+                                            cantidadDetallesOk++;
+                                        }
+                                        break;
+                                    }
+                                case "upd":
+                                    {
+                                        var entUbi = new RequestPedidoDetalleModificarDto
+                                        {
+                                            IdPedidoDetalle = det.IdPedidoDetalle,
+                                            IdPedido = modelo.IdPedido,
+                                            Cantidad = det.Cantidad,
+                                            IdProducto = det.IdProducto,
+                                            PrecioUnitario = det.PrecioUnitario
+                                        };
+
+                                        int resultadoDetalle = lnPedidoDetalle.Modificar(entUbi);
+                                        if (resultadoDetalle > 0)
+                                        {
+                                            cantidadDetallesOk++;
+                                        }
+                                        break;
+                                    }
+                                case "del":
+                                    {
+                                        int resultadoDetalle = lnPedidoDetalle.Eliminar(det.IdPedidoDetalle);
+                                        if (resultadoDetalle > 0)
+                                        {
+                                            cantidadDetallesOk++;
+                                        }
+                                        break;
+                                    }
+                            }
+                        }
+
+                        if (cantidadOkEsperadas == cantidadDetallesOk)
+                        {
+                            scope.Complete();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+            }
+            return respuesta;
         }
 
         public PedidoObtenerPorIdDto ObtenerPorId(long id)
         {
             return _adPedido.ObtenerPorId(id);
+        }
+
+        public int ModificarEstadoPorParteDeComprador(RequestPedidoModificarEstadoPorParteDeCompradorDto modelo)
+        {
+            return _adPedido.ModificarEstadoPorParteDeComprador(modelo);
+        }
+
+        public int ModificarEstadoPorParteDeVendedor(RequestPedidoModificarEstadoPorParteDeVendedorDto modelo)
+        {
+            return _adPedido.ModificarEstadoPorParteDeVendedor(modelo);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Datos.Repositorio.Maestro;
 using Entidad.Dto.Maestro;
-using Entidad.Entidad.Maestro;
 using Entidad.Request.Maestro;
 using System.Collections.Generic;
 
@@ -9,12 +8,23 @@ namespace Negocio.Repositorio.Maestro
     public class LnMoneda
     {
         private readonly AdMoneda _adMoneda = new AdMoneda();
-        public List<MonedaObtenerDto> Obtener()
+        public List<MonedaObtenerDto> Obtener(RequestMonedaObtenerDto filtro)
         {
-            return _adMoneda.Obtener();
+            if (filtro == null) filtro = new RequestMonedaObtenerDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdMoneda";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            var listado = _adMoneda.Obtener(filtro);
+            if (listado == null)
+            {
+                listado = new List<MonedaObtenerDto>();
+            }
+            return listado;
         }
 
-        public Moneda ObtenerPorId(int id)
+        public MonedaObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adMoneda.ObtenerPorId(id);
         }

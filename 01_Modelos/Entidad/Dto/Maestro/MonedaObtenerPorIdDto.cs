@@ -1,6 +1,6 @@
-﻿namespace Entidad.Entidad.Maestro
+﻿namespace Entidad.Dto.Maestro
 {
-    public class Moneda
+    public class MonedaObtenerPorIdDto
     {
         public int IdMoneda { get; set; }
         public string Descripcion { get; set; }

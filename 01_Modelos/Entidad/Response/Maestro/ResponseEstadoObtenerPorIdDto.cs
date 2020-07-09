@@ -1,4 +1,4 @@
-﻿using Entidad.Entidad.Maestro;
+﻿using Entidad.Dto.Maestro;
 using System.Collections.Generic;
 
 namespace Entidad.Response.Maestro
@@ -7,7 +7,7 @@ namespace Entidad.Response.Maestro
     {
         public int ProcesadoOk { get; set; }
         public List<ErrorDto> ListaError { get; set; }
-        public Estado Cuerpo { get; set; }
+        public EstadoObtenerPorIdDto Cuerpo { get; set; }
         public ResponseEstadoObtenerPorIdDto()
         {
             ProcesadoOk = 0;

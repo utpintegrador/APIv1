@@ -23,6 +23,9 @@ namespace App.Controllers.Maestro
         }
 
         [HttpPost("ObtenerPorIdNegocio")]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdNegocioDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdNegocioDto), 200)]
+        [ValidationActionFilter]
         public async Task<ActionResult<ResponseNegocioUbicacionObtenerPorIdNegocioDto>> ObtenerPorIdNegocio([FromBody] RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
             ResponseNegocioUbicacionObtenerPorIdNegocioDto respuesta = new ResponseNegocioUbicacionObtenerPorIdNegocioDto();

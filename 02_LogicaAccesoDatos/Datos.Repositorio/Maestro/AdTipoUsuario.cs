@@ -1,5 +1,4 @@
-﻿using Entidad.Entidad.Maestro;
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using Datos.Helper;
@@ -13,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoUsuario : Logger
     {
-        public List<TipoUsuarioObtenerDto> Obtener()
+        public List<TipoUsuarioObtenerDto> Obtener(RequestTipoUsuarioObtenerDto filtro)
         {
             List<TipoUsuarioObtenerDto> resultado = new List<TipoUsuarioObtenerDto>();
             try
@@ -27,7 +26,13 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<TipoUsuarioObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<TipoUsuarioObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -39,9 +44,9 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public TipoUsuario ObtenerPorId(int id)
+        public TipoUsuarioObtenerPorIdDto ObtenerPorId(int id)
         {
-            TipoUsuario resultado = new TipoUsuario();
+            TipoUsuarioObtenerPorIdDto resultado = new TipoUsuarioObtenerPorIdDto();
             try
             {
                 const string query = "Maestro.usp_TipoUsuario_ObtenerPorId";
@@ -53,7 +58,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<TipoUsuario>(query, new
+                    resultado = cn.QuerySingleOrDefault<TipoUsuarioObtenerPorIdDto>(query, new
                     {
                         IdTipoUsuario = id
                     }, commandType: CommandType.StoredProcedure);

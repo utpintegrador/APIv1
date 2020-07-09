@@ -19,7 +19,6 @@ namespace Negocio.Repositorio.Maestro
             if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocio";
             if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
-            //if (filtro.IdUsuario == null) filtro.IdUsuario = 0;
 
             var listado = _adNegocio.Obtener(filtro);
             if (listado == null)

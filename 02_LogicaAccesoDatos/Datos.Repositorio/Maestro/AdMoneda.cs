@@ -1,5 +1,4 @@
-﻿using Entidad.Entidad.Maestro;
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using Datos.Helper;
@@ -13,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdMoneda: Logger
     {
-        public List<MonedaObtenerDto> Obtener()
+        public List<MonedaObtenerDto> Obtener(RequestMonedaObtenerDto filtro)
         {
             List<MonedaObtenerDto> resultado = new List<MonedaObtenerDto>();
             try
@@ -27,7 +26,13 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<MonedaObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<MonedaObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -39,9 +44,9 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public Moneda ObtenerPorId(int id)
+        public MonedaObtenerPorIdDto ObtenerPorId(int id)
         {
-            Moneda resultado = new Moneda();
+            MonedaObtenerPorIdDto resultado = new MonedaObtenerPorIdDto();
             try
             {
                 const string query = "Maestro.usp_Moneda_ObtenerPorId";
@@ -53,7 +58,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<Moneda>(query, new
+                    resultado = cn.QuerySingleOrDefault<MonedaObtenerPorIdDto>(query, new
                     {
                         IdMoneda = id
                     }, commandType: CommandType.StoredProcedure);

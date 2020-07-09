@@ -15,4 +15,9 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entidad\Maestro\" />
+    <Folder Include="Entidad\Seguridad\" />
+  </ItemGroup>
+
 </Project>

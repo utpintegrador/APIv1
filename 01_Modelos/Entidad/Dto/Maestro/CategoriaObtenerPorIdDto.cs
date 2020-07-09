@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Entidad.Entidad.Maestro
+﻿namespace Entidad.Dto.Maestro
 {
-    public class Categoria
+    public class CategoriaObtenerPorIdDto
     {
         public int IdCategoria { get; set; }
         public string Descripcion { get; set; }

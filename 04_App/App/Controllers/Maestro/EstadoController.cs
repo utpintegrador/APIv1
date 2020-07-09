@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using App.CustomHandler;
 using Entidad.Request.Maestro;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace App.Controllers.Maestro
 {
@@ -23,13 +24,18 @@ namespace App.Controllers.Maestro
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<ResponseEstadoObtenerDto>> Obtener()
+        [HttpPost("Obtener")]
+        public async Task<ActionResult<ResponseEstadoObtenerDto>> Obtener([FromBody]RequestEstadoObtenerDto filtro)
         {
             ResponseEstadoObtenerDto respuesta = new ResponseEstadoObtenerDto();
-            var result = await Task.FromResult(_lnEstado.Obtener());
+            var result = await Task.FromResult(_lnEstado.Obtener(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
             return Ok(respuesta);
         }
 

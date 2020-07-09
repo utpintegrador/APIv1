@@ -1,5 +1,4 @@
-﻿using Entidad.Entidad.Maestro;
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using Datos.Helper;
@@ -13,7 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoEstado : Logger
     {
-        public List<TipoEstadoObtenerDto> Obtener()
+        public List<TipoEstadoObtenerDto> Obtener(RequestTipoEstadoObtenerDto filtro)
         {
             List<TipoEstadoObtenerDto> resultado = new List<TipoEstadoObtenerDto>();
             try
@@ -27,7 +26,13 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.Query<TipoEstadoObtenerDto>(query, commandType: CommandType.StoredProcedure).ToList();
+                    resultado = cn.Query<TipoEstadoObtenerDto>(query,new {
+                        filtro.Buscar,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -39,9 +44,9 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public TipoEstado ObtenerPorId(int id)
+        public TipoEstadoObtenerPorIdDto ObtenerPorId(int id)
         {
-            TipoEstado resultado = new TipoEstado();
+            TipoEstadoObtenerPorIdDto resultado = new TipoEstadoObtenerPorIdDto();
             try
             {
                 const string query = "Maestro.usp_TipoEstado_ObtenerPorId";
@@ -53,7 +58,7 @@ namespace Datos.Repositorio.Maestro
                         cn.Open();
                     }
 
-                    resultado = cn.QuerySingleOrDefault<TipoEstado>(query, new
+                    resultado = cn.QuerySingleOrDefault<TipoEstadoObtenerPorIdDto>(query, new
                     {
                         IdTipoEstado = id
                     }, commandType: CommandType.StoredProcedure);
