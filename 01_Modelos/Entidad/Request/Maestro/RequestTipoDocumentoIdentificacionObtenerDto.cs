@@ -5,5 +5,9 @@ namespace Entidad.Request.Maestro
     public class RequestTipoDocumentoIdentificacionObtenerDto : FiltroPaginacion
     {
         public string Buscar { get; set; }
+        public RequestTipoDocumentoIdentificacionObtenerDto()
+        {
+            Buscar = string.Empty;
+        }
     }
 }

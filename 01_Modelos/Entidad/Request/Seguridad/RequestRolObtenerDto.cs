@@ -5,5 +5,9 @@ namespace Entidad.Request.Seguridad
     public class RequestRolObtenerDto : FiltroPaginacion
     {
         public string Buscar { get; set; }
+        public RequestRolObtenerDto()
+        {
+            Buscar = string.Empty;
+        }
     }
 }

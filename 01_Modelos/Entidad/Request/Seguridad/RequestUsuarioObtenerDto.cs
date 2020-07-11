@@ -6,5 +6,9 @@ namespace Entidad.Request.Seguridad
     {
         public string Buscar { get; set; }
         public int IdEstado { get; set; }
+        public RequestUsuarioObtenerDto()
+        {
+            Buscar = string.Empty;
+        }
     }
 }

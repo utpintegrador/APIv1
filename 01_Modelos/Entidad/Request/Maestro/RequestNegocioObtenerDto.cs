@@ -7,5 +7,9 @@ namespace Entidad.Request.Maestro
         public string Buscar { get; set; }
         public int IdEstado { get; set; }
         public long IdUsuario { get; set; }
+        public RequestNegocioObtenerDto()
+        {
+            Buscar = string.Empty;
+        }
     }
 }

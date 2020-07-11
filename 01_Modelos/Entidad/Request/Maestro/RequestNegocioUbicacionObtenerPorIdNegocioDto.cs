@@ -8,5 +8,9 @@ namespace Entidad.Request.Maestro
         [Range(1, long.MaxValue, ErrorMessage = "{0}: debe tener un valor mayor o igual a {1}")]
         public long IdNegocio { get; set; }
         public string Buscar { get; set; }
+        public RequestNegocioUbicacionObtenerPorIdNegocioDto()
+        {
+            Buscar = string.Empty;
+        }
     }
 }

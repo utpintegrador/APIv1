@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructura", "01_Model
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_Test", "05_Test", "{744E7AB9-D59E-4F7F-9950-6BB531CAAB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias", "05_Test\PruebasUnitarias\PruebasUnitarias.csproj", "{9F4058D4-DEB4-4651-B9EC-A925255C5657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebasUnitarias", "05_Test\PruebasUnitarias\PruebasUnitarias.csproj", "{9F4058D4-DEB4-4651-B9EC-A925255C5657}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -139,6 +139,7 @@ namespace App
             app.UseSwaggerUI(config =>
             {
                 config.SwaggerEndpoint("/swagger/v1/swagger.json", "API Encuéntralo v1");
+                config.DefaultModelsExpandDepth(-1);
             });
 
             if (env.IsDevelopment())

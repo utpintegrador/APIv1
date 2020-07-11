@@ -1,2 +1,0 @@
-20:52:08:978 ERROR  [192.168.100.118] [AdUsuario                     ]    [Registrar                                 ]    - Cannot insert the value NULL into column 'UserName', table 'DB_A25F3D_Encuentralo.Seguridad.Usuario'; column does not allow nulls. INSERT fails.
-The statement has been terminated.

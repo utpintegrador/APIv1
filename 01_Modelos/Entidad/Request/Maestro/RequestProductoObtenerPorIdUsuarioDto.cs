@@ -16,6 +16,7 @@ namespace Entidad.Request.Maestro
         public RequestProductoObtenerPorIdUsuarioDto()
         {
             IdEstado = 1;
+            Buscar = string.Empty;
         }
     }
 }

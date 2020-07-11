@@ -15,6 +15,7 @@ namespace Entidad.Request.Maestro
         public RequestProductoObtenerPorIdNegocioDto()
         {
             IdEstado = 1;
+            Buscar = string.Empty;
         }
 
     }
