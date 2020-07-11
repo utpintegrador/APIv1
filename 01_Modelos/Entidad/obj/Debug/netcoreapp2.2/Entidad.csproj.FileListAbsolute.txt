@@ -33,3 +33,15 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.pdb
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.deps.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Entidad.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csprojAssemblyReference.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.AssemblyInfoInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.AssemblyInfo.cs
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.csproj.CopyComplete
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\01_Modelos\Entidad\obj\Debug\netcoreapp2.2\Entidad.pdb

@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoDocumentoIdentificacion _adTipoDocumentoIdentificacion = new AdTipoDocumentoIdentificacion();
 
+        //Documento de Identidad
         public List<TipoDocumentoIdentificacionObtenerDto> Obtener(RequestTipoDocumentoIdentificacionObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoDocumentoIdentificacionObtenerDto();
@@ -25,6 +26,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Documento de Identidad
         public List<TipoDocumentoIdentificacionObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoDocumentoIdentificacion.ObtenerCombo();
@@ -35,21 +37,25 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Documento de Identidad por ID
         public TipoDocumentoIdentificacionObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoDocumentoIdentificacion.ObtenerPorId(id);
         }
 
+        //Registrar Documento de Identidad
         public int Registrar(RequestTipoDocumentoIdentificacionRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoDocumentoIdentificacion.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Documento de Identidad
         public int Modificar(RequestTipoDocumentoIdentificacionModificarDto modelo)
         {
             return _adTipoDocumentoIdentificacion.Modificar(modelo);
         }
 
+        //Eliminar Documento de Identidad
         public int Eliminar(int id)
         {
             return _adTipoDocumentoIdentificacion.Eliminar(id);

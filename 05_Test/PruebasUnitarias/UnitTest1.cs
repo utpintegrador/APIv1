@@ -22,11 +22,11 @@ namespace Tests
             long idNuevo = 0;
             lnNegocio.Registrar(new RequestNegocioRegistrarDto
             {
-                Nombre = "Frank2",
-                DocumentoIdentificacion = "99999999999",
+                Nombre = "Barrio",
+                DocumentoIdentificacion = "12345678",
                 IdTipoDocumentoIdentificacion = 1,
                 IdUsuario = 4,
-                Resenia = "Esta es la reseña del negocio"
+                Resenia = "Mejores precios siempre"
             }, ref idNuevo);
             Assert.Greater(idNuevo, 0);
         }

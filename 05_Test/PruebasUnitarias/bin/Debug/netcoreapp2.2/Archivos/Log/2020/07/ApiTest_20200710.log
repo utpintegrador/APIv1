@@ -1,0 +1,2 @@
+23:54:19:789 ERROR  [192.168.1.132] [AdUsuario                     ]    [Registrar                                 ]    - Violation of UNIQUE KEY constraint 'UQ_Seguridad_Usuario'. Cannot insert duplicate key in object 'Seguridad.Usuario'. The duplicate key value is (correo30@correo.com).
+The statement has been terminated.

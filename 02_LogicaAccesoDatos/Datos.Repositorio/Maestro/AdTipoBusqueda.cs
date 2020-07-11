@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoBusqueda: Logger
     {
+        //Busqueda
         public List<TipoBusquedaObtenerDto> Obtener(RequestTipoBusquedaObtenerDto filtro)
         {
             List<TipoBusquedaObtenerDto> resultado = new List<TipoBusquedaObtenerDto>();
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Busqueda
         public List<TipoBusquedaObtenerComboDto> ObtenerCombo()
         {
             List<TipoBusquedaObtenerComboDto> resultado = new List<TipoBusquedaObtenerComboDto>();
@@ -71,6 +73,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Busqueda por ID
         public TipoBusquedaObtenerPorIdDto ObtenerPorId(int id)
         {
             TipoBusquedaObtenerPorIdDto resultado = new TipoBusquedaObtenerPorIdDto();
@@ -100,6 +103,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Busqueda
         public int Registrar(RequestTipoBusquedaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -131,6 +135,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Busqueda
         public int Modificar(RequestTipoBusquedaModificarDto modelo)
         {
             int resultado = 0;
@@ -160,6 +165,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Busqueda
         public int Eliminar(int id)
         {
             int resultado = 0;

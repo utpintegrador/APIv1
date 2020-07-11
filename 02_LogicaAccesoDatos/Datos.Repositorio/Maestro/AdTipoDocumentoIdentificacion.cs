@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoDocumentoIdentificacion: Logger
     {
+        //Documento de Identificacion
         public List<TipoDocumentoIdentificacionObtenerDto> Obtener(RequestTipoDocumentoIdentificacionObtenerDto filtro)
         {
             List<TipoDocumentoIdentificacionObtenerDto> resultado = new List<TipoDocumentoIdentificacionObtenerDto>();
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Documento de Identificacion
         public List<TipoDocumentoIdentificacionObtenerComboDto> ObtenerCombo()
         {
             List<TipoDocumentoIdentificacionObtenerComboDto> resultado = new List<TipoDocumentoIdentificacionObtenerComboDto>();
@@ -71,6 +73,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Documento de Identificacion por ID
         public TipoDocumentoIdentificacionObtenerPorIdDto ObtenerPorId(int id)
         {
             TipoDocumentoIdentificacionObtenerPorIdDto resultado = new TipoDocumentoIdentificacionObtenerPorIdDto();
@@ -100,6 +103,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Documento de Identificacion
         public int Registrar(RequestTipoDocumentoIdentificacionRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -131,6 +135,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Documento de Identificacion
         public int Modificar(RequestTipoDocumentoIdentificacionModificarDto modelo)
         {
             int resultado = 0;
@@ -160,6 +165,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Documento de Identificacion
         public int Eliminar(int id)
         {
             int resultado = 0;

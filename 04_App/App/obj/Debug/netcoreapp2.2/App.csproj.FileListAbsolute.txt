@@ -69,3 +69,34 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Debug\ne
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\obj\Debug\netcoreapp2.2\App.pdb
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Debug\netcoreapp2.2\NVelocityTemplateEngine.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\04_App\App\bin\Debug\netcoreapp2.2\NVelocity.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.csprojAssemblyReference.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.AssemblyInfoInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.AssemblyInfo.cs
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.RazorAssemblyInfo.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.RazorAssemblyInfo.cs
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.deps.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.runtimeconfig.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.runtimeconfig.dev.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\App.xml
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Entidad.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Infraestructura.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\NVelocityTemplateEngine.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\NVelocity.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Entidad.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\bin\Debug\netcoreapp2.2\Infraestructura.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.RazorTargetAssemblyInfo.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.csproj.CopyComplete
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.xml
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\04_App\App\obj\Debug\netcoreapp2.2\App.genruntimeconfig.cache

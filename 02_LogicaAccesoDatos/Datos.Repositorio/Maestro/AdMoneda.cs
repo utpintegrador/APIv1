@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdMoneda: Logger
     {
+        //Obtener Moneda
         public List<MonedaObtenerDto> Obtener(RequestMonedaObtenerDto filtro)
         {
             List<MonedaObtenerDto> resultado = new List<MonedaObtenerDto>();
@@ -44,6 +45,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Moneda por ID
         public MonedaObtenerPorIdDto ObtenerPorId(int id)
         {
             MonedaObtenerPorIdDto resultado = new MonedaObtenerPorIdDto();
@@ -73,6 +75,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registar Moneda
         public int Registrar(RequestMonedaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -105,6 +108,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Moneda
         public int Modificar(RequestMonedaModificarDto modelo)
         {
             int resultado = 0;
@@ -135,6 +139,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Moneda
         public int Eliminar(int id)
         {
             int resultado = 0;
@@ -163,6 +168,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Lstar Moneda
         public List<MonedaObtenerComboDto> ObtenerCombo()
         {
             List<MonedaObtenerComboDto> resultado = new List<MonedaObtenerComboDto>();

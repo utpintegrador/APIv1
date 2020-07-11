@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoEstado _adTipoEstado = new AdTipoEstado();
 
+        //Tipo Estado
         public List<TipoEstadoObtenerDto> Obtener(RequestTipoEstadoObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoEstadoObtenerDto();
@@ -25,26 +26,31 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Tipo Estado por ID
         public TipoEstadoObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoEstado.ObtenerPorId(id);
         }
 
+        //Registrar Tipo Estado
         public int Registrar(RequestTipoEstadoRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoEstado.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Tipo Estado
         public int Modificar(RequestTipoEstadoModificarDto modelo)
         {
             return _adTipoEstado.Modificar(modelo);
         }
 
+        //Eliminar Tipo Estado
         public int Eliminar(int id)
         {
             return _adTipoEstado.Eliminar(id);
         }
 
+        //Listar Tipo Estado
         public List<TipoEstadoObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoEstado.ObtenerCombo();

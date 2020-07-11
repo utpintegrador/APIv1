@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdNegocio: Logger
     {
+        //Negocio
         public List<NegocioObtenerDto> Obtener(RequestNegocioObtenerDto filtro)
         {
             List<NegocioObtenerDto> resultado = new List<NegocioObtenerDto>();
@@ -46,6 +47,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Negocio cercano
         public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto filtro)
         {
             List<NegocioObtenerCercanosDto> resultado = new List<NegocioObtenerCercanosDto>();
@@ -81,6 +83,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Negocio por ID
         public NegocioObtenerPorIdDto ObtenerPorId(long id)
         {
             NegocioObtenerPorIdDto resultado = new NegocioObtenerPorIdDto();
@@ -110,6 +113,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Negocio
         public int Registrar(RequestNegocioRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
@@ -145,6 +149,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registar Negocio con Ubicacion
         public int RegistrarConUbicaciones(RequestNegocioRegistrarDto modelo, DataTable dtUbicaciones, ref long idNuevo)
         {
             int resultado = 0;
@@ -181,6 +186,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Negocio
         public int Modificar(RequestNegocioModificarDto modelo)
         {
             int resultado = 0;
@@ -215,6 +221,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar
         public int Eliminar(long id)
         {
             int resultado = 0;
@@ -243,6 +250,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Listar Negocio
         public List<NegocioObtenerComboDto> ObtenerCombo(long idUsuario, int idEstado)
         {
             List<NegocioObtenerComboDto> resultado = new List<NegocioObtenerComboDto>();

@@ -46,3 +46,17 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Da
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.deps.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Infraestructura.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\bin\Debug\netcoreapp2.2\Infraestructura.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csprojAssemblyReference.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.AssemblyInfoInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.AssemblyInfo.cs
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CoreCompileInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.csproj.CopyComplete
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\02_LogicaAccesoDatos\Datos.Repositorio\obj\Debug\netcoreapp2.2\Datos.Repositorio.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {}
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
         "projectName": "Entidad",
-        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
         "packagesPath": "C:\\Users\\Sheyla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\obj\\",
+        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

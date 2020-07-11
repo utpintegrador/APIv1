@@ -22,6 +22,7 @@ namespace Negocio.Repositorio.Maestro
 
         private readonly AdCategoria _adCategoria = new AdCategoria();
 
+        //Listar Categorias
         public List<CategoriaObtenerDto> Obtener(RequestCategoriaObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestCategoriaObtenerDto();
@@ -37,11 +38,14 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Buscar categorías
         public CategoriaObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adCategoria.ObtenerPorId(id);
         }
 
+
+        //Registra nueva categoria
         public int Registrar(RequestCategoriaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -49,6 +53,7 @@ namespace Negocio.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Categoria
         public int Modificar(RequestCategoriaModificarDto modelo)
         {
             if(modelo.IdEstado > 2 || modelo.IdEstado < 1)
@@ -58,16 +63,19 @@ namespace Negocio.Repositorio.Maestro
             return _adCategoria.Modificar(modelo);
         }
 
+        //Eliminar Categoria
         public int Eliminar(int id)
         {
             return _adCategoria.Eliminar(id);
         }
 
+        //Modificar imagen de Categoria
         public int ModificarUrlImagenPorIdCategoria(long idCategoria, string url)
         {
             return _adCategoria.ModificarUrlImagenPorIdCategoria(idCategoria, url);
         }
 
+        //Agregar imagen a la Categoria
         public int SubirImagenAws(RequestCategoriaModificarImagenMetodo1Dto entidad, ref string url)
         {
             int respuesta = 0;
@@ -127,6 +135,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
+        //Eliminar imagen
         public int EliminarImagen(long idCategoria, ref string urlImagen)
         {
             int respuesta = 0;
@@ -214,6 +223,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
+        //Listar Categoria
         public List<CategoriaObtenerComboDto> ObtenerCombo(int idEstado)
         {
             var listado = _adCategoria.ObtenerCombo(idEstado);

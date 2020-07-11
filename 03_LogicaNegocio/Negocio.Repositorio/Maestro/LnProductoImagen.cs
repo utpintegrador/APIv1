@@ -21,6 +21,7 @@ namespace Negocio.Repositorio.Maestro
         
         private readonly AdProductoImagen _adProductoImagen = new AdProductoImagen();
 
+        //Obtener Imagen del Producto
         public List<ProductoImagenObtenerPorIdProductoDto> ObtenerPorIdProducto(RequestProductoImagenObtenerPorIdProductoDto filtro)
         {
             if (filtro == null) filtro = new RequestProductoImagenObtenerPorIdProductoDto();
@@ -37,11 +38,13 @@ namespace Negocio.Repositorio.Maestro
             return lista;
         }
 
+        //Registrar Producto con Imagen
         public int Registrar(long idProducto, string url, ref long idNuevo)
         {
             return _adProductoImagen.Registrar(idProducto, url, ref idNuevo);
         }
 
+        //Subir Imagen del Producto
         public int SubirImagenAws(RequestProductoImagenModificarImagenMetodo1Dto entidad, ref string url)
         {
             int respuesta = 0;
@@ -98,6 +101,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
+        //Eliminar Imagen del Producto
         public int EliminarImagen(long idProductoImagen, ref string urlImagen)
         {
             int respuesta = 0;
@@ -126,6 +130,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
+    
         private int EliminarImagenAws(string urlImagenBd, long idProductoImagen)
         {
             int respuesta = 0;

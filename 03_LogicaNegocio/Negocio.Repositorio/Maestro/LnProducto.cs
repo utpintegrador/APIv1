@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     public class LnProducto
     {
         private readonly AdProducto _adProducto = new AdProducto();
+
         public List<ProductoObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestProductoObtenerPorIdUsuarioDto filtro)
         {
             if (filtro == null) filtro = new RequestProductoObtenerPorIdUsuarioDto();
@@ -41,21 +42,26 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Producto por ID
         public ProductoObtenerPorIdDto ObtenerPorId(long id)
         {
             return _adProducto.ObtenerPorId(id);
         }
 
+        //Registrar Producto
         public int Registrar(RequestProductoRegistrarDto modelo, ref long idNuevo)
         {
             return _adProducto.Registrar(modelo, ref idNuevo);
         }
 
+
+        //Modificar Producto
         public int Modificar(RequestProductoModificarDto modelo)
         {
             return _adProducto.Modificar(modelo);
         }
 
+        //Eliminar Producto
         public int Eliminar(long id)
         {
             return _adProducto.Eliminar(id);

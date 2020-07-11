@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoEstado : Logger
     {
+        //Tipo Estado
         public List<TipoEstadoObtenerDto> Obtener(RequestTipoEstadoObtenerDto filtro)
         {
             List<TipoEstadoObtenerDto> resultado = new List<TipoEstadoObtenerDto>();
@@ -44,6 +45,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Tipo Estado por ID
         public TipoEstadoObtenerPorIdDto ObtenerPorId(int id)
         {
             TipoEstadoObtenerPorIdDto resultado = new TipoEstadoObtenerPorIdDto();
@@ -73,6 +75,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Tipo Estado
         public int Registrar(RequestTipoEstadoRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -104,6 +107,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Tipo Estado
         public int Modificar(RequestTipoEstadoModificarDto modelo)
         {
             int resultado = 0;
@@ -132,6 +136,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Tipo Estado
         public int Eliminar(int id)
         {
             int resultado = 0;
@@ -160,6 +165,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Listar Tipo Estado
         public List<TipoEstadoObtenerComboDto> ObtenerCombo()
         {
             List<TipoEstadoObtenerComboDto> resultado = new List<TipoEstadoObtenerComboDto>();
