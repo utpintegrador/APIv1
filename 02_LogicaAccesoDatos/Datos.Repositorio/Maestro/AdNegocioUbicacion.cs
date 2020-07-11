@@ -14,6 +14,7 @@ namespace Datos.Repositorio.Maestro
     {
         public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
+            //Obtener Negocio Ubicacion
             List<NegocioUbicacionObtenerPorIdNegocioDto> resultado = new List<NegocioUbicacionObtenerPorIdNegocioDto>();
             try
             {
@@ -46,6 +47,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Negocio Ubicacion por ID
         public NegocioUbicacionObtenerPorIdDto ObtenerPorId(long id)
         {
             NegocioUbicacionObtenerPorIdDto resultado = new NegocioUbicacionObtenerPorIdDto();
@@ -75,6 +77,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Negocio Ubicacion
         public int Registrar(RequestNegocioUbicacionRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
@@ -111,6 +114,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Negocio Ubicacion
         public int Modificar(RequestNegocioUbicacionModificarDto modelo)
         {
             int resultado = 0;
@@ -145,6 +149,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Negocio Ubicacion
         public int Eliminar(long id)
         {
             int resultado = 0;

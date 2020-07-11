@@ -14,6 +14,7 @@ namespace Datos.Repositorio.Maestro
     {
         public List<ProductoObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestProductoObtenerPorIdNegocioDto filtro)
         {
+            //Obttener Negocio
             List<ProductoObtenerPorIdNegocioDto> resultado = new List<ProductoObtenerPorIdNegocioDto>();
             try
             {
@@ -49,6 +50,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Negocio por ID
         public ProductoObtenerPorIdDto ObtenerPorId(long id)
         {
             ProductoObtenerPorIdDto resultado = new ProductoObtenerPorIdDto();
@@ -78,6 +80,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Negocio
         public int Registrar(RequestProductoRegistrarDto modelo, ref long idNuevo)
         {
             int resultado = 0;
@@ -114,6 +117,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Negocio
         public int Modificar(RequestProductoModificarDto modelo)
         {
             int resultado = 0;
@@ -148,6 +152,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Negocio
         public int Eliminar(long id)
         {
             int resultado = 0;

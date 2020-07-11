@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {}
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
         "projectName": "Entidad",
-        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
         "packagesPath": "C:\\Users\\Sheyla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\obj\\",
+        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -70,14 +70,72 @@
         }
       }
     },
-    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
-        "projectName": "Datos.Repositorio",
-        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
+        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
+        "projectName": "Infraestructura",
+        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
         "packagesPath": "C:\\Users\\Sheyla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\obj\\",
+        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sheyla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
+        "projectName": "Datos.Repositorio",
+        "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
+        "packagesPath": "C:\\Users\\Sheyla\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -96,8 +154,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
-                "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\API\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
+              "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
+              },
+              "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj": {
+                "projectPath": "C:\\Users\\Sheyla\\Desktop\\2020 - 1\\Integrador 2\\GITHUB\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj"
               }
             }
           }

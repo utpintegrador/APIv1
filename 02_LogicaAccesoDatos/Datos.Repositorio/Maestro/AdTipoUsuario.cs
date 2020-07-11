@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoUsuario : Logger
     {
+        //Usuario
         public List<TipoUsuarioObtenerDto> Obtener(RequestTipoUsuarioObtenerDto filtro)
         {
             List<TipoUsuarioObtenerDto> resultado = new List<TipoUsuarioObtenerDto>();
@@ -44,6 +45,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Usuario por ID
         public TipoUsuarioObtenerPorIdDto ObtenerPorId(int id)
         {
             TipoUsuarioObtenerPorIdDto resultado = new TipoUsuarioObtenerPorIdDto();
@@ -73,6 +75,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Usuario
         public int Registrar(RequestTipoUsuarioRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -104,6 +107,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Usuario
         public int Modificar(RequestTipoUsuarioModificarDto modelo)
         {
             int resultado = 0;
@@ -133,6 +137,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Usuario
         public int Eliminar(int id)
         {
             int resultado = 0;
@@ -161,6 +166,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Listar Usuario
         public List<TipoUsuarioObtenerComboDto> ObtenerCombo()
         {
             List<TipoUsuarioObtenerComboDto> resultado = new List<TipoUsuarioObtenerComboDto>();

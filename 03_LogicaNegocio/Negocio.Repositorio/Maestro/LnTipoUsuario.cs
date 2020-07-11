@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoUsuario _adTipoUsuario = new AdTipoUsuario();
 
+        //Tipo Usuario
         public List<TipoUsuarioObtenerDto> Obtener(RequestTipoUsuarioObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoUsuarioObtenerDto();
@@ -25,26 +26,31 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Tipo Usuario por ID
         public TipoUsuarioObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoUsuario.ObtenerPorId(id);
         }
 
+        //Registar Tipo Usuario
         public int Registrar(RequestTipoUsuarioRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoUsuario.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Tipo Usuario
         public int Modificar(RequestTipoUsuarioModificarDto modelo)
         {
             return _adTipoUsuario.Modificar(modelo);
         }
 
+        //Eliminar Tipo Usuario
         public int Eliminar(int id)
         {
             return _adTipoUsuario.Eliminar(id);
         }
 
+        //Listar Tipo Usuario
         public List<TipoUsuarioObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoUsuario.ObtenerCombo();

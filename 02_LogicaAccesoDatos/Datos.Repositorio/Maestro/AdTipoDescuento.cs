@@ -12,6 +12,7 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdTipoDescuento: Logger
     {
+        //Descuento
         public List<TipoDescuentoObtenerDto> Obtener(RequestTipoDescuentoObtenerDto filtro)
         {
             List<TipoDescuentoObtenerDto> resultado = new List<TipoDescuentoObtenerDto>();
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Descuento
         public List<TipoDescuentoObtenerComboDto> ObtenerCombo()
         {
             List<TipoDescuentoObtenerComboDto> resultado = new List<TipoDescuentoObtenerComboDto>();
@@ -71,6 +73,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Descuento por ID
         public TipoDescuentoObtenerPorIdDto ObtenerPorId(int id)
         {
             TipoDescuentoObtenerPorIdDto resultado = new TipoDescuentoObtenerPorIdDto();
@@ -100,6 +103,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Descuento
         public int Registrar(RequestTipoDescuentoRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -131,6 +135,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Descuento
         public int Modificar(RequestTipoDescuentoModificarDto modelo)
         {
             int resultado = 0;
@@ -160,6 +165,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Descuento
         public int Eliminar(int id)
         {
             int resultado = 0;

@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoDescuento _adTipoDescuento = new AdTipoDescuento();
 
+        //Descuento
         public List<TipoDescuentoObtenerDto> Obtener(RequestTipoDescuentoObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoDescuentoObtenerDto();
@@ -25,6 +26,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Descuento
         public List<TipoDescuentoObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoDescuento.ObtenerCombo();
@@ -35,21 +37,25 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Descuento por ID
         public TipoDescuentoObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoDescuento.ObtenerPorId(id);
         }
 
+        //Registrar Descuento
         public int Registrar(RequestTipoDescuentoRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoDescuento.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Descuento
         public int Modificar(RequestTipoDescuentoModificarDto modelo)
         {
             return _adTipoDescuento.Modificar(modelo);
         }
 
+        //Eliminar Descuento
         public int Eliminar(int id)
         {
             return _adTipoDescuento.Eliminar(id);

@@ -8,6 +8,8 @@ namespace Negocio.Repositorio.Maestro
     public class LnMoneda
     {
         private readonly AdMoneda _adMoneda = new AdMoneda();
+
+        //Obtener Moneda
         public List<MonedaObtenerDto> Obtener(RequestMonedaObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestMonedaObtenerDto();
@@ -24,26 +26,31 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Moneda por ID
         public MonedaObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adMoneda.ObtenerPorId(id);
         }
 
+        //Registrar Moneda
         public int Registrar(RequestMonedaRegistrarDto modelo, ref int idNuevo)
         {
             return _adMoneda.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Moneda
         public int Modificar(RequestMonedaModificarDto modelo)
         {
             return _adMoneda.Modificar(modelo);
         }
 
+        //Eliminar Moneda
         public int Eliminar(int id)
         {
             return _adMoneda.Eliminar(id);
         }
 
+        //Listar Moneda
         public List<MonedaObtenerComboDto> ObtenerCombo()
         {
             var listado = _adMoneda.ObtenerCombo();

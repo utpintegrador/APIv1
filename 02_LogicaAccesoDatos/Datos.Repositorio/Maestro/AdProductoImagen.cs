@@ -14,6 +14,7 @@ namespace Datos.Repositorio.Maestro
     {
         public List<ProductoImagenObtenerPorIdProductoDto> ObtenerPorIdProducto(RequestProductoImagenObtenerPorIdProductoDto filtro)
         {
+            //Producto Imagen
             List<ProductoImagenObtenerPorIdProductoDto> resultado = new List<ProductoImagenObtenerPorIdProductoDto>();
             try
             {
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Producto Imagen
         public int Registrar(long idProducto, string url, ref long idNuevo)
         {
             int resultado = 0;
@@ -78,6 +80,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Producto Imagen
         public ProductoImagenObtenerUrlImagenDto ObtenerUrlImagenPorId(long id)
         {
             ProductoImagenObtenerUrlImagenDto resultado = new ProductoImagenObtenerUrlImagenDto();
@@ -107,6 +110,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Imagen
         public int EliminarUrlImagen(long id)
         {
             int resultado = 0;

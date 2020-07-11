@@ -14,6 +14,7 @@ namespace Datos.Repositorio.Maestro
     {
         public List<CategoriaObtenerDto> Obtener(RequestCategoriaObtenerDto filtro)
         {
+            //Categoria
             List<CategoriaObtenerDto> resultado = new List<CategoriaObtenerDto>();
             try
             {
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Categoria por ID
         public CategoriaObtenerPorIdDto ObtenerPorId(int id)
         {
             CategoriaObtenerPorIdDto resultado = new CategoriaObtenerPorIdDto();
@@ -74,6 +76,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Categoria
         public int Registrar(RequestCategoriaRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -105,6 +108,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Categoria
         public int Modificar(RequestCategoriaModificarDto modelo)
         {
             int resultado = 0;
@@ -135,6 +139,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Categoria
         public int Eliminar(int id)
         {
             int resultado = 0;
@@ -163,6 +168,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Imagen de Categoria
         public int ModificarUrlImagenPorIdCategoria(long idCategoria, string url)
         {
             int resultado = 0;
@@ -192,6 +198,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Imagen por ID
         public CategoriaObtenerUrlImagenDto ObtenerUrlImagenPorId(long id)
         {
             CategoriaObtenerUrlImagenDto resultado = new CategoriaObtenerUrlImagenDto();
@@ -221,6 +228,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Imagen
         public int EliminarUrlImagen(long id)
         {
             int resultado = 0;
@@ -249,6 +257,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Listar Categoria
         public List<CategoriaObtenerComboDto> ObtenerCombo(int idEstado)
         {
             List<CategoriaObtenerComboDto> resultado = new List<CategoriaObtenerComboDto>();

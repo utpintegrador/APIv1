@@ -9,6 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoBusqueda _adTipoBusqueda = new AdTipoBusqueda();
 
+        //Busqueda
         public List<TipoBusquedaObtenerDto> Obtener(RequestTipoBusquedaObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoBusquedaObtenerDto();
@@ -25,6 +26,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Busqueda
         public List<TipoBusquedaObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoBusqueda.ObtenerCombo();
@@ -35,21 +37,25 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Busqueda
         public TipoBusquedaObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoBusqueda.ObtenerPorId(id);
         }
 
+        //Registrar Busqueda
         public int Registrar(RequestTipoBusquedaRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoBusqueda.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Busqueda
         public int Modificar(RequestTipoBusquedaModificarDto modelo)
         {
             return _adTipoBusqueda.Modificar(modelo);
         }
 
+        //Eliminar Busqueda
         public int Eliminar(int id)
         {
             return _adTipoBusqueda.Eliminar(id);

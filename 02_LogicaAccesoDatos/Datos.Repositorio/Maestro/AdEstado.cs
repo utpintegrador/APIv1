@@ -14,6 +14,7 @@ namespace Datos.Repositorio.Maestro
     {
         public List<EstadoObtenerDto> Obtener(RequestEstadoObtenerDto filtro)
         {
+            //Obtener Estado
             List<EstadoObtenerDto> resultado = new List<EstadoObtenerDto>();
             try
             {
@@ -45,6 +46,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Obtener Estado por ID
         public EstadoObtenerPorIdDto ObtenerPorId(int id)
         {
             EstadoObtenerPorIdDto resultado = new EstadoObtenerPorIdDto();
@@ -74,6 +76,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Registrar Estado
         public int Registrar(RequestEstadoRegistrarDto modelo, ref int idNuevo)
         {
             int resultado = 0;
@@ -106,6 +109,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Modificar Estado
         public int Modificar(RequestEstadoModificarDto modelo)
         {
             int resultado = 0;
@@ -136,6 +140,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Eliminar Estado
         public int Eliminar(int id)
         {
             int resultado = 0;
@@ -164,6 +169,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        //Listar Estado
         public List<EstadoObtenerComboDto> ObtenerCombo(int idTipoEstado)
         {
             List<EstadoObtenerComboDto> resultado = new List<EstadoObtenerComboDto>();

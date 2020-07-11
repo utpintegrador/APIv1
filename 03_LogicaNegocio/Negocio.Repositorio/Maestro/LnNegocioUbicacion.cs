@@ -8,6 +8,8 @@ namespace Negocio.Repositorio.Maestro
     public class LnNegocioUbicacion
     {
         private readonly AdNegocioUbicacion _adNegocioUbicacion = new AdNegocioUbicacion();
+
+        //Obtener Ubicacion de Negocio
         public List<NegocioUbicacionObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestNegocioUbicacionObtenerPorIdNegocioDto filtro)
         {
             if (filtro == null) filtro = new RequestNegocioUbicacionObtenerPorIdNegocioDto();
@@ -24,21 +26,27 @@ namespace Negocio.Repositorio.Maestro
             return lista;
         }
 
+        //Obtener Ubicacion de Negocio por ID
         public NegocioUbicacionObtenerPorIdDto ObtenerPorId(long id)
         {
             return _adNegocioUbicacion.ObtenerPorId(id);
         }
 
+
+        //Registar Ubicacion de Negocio
         public int Registrar(RequestNegocioUbicacionRegistrarDto modelo, ref long idNuevo)
         {
             return _adNegocioUbicacion.Registrar(modelo, ref idNuevo);
         }
 
+        //Modificar Ubicacion de Negocio
         public int Modificar(RequestNegocioUbicacionModificarDto modelo)
         {
             return _adNegocioUbicacion.Modificar(modelo);
         }
 
+
+        //Eliminar Ubicacion de Negocio
         public int Eliminar(long id)
         {
             return _adNegocioUbicacion.Eliminar(id);

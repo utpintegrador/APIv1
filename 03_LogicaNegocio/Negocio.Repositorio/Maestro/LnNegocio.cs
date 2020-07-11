@@ -12,6 +12,8 @@ namespace Negocio.Repositorio.Maestro
     public class LnNegocio: Logger
     {
         private readonly AdNegocio _adNegocio = new AdNegocio();
+
+        //Obtener Negocio
         public List<NegocioObtenerDto> Obtener(RequestNegocioObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestNegocioObtenerDto();
@@ -28,6 +30,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Negocios cercanos
         public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto filtro)
         {
             if (filtro == null) filtro = new RequestNegocioObtenerCercanosDto();
@@ -45,11 +48,13 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Negociopor ID
         public NegocioObtenerPorIdDto ObtenerPorId(long id)
         {
             return _adNegocio.ObtenerPorId(id);
         }
 
+        //Registrar Negocio
         public int Registrar(RequestNegocioRegistrarDto modelo, ref long idNuevo)
         {
             int respuesta = 0;
@@ -137,16 +142,19 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
+        //Modificar Negocio
         public int Modificar(RequestNegocioModificarDto modelo)
         {
             return _adNegocio.Modificar(modelo);
         }
 
+        //Elminar Negocio
         public int Eliminar(long id)
         {
             return _adNegocio.Eliminar(id);
         }
 
+        //Listar Negocio
         public List<NegocioObtenerComboDto> ObtenerCombo(long idUsuario, int idEstado)
         {
             var listado = _adNegocio.ObtenerCombo(idUsuario, idEstado);
