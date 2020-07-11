@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Entidad.Dto.Correo
+﻿namespace Entidad.Dto.Correo
 {
     public class RecuperacionContraseniaObtenerDto
     {

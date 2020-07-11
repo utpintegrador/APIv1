@@ -1,11 +1,10 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Entidad.Dto.Seguridad
 {
     public class UsuarioObtenerDto
     {
-        public int IdUsuario { get; set; }
+        public long IdUsuario { get; set; }
         public string CorreoElectronico { get; set; }
         //public string UserName { get; set; }
         //cuidado en que metodos se retorna
@@ -17,7 +16,8 @@ namespace Entidad.Dto.Seguridad
         public string FechaRegistro { get; set; }
         public string FechaActualizacion { get; set; }
         //public string UrlImagen { get; set; }
-        [IgnoreDataMember]
-        public int TotalItems { get; set; }
+        //[IgnoreDataMember]
+        [JsonIgnore]
+        public long TotalItems { get; set; }
     }
 }

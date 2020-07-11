@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Entidad.Dto.Maestro
 {
@@ -12,7 +12,7 @@ namespace Entidad.Dto.Maestro
         public string DescripcionEstado { get; set; }
         public string FechaRegistro { get; set; }
         public string CorreoElectronico { get; set; }
-        [IgnoreDataMember]
+        [JsonIgnore]
         public long TotalItems { get; set; }
 
     }

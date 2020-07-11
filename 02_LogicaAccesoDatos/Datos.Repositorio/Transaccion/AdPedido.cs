@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Datos.Helper;
 using Entidad.Configuracion.Proceso;
+using Entidad.Dto.Maestro;
 using Entidad.Dto.Transaccion;
 using Entidad.Request.Transaccion;
 using System;
@@ -209,6 +210,35 @@ namespace Datos.Repositorio.Transaccion
                         modelo.IdEstado
                     }, commandType: CommandType.StoredProcedure);
                 }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<PedidoObtenerPorIdConDetallesAgrupadoDto> ObtenerPorIdConDetalles(long id)
+        {
+            List<PedidoObtenerPorIdConDetallesAgrupadoDto> resultado = new List<PedidoObtenerPorIdConDetallesAgrupadoDto>();
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ObtenerPorIdConDetalles";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<PedidoObtenerPorIdConDetallesAgrupadoDto>(query, new
+                    {
+                        IdPedido = id
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
             }
             catch (Exception ex)
             {

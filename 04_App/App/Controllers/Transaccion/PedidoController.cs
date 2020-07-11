@@ -235,5 +235,29 @@ namespace App.Controllers.Transaccion
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerPorIdConDetalles/{id}")]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerPorIdConDetallesDto), 404)]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerPorIdConDetallesDto), 200)]
+        public async Task<ActionResult<ResponsePedidoObtenerPorIdConDetallesDto>> ObtenerPorIdConDetalles(long id)
+        {
+            ResponsePedidoObtenerPorIdConDetallesDto respuesta = new ResponsePedidoObtenerPorIdConDetallesDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "id: parametro requerido" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnPedido.ObtenerPorIdConDetalles(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
+            return Ok(respuesta);
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Entidad.Dto.Seguridad;
-using Entidad.Response;
+﻿using Entidad.Response;
+using Entidad.Response.Seguridad;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace App.CustomHandler
                             }
                         }
 
-                        UsuarioTokenDto response = new UsuarioTokenDto
+                        ResponseUsuarioLoginDto response = new ResponseUsuarioLoginDto
                         {
                             ListaError = ListaError
                         };

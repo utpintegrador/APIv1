@@ -6,7 +6,7 @@ namespace Entidad.Vo
     {
         public static string AccessKeyAws = "";
         public static string SecretAccessKeyAws = "";
-        public static string UrlAmazon = "";
+        public static string UrlAmazon = "https://encuentralo.s3.us-east-2.amazonaws.com/";
 
         //public static string NombreDominio = "https://localhost:44314";
         public static string NombreDominio = "<h4><b>Indice de métodos: </b></h4>" +
