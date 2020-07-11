@@ -9,3 +9,13 @@ Detallo los enlaces:
 (x64) https://download.visualstudio.microsoft.com/download/pr/4a195fc9-7696-4c24-add2-e791b399766c/3a67d698a74505b46db9d9779745e47b/dotnet-sdk-2.2.104-win-x64.exe
 
 Para asegurarse de contar con la version 2.2.104(x64) pueden ir a "Programas y Caracteristicas" o sino en la consola de windows colocar dotnet --version
+
+
+# Pantalla de conflictos
+* press "i" (i for insert)
+* write your merge message
+* press "esc" (escape)
+* write ":wq" (write & quit)
+* then press enter
+
+https://stackoverflow.com/questions/19085807/please-enter-a-commit-message-to-explain-why-this-merge-is-necessary-especially
