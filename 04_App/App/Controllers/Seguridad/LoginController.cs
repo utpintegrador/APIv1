@@ -2,6 +2,7 @@
 using Entidad.Dto.Seguridad;
 using Entidad.Request.Seguridad;
 using Entidad.Response;
+using Entidad.Response.Seguridad;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -30,11 +31,11 @@ namespace App.Controllers.Seguridad
         [AllowAnonymous]
         [HttpPost]
         //[ProducesResponseType(403)]
-        [ProducesResponseType(typeof(UsuarioTokenDto), 200)]
-        [ProducesResponseType(typeof(UsuarioTokenDto), 400)]
-        [ProducesResponseType(typeof(UsuarioTokenDto), 401)]
+        [ProducesResponseType(typeof(ResponseUsuarioLoginDto), 200)]
+        [ProducesResponseType(typeof(ResponseUsuarioLoginDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioLoginDto), 401)]
         [ValidationActionFilter2]
-        public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody]RequestUsuarioCredencialesDto usuario)
+        public async Task<ActionResult<ResponseUsuarioLoginDto>> Login([FromBody]RequestUsuarioCredencialesDto usuario)
         {
             if (!ModelState.IsValid)
             {
@@ -60,7 +61,7 @@ namespace App.Controllers.Seguridad
             {
                 Mensaje = "Intento de inicio de sesión invalido"
             });
-            UsuarioTokenDto usuarioRetorno = new UsuarioTokenDto
+            ResponseUsuarioLoginDto usuarioRetorno = new ResponseUsuarioLoginDto
             {
                 IdUsuario = 0,
                 Expiracion = null,
@@ -77,7 +78,7 @@ namespace App.Controllers.Seguridad
             
         }
 
-        private UsuarioTokenDto BuildToken(UsuarioLoginDto usuarioDto)
+        private ResponseUsuarioLoginDto BuildToken(UsuarioLoginDto usuarioDto)
         {
             //var claims = new[]
             //{
@@ -116,7 +117,7 @@ namespace App.Controllers.Seguridad
                 signingCredentials: creds
                 );
 
-            return new UsuarioTokenDto()
+            return new ResponseUsuarioLoginDto()
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiracion = expiration,

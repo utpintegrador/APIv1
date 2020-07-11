@@ -1,10 +1,9 @@
-﻿using Entidad.Response;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Entidad.Dto.Seguridad
+namespace Entidad.Response.Seguridad
 {
-    public class UsuarioTokenDto
+    public class ResponseUsuarioLoginDto
     {
         public string Token { get; set; }
         public DateTime? Expiracion { get; set; }
@@ -14,7 +13,7 @@ namespace Entidad.Dto.Seguridad
         public string CorreoElectronico { get; set; }
         public string UrlImagen { get; set; }
         public List<ErrorDto> ListaError { get; set; }
-        public UsuarioTokenDto()
+        public ResponseUsuarioLoginDto()
         {
             ListaError = new List<ErrorDto>();
         }

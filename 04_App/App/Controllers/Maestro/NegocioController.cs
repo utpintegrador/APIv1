@@ -185,7 +185,7 @@ namespace App.Controllers.Maestro
         [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 200)]
         [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 400)]
         [ProducesResponseType(typeof(ResponseNegocioObtenerComboDto), 404)]
-        public async Task<ActionResult<ResponseNegocioObtenerComboDto>> ObtenerCombo(int idUsuario)
+        public async Task<ActionResult<ResponseNegocioObtenerComboDto>> ObtenerCombo(long idUsuario)
         {
             ResponseNegocioObtenerComboDto respuesta = new ResponseNegocioObtenerComboDto();
             if (idUsuario == 0)

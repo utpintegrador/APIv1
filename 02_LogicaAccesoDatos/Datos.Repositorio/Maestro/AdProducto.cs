@@ -12,6 +12,44 @@ namespace Datos.Repositorio.Maestro
 {
     public class AdProducto: Logger
     {
+        public List<ProductoObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestProductoObtenerPorIdUsuarioDto filtro)
+        {
+            List<ProductoObtenerPorIdUsuarioDto> resultado = new List<ProductoObtenerPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Maestro.usp_Producto_ObtenerPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<ProductoObtenerPorIdUsuarioDto>(query, new
+                    {
+                        filtro.IdUsuario,
+                        filtro.IdNegocio,
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdMoneda,
+                        filtro.IdCategoria,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
         public List<ProductoObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestProductoObtenerPorIdNegocioDto filtro)
         {
             //Obttener Negocio
@@ -173,6 +211,35 @@ namespace Datos.Repositorio.Maestro
                     }, commandType: CommandType.StoredProcedure);
 
                 }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<ProductoObtenerPorIdConAtributosAgrupadoDto> ObtenerPorIdConAtributos(long id)
+        {
+            List<ProductoObtenerPorIdConAtributosAgrupadoDto> resultado = new List<ProductoObtenerPorIdConAtributosAgrupadoDto>();
+            try
+            {
+                const string query = "Maestro.usp_Producto_ObtenerPorIdConAtributos";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<ProductoObtenerPorIdConAtributosAgrupadoDto>(query, new
+                    {
+                        IdProducto = id
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
             }
             catch (Exception ex)
             {

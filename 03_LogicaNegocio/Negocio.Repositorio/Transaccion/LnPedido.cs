@@ -1,5 +1,6 @@
 ﻿using Datos.Repositorio.Transaccion;
 using Entidad.Configuracion.Proceso;
+using Entidad.Dto.Maestro;
 using Entidad.Dto.Transaccion;
 using Entidad.Request.Transaccion;
 using System;
@@ -188,5 +189,40 @@ namespace Negocio.Repositorio.Transaccion
         {
             return _adPedido.ModificarEstadoPorParteDeVendedor(modelo);
         }
+
+        public PedidoAtributoDto ObtenerPorIdConDetalles(long id)
+        {
+            var lista = _adPedido.ObtenerPorIdConDetalles(id);
+            if (lista.Any())
+            {
+                PedidoAtributoDto pedido = (from ped in lista
+                                            select new PedidoAtributoDto
+                                            {
+                                                IdPedido = ped.IdPedido,
+                                                Direccion = ped.Direccion,
+                                                IdEstado = ped.IdEstado,
+                                                IdMoneda = ped.IdMoneda,
+                                                IdNegocioComprador = ped.IdNegocioComprador,
+                                                IdNegocioVendedor = ped.IdNegocioVendedor
+                                            }).Distinct().First();
+
+                List<PedidoAtributoDetalleDto> listaDetalle = (from det in lista
+                                                               where det.IdPedidoDetalle != null
+                                                               select new PedidoAtributoDetalleDto
+                                                               {
+                                                                   IdPedidoDetalle = det.IdPedidoDetalle,
+                                                                   Cantidad = det.Cantidad,
+                                                                   DescripcionProducto = det.DescripcionProducto,
+                                                                   PrecioUnitario = det.PrecioUnitario
+                                                               }).Distinct().ToList();
+
+                pedido.ListaDetalle = new List<PedidoAtributoDetalleDto>();
+                pedido.ListaDetalle = listaDetalle;
+                return pedido;
+            }
+            return null;
+            
+        }
+
     }
 }

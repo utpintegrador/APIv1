@@ -58,3 +58,23 @@ D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negoci
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.xml
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocity.dll
 D:\ProyectoVentas\GitHub\Nuevo\APIRedSocial\APIRedSocial\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocityTemplateEngine.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csprojAssemblyReference.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfoInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.AssemblyInfo.cs
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CoreCompileInputs.cache
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.deps.json
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Negocio.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Infraestructura.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocity.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\NVelocityTemplateEngine.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Entidad.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Infraestructura.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Datos.Repositorio.pdb
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.csproj.CopyComplete
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.dll
+C:\Users\Sheyla\Desktop\2020 - 1\Integrador 2\GITHUB\APIv1\03_LogicaNegocio\Negocio.Repositorio\obj\Debug\netcoreapp2.2\Negocio.Repositorio.pdb

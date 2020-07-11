@@ -22,6 +22,24 @@ namespace App.Controllers.Maestro
             mapper = _mapper;
         }
 
+        [HttpPost("ObtenerPorIdUsuario")]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponseProductoObtenerPorIdUsuarioDto>> ObtenerPorIdUsuario([FromBody] RequestProductoObtenerPorIdUsuarioDto filtro)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponseProductoObtenerPorIdUsuarioDto respuesta = new ResponseProductoObtenerPorIdUsuarioDto();
+            var result = await Task.FromResult(_lnProducto.ObtenerPorIdUsuario(filtro));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
+            return Ok(respuesta);
+        }
+
         [HttpPost("ObtenerPorIdNegocio")]
         [ValidationActionFilter]
         public async Task<ActionResult<ResponseProductoObtenerPorIdNegocioDto>> ObtenerPorIdNegocio([FromBody] RequestProductoObtenerPorIdNegocioDto filtro)
@@ -138,6 +156,24 @@ namespace App.Controllers.Maestro
             }
 
             respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerPorIdConAtributos/{id}")]
+        [ProducesResponseType(typeof(ResponseProductoObtenerPorIdConAtributosDto), 404)]
+        [ProducesResponseType(typeof(ResponseProductoObtenerPorIdConAtributosDto), 200)]
+        public async Task<ActionResult<ResponseProductoObtenerPorIdConAtributosDto>> ObtenerPorIdConAtributos(long id)
+        {
+            ResponseProductoObtenerPorIdConAtributosDto respuesta = new ResponseProductoObtenerPorIdConAtributosDto();
+            var entidad = await Task.FromResult(_lnProducto.ObtenerPorIdConAtributos(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
             return Ok(respuesta);
         }
 

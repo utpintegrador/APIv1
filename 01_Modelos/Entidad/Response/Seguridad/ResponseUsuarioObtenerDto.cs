@@ -8,7 +8,7 @@ namespace Entidad.Response.Seguridad
         public int ProcesadoOk { get; set; }
         public List<ErrorDto> ListaError { get; set; }
         public List<UsuarioObtenerDto> Cuerpo { get; set; }
-        public int CantidadTotalRegistros { get; set; }
+        public long CantidadTotalRegistros { get; set; }
         public ResponseUsuarioObtenerDto()
         {
             ProcesadoOk = 0;

@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Entidad.Dto.Maestro
 {
@@ -14,7 +14,7 @@ namespace Entidad.Dto.Maestro
         public string CorreoElectronico { get; set; }
         public decimal Longitud { get; set; }
         public decimal Latitud { get; set; }
-        [IgnoreDataMember]
+        [JsonIgnore]
         public int TotalItems { get; set; }
     }
 }
