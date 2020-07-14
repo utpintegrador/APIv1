@@ -208,7 +208,6 @@ namespace Datos.Repositorio.Maestro
                         modelo.Nombre,
                         modelo.Resenia,
                         modelo.IdTipoDocumentoIdentificacion,
-                        modelo.IdUsuario,
                         modelo.IdEstado
                     }, commandType: CommandType.StoredProcedure);
 

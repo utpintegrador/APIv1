@@ -21,9 +21,6 @@ namespace Entidad.Request.Maestro
         [Range(1, int.MaxValue, ErrorMessage = "{0}: debe tener un valor mayor o igual a {1}")]
         public int IdTipoDocumentoIdentificacion { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "{0}: debe tener un valor mayor o igual a {1}")]
-        public long IdUsuario { get; set; }
-
         [Range(1, 2, ErrorMessage = "{0}: debe tener un valor entre {1} y {2}")]
         public int IdEstado { get; set; }
     }

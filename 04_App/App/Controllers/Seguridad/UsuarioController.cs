@@ -144,7 +144,38 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
-        
+
+        [HttpPut("ModificarModoAdmin")]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarModoAdminDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarModoAdminDto), 400)]
+        [ProducesResponseType(typeof(ResponseUsuarioModificarModoAdminDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioModificarModoAdminDto>> ModificarModoAdmin([FromBody] RequestUsuarioModificarModoAdminDto modelo)
+        {
+            ResponseUsuarioModificarModoAdminDto respuesta = new ResponseUsuarioModificarModoAdminDto();
+            if (!ModelState.IsValid)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Los parametros enviados no son correctos" });
+                return BadRequest(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnUsuario.ObtenerPorId(modelo.IdUsuario));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnUsuario.ModificarModoAdmin(modelo));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar modificar" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
 
         /****************************************************************************/
         [HttpPut("ModificarContrasenia")]

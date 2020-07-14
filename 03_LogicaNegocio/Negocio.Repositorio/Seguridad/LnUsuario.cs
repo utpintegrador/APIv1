@@ -65,9 +65,23 @@ namespace Negocio.Repositorio.Seguridad
             return _adUsuario.Modificar(modelo);
         }
 
+        public int ModificarModoAdmin(RequestUsuarioModificarModoAdminDto modelo)
+        {
+            return _adUsuario.ModificarModoAdmin(modelo);
+        }
+
         public int Eliminar(long id)
         {
-            return _adUsuario.Eliminar(id);
+            int respuesta = 0;
+            using (var scope = new TransactionScope())
+            {
+                respuesta = _adUsuario.Eliminar(id);
+                if (respuesta > 0)
+                {
+                    scope.Complete();
+                }
+            }
+            return respuesta;
         }
 
         public int ModificarContrasenia(RequestUsuarioCambioContraseniaDto modelo)

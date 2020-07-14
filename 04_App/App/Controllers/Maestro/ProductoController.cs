@@ -177,5 +177,27 @@ namespace App.Controllers.Maestro
             return Ok(respuesta);
         }
 
+        [HttpPost("EliminarMasivo")]
+        [ProducesResponseType(typeof(ResponseProductoEliminarMasivoDto), 400)]
+        [ProducesResponseType(typeof(ResponseProductoEliminarMasivoDto), 200)]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponseProductoEliminarMasivoDto>> EliminarMasivo([FromBody] RequestProductoEliminarMasivoDto prm)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponseProductoEliminarMasivoDto respuesta = new ResponseProductoEliminarMasivoDto();
+
+            var result = await Task.FromResult(_lnProducto.EliminarMasivo(prm));
+            if (result == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+
+            return Ok(respuesta);
+
+        }
+
     }
 }

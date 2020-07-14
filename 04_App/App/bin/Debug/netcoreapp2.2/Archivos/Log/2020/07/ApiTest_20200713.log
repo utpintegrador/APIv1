@@ -1,0 +1,4 @@
+18:54:47:533 ERROR  [192.168.100.118] [AdUsuario                     ]    [Eliminar                                  ]    - The DELETE statement conflicted with the REFERENCE constraint "FK_RolUsuario_Usuario". The conflict occurred in database "DB_A25F3D_Encuentralo", table "Seguridad.RolUsuario", column 'IdUsuario'.
+The statement has been terminated.
+19:16:37:435 ERROR  [192.168.100.118] [AdUsuario                     ]    [Eliminar                                  ]    - The DELETE statement conflicted with the REFERENCE constraint "FK_Negocio_Usuario". The conflict occurred in database "DB_A25F3D_Encuentralo", table "Maestro.Negocio", column 'IdUsuario'.
+The statement has been terminated.

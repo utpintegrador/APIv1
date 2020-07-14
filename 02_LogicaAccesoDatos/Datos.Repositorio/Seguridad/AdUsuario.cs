@@ -60,6 +60,7 @@ namespace Datos.Repositorio.Seguridad
                     resultado = cn.Query<UsuarioObtenerDto>(query,new {
                         filtro.Buscar,
                         filtro.IdEstado,
+                        filtro.IdTipoUsuario,
                         filtro.NumeroPagina,
                         filtro.CantidadRegistros,
                         filtro.ColumnaOrden,
@@ -153,6 +154,39 @@ namespace Datos.Repositorio.Seguridad
                         modelo.CorreoElectronico,
                         modelo.Nombre,
                         modelo.Apellido
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public int ModificarModoAdmin(RequestUsuarioModificarModoAdminDto modelo)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Seguridad.usp_Usuario_ModificarModoAdmin";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Execute(query, new
+                    {
+                        modelo.IdUsuario,
+                        modelo.CorreoElectronico,
+                        modelo.Nombre,
+                        modelo.Apellido,
+                        modelo.IdEstado,
+                        modelo.IdTipoUsuario
                     }, commandType: CommandType.StoredProcedure);
 
                 }

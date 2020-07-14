@@ -155,7 +155,7 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        //Modificar Negocio
+        //Modificar 
         public int Modificar(RequestProductoModificarDto modelo)
         {
             int resultado = 0;
@@ -178,7 +178,8 @@ namespace Datos.Repositorio.Maestro
                         modelo.Precio,
                         modelo.IdMoneda,
                         modelo.IdCategoria,
-                        modelo.IdNegocio
+                        modelo.IdNegocio,
+                        modelo.IdEstado
                     }, commandType: CommandType.StoredProcedure);
 
                 }

@@ -132,7 +132,6 @@ namespace Datos.Repositorio.Maestro
                     resultado = cn.Execute(query, new
                     {
                         modelo.IdNegocioUbicacion,
-                        modelo.IdNegocio,
                         modelo.Latitud,
                         modelo.Longitud,
                         modelo.Titulo,

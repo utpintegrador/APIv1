@@ -39,7 +39,7 @@ namespace App.Controllers.Maestro
             return Ok(respuesta);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}", Name = "ObtenerEstadoPorId")]
         [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(ResponseEstadoObtenerPorIdDto), 200)]

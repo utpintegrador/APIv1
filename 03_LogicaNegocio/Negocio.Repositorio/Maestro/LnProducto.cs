@@ -1,12 +1,15 @@
 ﻿using Datos.Repositorio.Maestro;
+using Entidad.Configuracion.Proceso;
 using Entidad.Dto.Maestro;
 using Entidad.Request.Maestro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 
 namespace Negocio.Repositorio.Maestro
 {
-    public class LnProducto
+    public class LnProducto: Logger
     {
         private readonly AdProducto _adProducto = new AdProducto();
 
@@ -114,6 +117,40 @@ namespace Negocio.Repositorio.Maestro
                 return producto;
             }
             return null;
+        }
+
+        public int EliminarMasivo(RequestProductoEliminarMasivoDto prm)
+        {
+            int respuesta = 0;
+            try
+            {
+                int cantidadaEliminar = prm.ListaIdProducto.Count();
+                int contadorOk = 0;
+
+                using (var scope = new TransactionScope())
+                {
+                    foreach (var producto in prm.ListaIdProducto)
+                    {
+                        var resultadoTemp = Eliminar(producto.IdProducto);
+                        if (resultadoTemp > 0)
+                        {
+                            contadorOk++;
+                        }
+                    }
+
+                    if (cantidadaEliminar == contadorOk)
+                    {
+                        scope.Complete();
+                        respuesta = 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+                respuesta = 0;
+            }
+            return respuesta;            
         }
 
     }
