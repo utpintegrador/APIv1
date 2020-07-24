@@ -57,6 +57,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseTipoDocumentoIdentificacionObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseTipoDocumentoIdentificacionObtenerPorIdDto respuesta = new ResponseTipoDocumentoIdentificacionObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnTipoDocumentoIdentificacion.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -129,6 +135,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseTipoDocumentoIdentificacionEliminarDto>> Eliminar(int id)
         {
             ResponseTipoDocumentoIdentificacionEliminarDto respuesta = new ResponseTipoDocumentoIdentificacionEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnTipoDocumentoIdentificacion.ObtenerPorId(id));
             if (entidad == null)
             {

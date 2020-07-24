@@ -198,5 +198,63 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        public List<EstadoObtenerComboVendedorDto> ObtenerComboVendedor(int idEstadoActual)
+        {
+            List<EstadoObtenerComboVendedorDto> resultado = new List<EstadoObtenerComboVendedorDto>();
+            try
+            {
+                const string query = "Maestro.usp_Estado_ObtenerComboVendedor";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<EstadoObtenerComboVendedorDto>(query, new
+                    {
+                        IdEstadoActual = idEstadoActual
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<EstadoObtenerComboCompradorDto> ObtenerComboComprador(int idEstadoActual)
+        {
+            List<EstadoObtenerComboCompradorDto> resultado = new List<EstadoObtenerComboCompradorDto>();
+            try
+            {
+                const string query = "Maestro.usp_Estado_ObtenerComboComprador";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<EstadoObtenerComboCompradorDto>(query, new
+                    {
+                        IdEstadoActual = idEstadoActual
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
     }
 }

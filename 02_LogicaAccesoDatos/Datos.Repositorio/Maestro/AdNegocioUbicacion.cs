@@ -47,6 +47,42 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
+        public List<NegocioUbicacionObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestNegocioUbicacionObtenerPorIdUsuarioDto filtro)
+        {
+            //Obtener Negocio Ubicacion
+            List<NegocioUbicacionObtenerPorIdUsuarioDto> resultado = new List<NegocioUbicacionObtenerPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Maestro.usp_NegocioUbicacion_ObtenerPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<NegocioUbicacionObtenerPorIdUsuarioDto>(query, new
+                    {
+                        filtro.IdUsuario,
+                        filtro.Buscar,
+                        filtro.IdNegocio,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
         //Obtener Negocio Ubicacion por ID
         public NegocioUbicacionObtenerPorIdDto ObtenerPorId(long id)
         {

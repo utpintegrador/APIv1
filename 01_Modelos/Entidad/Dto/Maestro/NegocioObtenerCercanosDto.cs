@@ -14,7 +14,9 @@ namespace Entidad.Dto.Maestro
         public string CorreoElectronico { get; set; }
         public decimal Longitud { get; set; }
         public decimal Latitud { get; set; }
-        [JsonIgnore]
-        public int TotalItems { get; set; }
+        public string Telefono { get; set; }
+        public double DistanciaKm { get; set; }
+        //[JsonIgnore]
+        //public int TotalItems { get; set; }
     }
 }

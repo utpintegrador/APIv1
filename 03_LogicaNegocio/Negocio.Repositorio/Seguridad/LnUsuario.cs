@@ -10,6 +10,7 @@ using Entidad.Vo;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -21,7 +22,22 @@ namespace Negocio.Repositorio.Seguridad
         public UsuarioLoginDto ObtenerPorLogin(RequestUsuarioCredencialesDto modelo)
         {
             modelo.Contrasenia = Infraestructura.Utilitario.Util.Encriptar(modelo.Contrasenia.Trim());
-            return _adUsuario.ObtenerPorLogin(modelo);
+            var usuarioLogin = _adUsuario.ObtenerPorLogin(modelo);
+            if(usuarioLogin != null)
+            {
+                
+                LnRol lnRol = new LnRol();
+                var listadoRol = lnRol.ObtenerPorIdUsuario(usuarioLogin.IdUsuario);
+                if(listadoRol != null)
+                {
+                    if (listadoRol.Any())
+                    {
+                        usuarioLogin.ListaRol = new List<RolObtenerPorIdUsuarioDto>();
+                        usuarioLogin.ListaRol = listadoRol;
+                    }
+                }
+            }
+            return usuarioLogin;
         }
 
         public List<UsuarioObtenerDto> Obtener(RequestUsuarioObtenerDto filtro)
@@ -105,52 +121,68 @@ namespace Negocio.Repositorio.Seguridad
         //    return _adUsuario.EliminarUrlImagen(id);
         //}
 
-        public int SubirImagenAws(RequestUsuarioModificarImagenMetodo1Dto entidad, ref string url)
+        public async Task<string> SubirImagenAws(RequestUsuarioModificarImagenMetodo1Dto entidad)
         {
-            int respuesta = 0;
+            //int respuesta = 0;
+            string url = string.Empty;
             try
             {
                 var objetoImagenBd = _adUsuario.ObtenerUrlImagenPorId(entidad.IdUsuario);
-                if(objetoImagenBd == null)
+                if (objetoImagenBd == null)
                 {
-                    url = string.Empty;
-                    return -1;
+                    //url = string.Empty;
+                    //return -1;
+                    url = "-1";
+                    return url;
                 }
 
                 url = ConstanteVo.UrlAmazon;
                 string nombreDirectorio = "Usuario";
 
-                int respuestaEliminar = EliminarImagenAws(objetoImagenBd.UrlImagen, entidad.IdUsuario);
-                if (respuestaEliminar > 0)
+                EliminarImagenAws(objetoImagenBd.UrlImagen, entidad.IdUsuario);
+                //int respuestaEliminar = 
+                //if (respuestaEliminar > 0)
+                //{
+                using (var client = new AmazonS3Client(
+                    Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                    Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws),
+                    RegionEndpoint.USEast2))
                 {
-                    using (var client = new AmazonS3Client(
-                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
-                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws), 
-                        RegionEndpoint.USEast2))
+                    string nombreArchivo = string.Format("{0}_{1}{2}{3}_{4}{5}{6}_{7}.{8}",
+                            entidad.IdUsuario,
+                            DateTime.Now.Year.ToString("d4"),
+                            DateTime.Now.Month.ToString("d2"),
+                            DateTime.Now.Day.ToString("d2"),
+                            DateTime.Now.Hour.ToString("d2"),
+                            DateTime.Now.Minute.ToString("d2"),
+                            DateTime.Now.Second.ToString("d2"),
+                            DateTime.Now.Millisecond.ToString("d3"),
+                            entidad.ExtensionSinPunto);
+                    url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
+
+                    using (var ms = new MemoryStream(entidad.ArchivoBytes))
                     {
-                        string nombreArchivo = string.Format("{0}.{1}",
-                                entidad.IdUsuario,
-                                entidad.ExtensionSinPunto);
-                        url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
-
-                        using (var ms = new MemoryStream(entidad.ArchivoBytes))
+                        var uploadRequest = new TransferUtilityUploadRequest
                         {
-                            var uploadRequest = new TransferUtilityUploadRequest
-                            {
-                                InputStream = ms,
-                                Key = nombreArchivo,
-                                BucketName = string.Format("encuentralo/{0}", nombreDirectorio),
-                                CannedACL = S3CannedACL.PublicRead
-                            };
+                            InputStream = ms,
+                            Key = nombreArchivo,
+                            BucketName = string.Format("encuentralo/{0}", nombreDirectorio),
+                            CannedACL = S3CannedACL.PublicRead
+                        };
 
-                            var fileTransferUtility = new TransferUtility(client);
-                            fileTransferUtility.Upload(uploadRequest);
-
-                            //LnUsuario lnUsuario = new LnUsuario();
-                            respuesta = ModificarUrlImagenPorIdUsuario(entidad.IdUsuario, url);
-                        }
+                        var fileTransferUtility = new TransferUtility(client);
+                        await fileTransferUtility.UploadAsync(uploadRequest);
                     }
                 }
+
+                //LnUsuario lnUsuario = new LnUsuario();
+                int respuestaBd = ModificarUrlImagenPorIdUsuario(entidad.IdUsuario, url);
+                if (respuestaBd == 0)
+                {
+                    url = "0";
+                }
+
+                //}
             }
             catch (AmazonS3Exception exSe)
             {
@@ -161,7 +193,7 @@ namespace Negocio.Repositorio.Seguridad
                 Log(Level.Error, String.Format("Exception: {0}", ex));
             }
 
-            return respuesta;
+            return url;// respuesta;
         }
 
         public int EliminarImagen(long idUsuario, ref string urlImagen)
@@ -259,6 +291,11 @@ namespace Negocio.Repositorio.Seguridad
                 listado = new List<UsuarioObtenerComboDto>();
             }
             return listado;
+        }
+
+        public UsuarioObtenerContraseniaPorIdDto ObtenerContraseniaPorId(long id)
+        {
+            return _adUsuario.ObtenerContraseniaPorId(id);
         }
     }
 }

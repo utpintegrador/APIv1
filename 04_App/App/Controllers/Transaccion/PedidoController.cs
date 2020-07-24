@@ -59,15 +59,52 @@ namespace App.Controllers.Transaccion
             return Ok(respuesta);
         }
 
+
+        [HttpPost("ObtenerComprasPorIdUsuario")]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponsePedidoObtenerComprasPorIdUsuarioDto>> ObtenerComprasPorIdUsuario([FromBody] RequestPedidoObtenerComprasPorIdUsuarioDto filtro)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponsePedidoObtenerComprasPorIdUsuarioDto respuesta = new ResponsePedidoObtenerComprasPorIdUsuarioDto();
+            var result = await Task.FromResult(_lnPedido.ObtenerComprasPorIdUsuario(filtro));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
+            return Ok(respuesta);
+        }
+
+        [HttpPost("ObtenerVentasPorIdUsuario")]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponsePedidoObtenerVentasPorIdUsuarioDto>> ObtenerVentasPorIdUsuario([FromBody] RequestPedidoObtenerVentasPorIdUsuarioDto filtro)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            ResponsePedidoObtenerVentasPorIdUsuarioDto respuesta = new ResponsePedidoObtenerVentasPorIdUsuarioDto();
+            var result = await Task.FromResult(_lnPedido.ObtenerVentasPorIdUsuario(filtro));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
+            return Ok(respuesta);
+        }
+
         [HttpGet("{id}", Name = "ObtenerPedidoPorId")]
         [ProducesResponseType(typeof(ResponsePedidoObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(ResponsePedidoObtenerPorIdDto), 200)]
         public async Task<ActionResult<ResponsePedidoObtenerPorIdDto>> ObtenerPorId(long id)
         {
             ResponsePedidoObtenerPorIdDto respuesta = new ResponsePedidoObtenerPorIdDto();
-            if(id == 0)
+            if (id == 0)
             {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "id: parametro requerido" });
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
                 return NotFound(respuesta);
             }
 
@@ -244,11 +281,61 @@ namespace App.Controllers.Transaccion
             ResponsePedidoObtenerPorIdConDetallesDto respuesta = new ResponsePedidoObtenerPorIdConDetallesDto();
             if (id == 0)
             {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "id: parametro requerido" });
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
                 return NotFound(respuesta);
             }
 
             var entidad = await Task.FromResult(_lnPedido.ObtenerPorIdConDetalles(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
+            return Ok(respuesta);
+        }
+
+
+        [HttpGet("ObtenerNotaPedidoPorId/{id}")]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerNotaPedidoDto), 404)]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerNotaPedidoDto), 200)]
+        public async Task<ActionResult<ResponsePedidoObtenerNotaPedidoDto>> ObtenerNotaPedidoPorId(long id)
+        {
+            ResponsePedidoObtenerNotaPedidoDto respuesta = new ResponsePedidoObtenerNotaPedidoDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnPedido.ObtenerNotaPedidoPorId(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerPendientesAtencionPorIdUsuario/{id}")]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto), 400)]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto), 404)]
+        [ProducesResponseType(typeof(ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto), 200)]
+        public async Task<ActionResult<ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto>> ObtenerPendientesAtencionPorIdUsuario(long id)
+        {
+            ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto respuesta = new ResponsePedidoObtenerPendientesAtencionPorIdUsuarioDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnPedido.ObtenerPendientesAtencionPorIdUsuario(id));
             if (entidad == null)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });

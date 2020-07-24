@@ -168,5 +168,34 @@ namespace Datos.Repositorio.Seguridad
             }
             return resultado;
         }
+
+        public List<AccesoObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(long idUsuario)
+        {
+            List<AccesoObtenerPorIdUsuarioDto> resultado = new List<AccesoObtenerPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Seguridad.usp_Acceso_ObtenerPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<AccesoObtenerPorIdUsuarioDto>(query, new
+                    {
+                        IdUsuario = idUsuario
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

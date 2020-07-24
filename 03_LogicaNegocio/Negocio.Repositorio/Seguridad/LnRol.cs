@@ -53,5 +53,15 @@ namespace Negocio.Repositorio.Seguridad
         {
             return _adRol.Eliminar(id);
         }
+
+        public List<RolObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(long idUsuario)
+        {
+            var listado = _adRol.ObtenerPorIdUsuario(idUsuario);
+            if(listado == null)
+            {
+                listado = new List<RolObtenerPorIdUsuarioDto>();
+            }
+            return listado;
+        }
     }
 }

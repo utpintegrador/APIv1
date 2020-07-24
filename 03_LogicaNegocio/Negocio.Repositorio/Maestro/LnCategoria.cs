@@ -91,37 +91,44 @@ namespace Negocio.Repositorio.Maestro
                 url = ConstanteVo.UrlAmazon;
                 string nombreDirectorio = "Categoria";
 
-                int respuestaEliminar = EliminarImagenAws(objetoImagenBd.UrlImagen, entidad.IdCategoria);
-                if (respuestaEliminar > 0)
+                int respuestaEliminarAws = EliminarImagenAws(objetoImagenBd.UrlImagen, entidad.IdCategoria);
+                //if (respuestaEliminar > 0)
+                //{
+                using (var client = new AmazonS3Client(
+                    Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
+                    Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws),
+                    RegionEndpoint.USEast2))
                 {
-                    using (var client = new AmazonS3Client(
-                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.AccessKeyAws),
-                        Infraestructura.Utilitario.Util.Desencriptar(ConstanteVo.SecretAccessKeyAws),
-                        RegionEndpoint.USEast2))
+                    string nombreArchivo = string.Format("{0}_{1}{2}{3}_{4}{5}{6}_{7}.{8}",
+                            entidad.IdCategoria,
+                            DateTime.Now.Year.ToString("d4"),
+                            DateTime.Now.Month.ToString("d2"),
+                            DateTime.Now.Day.ToString("d2"),
+                            DateTime.Now.Hour.ToString("d2"),
+                            DateTime.Now.Minute.ToString("d2"),
+                            DateTime.Now.Second.ToString("d2"),
+                            DateTime.Now.Millisecond.ToString("d3"),
+                            entidad.ExtensionSinPunto);
+                    url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
+
+                    using (var ms = new MemoryStream(entidad.ArchivoBytes))
                     {
-                        string nombreArchivo = string.Format("{0}.{1}",
-                                entidad.IdCategoria,
-                                entidad.ExtensionSinPunto);
-                        url = string.Format("{0}{1}/{2}", url, nombreDirectorio, nombreArchivo);
-
-                        using (var ms = new MemoryStream(entidad.ArchivoBytes))
+                        var uploadRequest = new TransferUtilityUploadRequest
                         {
-                            var uploadRequest = new TransferUtilityUploadRequest
-                            {
-                                InputStream = ms,
-                                Key = nombreArchivo,
-                                BucketName = string.Format("encuentralo/{0}", nombreDirectorio),
-                                CannedACL = S3CannedACL.PublicRead
-                            };
+                            InputStream = ms,
+                            Key = nombreArchivo,
+                            BucketName = string.Format("encuentralo/{0}", nombreDirectorio),
+                            CannedACL = S3CannedACL.PublicRead
+                        };
 
-                            var fileTransferUtility = new TransferUtility(client);
-                            fileTransferUtility.Upload(uploadRequest);
+                        var fileTransferUtility = new TransferUtility(client);
+                        fileTransferUtility.Upload(uploadRequest);
 
-                            //LnCategoria lnCategoria = new LnCategoria();
-                            respuesta = ModificarUrlImagenPorIdCategoria(entidad.IdCategoria, url);
-                        }
+                        //LnCategoria lnCategoria = new LnCategoria();
+                        respuesta = ModificarUrlImagenPorIdCategoria(entidad.IdCategoria, url);
                     }
                 }
+                //}
             }
             catch (AmazonS3Exception exSe)
             {

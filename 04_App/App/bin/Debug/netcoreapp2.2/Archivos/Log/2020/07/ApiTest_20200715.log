@@ -1,0 +1,7 @@
+00:12:14:794 ERROR  [192.168.100.118] [LnUsuario                     ]    [SubirImagenAws                            ]    - Exception: System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.get_Length()
+   at Amazon.S3.Transfer.TransferUtilityUploadRequest.get_ContentLength() in D:\JenkinsWorkspaces\trebuchet-stage-release\AWSDotNetPublic\sdk\src\Services\S3\Custom\_bcl+netstandard+pcl\Transfer\TransferUtilityUploadRequest.cs:line 420
+   at Amazon.S3.Transfer.TransferUtility.IsMultipartUpload(TransferUtilityUploadRequest request) in D:\JenkinsWorkspaces\trebuchet-stage-release\AWSDotNetPublic\sdk\src\Services\S3\Custom\_bcl+netstandard+pcl\Transfer\TransferUtility.cs:line 329
+   at Amazon.S3.Transfer.TransferUtility.GetUploadCommand(TransferUtilityUploadRequest request, SemaphoreSlim asyncThrottler) in D:\JenkinsWorkspaces\trebuchet-stage-release\AWSDotNetPublic\sdk\src\Services\S3\Custom\_bcl+netstandard+pcl\Transfer\_async\TransferUtility.async.cs:line 281
+   at Amazon.S3.Transfer.TransferUtility.Upload(TransferUtilityUploadRequest request) in D:\JenkinsWorkspaces\trebuchet-stage-release\AWSDotNetPublic\sdk\src\Services\S3\Custom\_bcl+netstandard+pcl\Transfer\_bcl45+netstandard\TransferUtility.sync.cs:line 280
+   at Negocio.Repositorio.Seguridad.LnUsuario.SubirImagenAws(RequestUsuarioModificarImagenMetodo1Dto entidad, String& url) in D:\Integrador2\APIv1\03_LogicaNegocio\Negocio.Repositorio\Seguridad\LnUsuario.cs:line 147

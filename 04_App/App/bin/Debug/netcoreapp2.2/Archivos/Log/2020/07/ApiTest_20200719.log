@@ -1,0 +1,6 @@
+15:16:04:264 ERROR  [192.168.100.118] [AdPedido                      ]    [Registrar                                 ]    - Cannot insert the value NULL into column 'IdPedido', table 'DB_A25F3D_Encuentralo.Transaccion.Pedido'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+The 'usp_Pedido_Registrar' procedure attempted to return a status of NULL, which is not allowed. A status of 0 will be returned instead.
+15:16:04:657 ERROR  [192.168.100.118] [AdPedidoDetalle               ]    [Registrar                                 ]    - Cannot insert the value NULL into column 'IdPedidoDetalle', table 'DB_A25F3D_Encuentralo.Transaccion.PedidoDetalle'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+The 'usp_PedidoDetalle_Registrar' procedure attempted to return a status of NULL, which is not allowed. A status of 0 will be returned instead.

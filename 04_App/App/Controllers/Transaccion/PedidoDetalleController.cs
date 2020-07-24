@@ -47,8 +47,8 @@ namespace App.Controllers.Transaccion
             ResponsePedidoDetalleObtenerPorIdPedidoDto respuesta = new ResponsePedidoDetalleObtenerPorIdPedidoDto();
             if (idPedido == 0)
             {
-                respuesta.ListaError.Add(new ErrorDto { Mensaje = "idPedido: parametro requerido" });
-                return BadRequest(respuesta);
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
             }
 
             var entidad = await Task.FromResult(_lnPedidoDetalle.ObtenerPorIdPedido(idPedido));

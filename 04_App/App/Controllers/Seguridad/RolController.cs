@@ -5,6 +5,7 @@ using AutoMapper;
 using Entidad.Request.Seguridad;
 using Entidad.Response;
 using Entidad.Response.Seguridad;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Seguridad;
 
@@ -22,6 +23,7 @@ namespace App.Controllers.Seguridad
             mapper = _mapper;
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost("Obtener")]
         public async Task<ActionResult<ResponseRolObtenerDto>> Obtener(RequestRolObtenerDto filtro)
         {
@@ -38,12 +40,19 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}", Name = "ObtenerRolPorId")]
         [ProducesResponseType(typeof(ResponseRolObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(ResponseRolObtenerPorIdDto), 200)]
         public async Task<ActionResult<ResponseRolObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseRolObtenerPorIdDto respuesta = new ResponseRolObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnRol.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -56,7 +65,7 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRolRegistrarDto), 400)]
         [ProducesResponseType(typeof(ResponseRolRegistrarDto), 200)]
@@ -81,6 +90,7 @@ namespace App.Controllers.Seguridad
 
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut()]//"{id}")]
         [ProducesResponseType(typeof(ResponseRolModificarDto), 404)]
         [ProducesResponseType(typeof(ResponseRolModificarDto), 400)]
@@ -109,6 +119,7 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(ResponseRolEliminarDto), 404)]
         [ProducesResponseType(typeof(ResponseRolEliminarDto), 400)]
@@ -116,6 +127,12 @@ namespace App.Controllers.Seguridad
         public async Task<ActionResult<ResponseRolEliminarDto>> Eliminar(int id)
         {
             ResponseRolEliminarDto respuesta = new ResponseRolEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+            
             var entidad = await Task.FromResult(_lnRol.ObtenerPorId(id));
             if (entidad == null)
             {

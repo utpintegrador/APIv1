@@ -11,6 +11,7 @@ using Negocio.Repositorio.Seguridad;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,17 +98,23 @@ namespace App.Controllers.Seguridad
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            List<string> listaRoles = new List<string>();
-            listaRoles.Add("Administrador");
-            listaRoles.Add("Usuario");
-            foreach (var item in listaRoles)
+            if (usuarioDto.ListaRol == null) usuarioDto.ListaRol = new List<RolObtenerPorIdUsuarioDto>();
+            if (usuarioDto.ListaRol.Any())
             {
-                claims.Add(new Claim(ClaimTypes.Role, item));
+                foreach (var item in usuarioDto.ListaRol)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, item.Descripcion));
+                }
             }
-
+            else
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Ninguno"));
+            }
+           
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiration = DateTime.UtcNow.AddHours(1);
+            //var expiration = DateTime.UtcNow.AddMinutes(1);
 
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: null,

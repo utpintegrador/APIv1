@@ -248,16 +248,20 @@ namespace App.Controllers.Maestro
         [ProducesResponseType(typeof(ResponseProductoEliminarImagenDto), 200)]
         public async Task<ActionResult<ResponseProductoEliminarImagenDto>> Imagen(long id)
         {
-            string urlImagen = string.Empty;
             ResponseProductoEliminarImagenDto respuesta = new ResponseProductoEliminarImagenDto();
-            var entidad = await Task.FromResult(_lnProductoImagen.EliminarImagen(id, ref urlImagen));
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnProductoImagen.EliminarImagen(id));
             if (entidad == -1)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
                 return NotFound(respuesta);
             }
 
-            respuesta.UrlImagen = urlImagen;
             respuesta.ProcesadoOk = 1;
             return Ok(respuesta);
         }

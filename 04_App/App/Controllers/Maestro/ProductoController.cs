@@ -64,6 +64,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseProductoObtenerPorIdDto>> ObtenerPorId(long id)
         {
             ResponseProductoObtenerPorIdDto respuesta = new ResponseProductoObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnProducto.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -141,6 +147,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseProductoEliminarDto>> Eliminar(long id)
         {
             ResponseProductoEliminarDto respuesta = new ResponseProductoEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnProducto.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -165,6 +177,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseProductoObtenerPorIdConAtributosDto>> ObtenerPorIdConAtributos(long id)
         {
             ResponseProductoObtenerPorIdConAtributosDto respuesta = new ResponseProductoObtenerPorIdConAtributosDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnProducto.ObtenerPorIdConAtributos(id));
             if (entidad == null)
             {

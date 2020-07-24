@@ -220,33 +220,33 @@ namespace Datos.Repositorio.Maestro
             return resultado;
         }
 
-        public List<ProductoObtenerPorIdConAtributosAgrupadoDto> ObtenerPorIdConAtributos(long id)
-        {
-            List<ProductoObtenerPorIdConAtributosAgrupadoDto> resultado = new List<ProductoObtenerPorIdConAtributosAgrupadoDto>();
-            try
-            {
-                const string query = "Maestro.usp_Producto_ObtenerPorIdConAtributos";
+        //public List<ProductoObtenerPorIdConAtributosAgrupadoDto> ObtenerPorIdConAtributos(long id)
+        //{
+        //    List<ProductoObtenerPorIdConAtributosAgrupadoDto> resultado = new List<ProductoObtenerPorIdConAtributosAgrupadoDto>();
+        //    try
+        //    {
+        //        const string query = "Maestro.usp_Producto_ObtenerPorIdConAtributos";
 
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
+        //        using (var cn = HelperClass.ObtenerConeccion())
+        //        {
+        //            if (cn.State == ConnectionState.Closed)
+        //            {
+        //                cn.Open();
+        //            }
 
-                    resultado = cn.Query<ProductoObtenerPorIdConAtributosAgrupadoDto>(query, new
-                    {
-                        IdProducto = id
-                    }, commandType: CommandType.StoredProcedure).ToList();
+        //            resultado = cn.Query<ProductoObtenerPorIdConAtributosAgrupadoDto>(query, new
+        //            {
+        //                IdProducto = id
+        //            }, commandType: CommandType.StoredProcedure).ToList();
 
-                }
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
-            }
-            return resultado;
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+        //    }
+        //    return resultado;
+        //}
     }
 }

@@ -15,6 +15,11 @@ namespace App.Controllers.Correo
     {
         private readonly LnRecuperacionContrasenia _lnRecuperacionContrasenia = new LnRecuperacionContrasenia();
 
+        /// <summary>
+        /// Registrar peticion de recuperacion de contraseña
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaRegistrarDto), 400)]
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaRegistrarDto), 200)]
@@ -41,6 +46,7 @@ namespace App.Controllers.Correo
 
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("ObtenerUsuarioPorCodigo/{codigo}")] 
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaObtenerPorCodigoDto), 404)]
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaObtenerPorCodigoDto), 200)]
@@ -59,7 +65,7 @@ namespace App.Controllers.Correo
             return Ok(respuesta);
         }
 
-
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPut("ModificarContraseniaMedianteCodigo")]
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaModificarContraseniaDto), 404)]
         [ProducesResponseType(typeof(ResponseRecuperacionContraseniaModificarContraseniaDto), 400)]

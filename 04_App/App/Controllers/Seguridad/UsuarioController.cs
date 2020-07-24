@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using App.CustomHandler;
 using Entidad.Request.Seguridad;
+using Entidad.Configuracion.Proceso;
 
 namespace App.Controllers.Seguridad
 {
@@ -48,6 +49,12 @@ namespace App.Controllers.Seguridad
         public async Task<ActionResult<ResponseUsuarioObtenerPorIdDto>> ObtenerPorId(long id)
         {
             ResponseUsuarioObtenerPorIdDto respuesta = new ResponseUsuarioObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnUsuario.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -67,6 +74,12 @@ namespace App.Controllers.Seguridad
         public async Task<ActionResult<ResponseUsuarioEliminarDto>> Eliminar(long id)
         {
             ResponseUsuarioEliminarDto respuesta = new ResponseUsuarioEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnUsuario.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -240,20 +253,25 @@ namespace App.Controllers.Seguridad
                 return BadRequest(respuesta);
             }
 
-            var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo, ref urlImagenNueva));
-            if (result == 0)
+            var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo));//, ref urlImagenNueva));
+            if (string.IsNullOrEmpty(result.Result))// == 0)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
                 return BadRequest(respuesta);
             }
-            if (result == -1)
+            if (result.Result == "0")
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
+            }
+            if (result.Result == "-1")
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "El IdUsuario proporcionado no es válido" });
                 return BadRequest(respuesta);
             }
 
             respuesta.ProcesadoOk = 1;
-            respuesta.UrlImagen = urlImagenNueva;
+            respuesta.UrlImagen = result.Result; //urlImagenNueva;
 
             return Ok(respuesta);
 
@@ -296,15 +314,25 @@ namespace App.Controllers.Seguridad
                     ExtensionSinPunto = extension,
                     IdUsuario = idUsuario
                 };
-                var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo, ref urlImagenNueva));
-                if (result == 0)
+                var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo));//, ref urlImagenNueva));
+                if (string.IsNullOrEmpty(result.Result))// == 0)
                 {
                     respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
                     return BadRequest(respuesta);
                 }
+                if (result.Result == "0")
+                {
+                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                    return BadRequest(respuesta);
+                }
+                if (result.Result == "-1")
+                {
+                    respuesta.ListaError.Add(new ErrorDto { Mensaje = "El IdUsuario proporcionado no es válido" });
+                    return BadRequest(respuesta);
+                }
 
                 respuesta.ProcesadoOk = 1;
-                respuesta.UrlImagen = urlImagenNueva;
+                respuesta.UrlImagen = result.Result; //urlImagenNueva;
 
                 return Ok(respuesta);
             }
@@ -328,7 +356,7 @@ namespace App.Controllers.Seguridad
                 });
                 return BadRequest(respuesta);
             }
-            
+
         }
 
         /// <summary>
@@ -347,9 +375,20 @@ namespace App.Controllers.Seguridad
             {
                 var archivoTemp = Request.Form.Files["Archivo"];
                 var idUsuarioTemp = Request.Form["IdUsuario"];
+
+                if(archivoTemp == null)
+                {
+                    Logger.Log(Logger.Level.Error, "No se obtuvo el valor del objeto Archivo");
+                }
+
+                if (string.IsNullOrEmpty(idUsuarioTemp))
+                {
+                    Logger.Log(Logger.Level.Error, "No se obtuvo el valor del objeto IdUsuario");
+                }
             }
             catch (InvalidOperationException invEx)
             {
+                Logger.Log(Logger.Level.Error, invEx.InnerException == null ? invEx.Message : invEx.InnerException.Message);
                 respuesta.ListaError.Add(new ErrorDto
                 {
                     Mensaje = "Los parametros 'Archivo' y 'IdUsuario' deben ser enviados mediante 'multipart/form-data'"
@@ -363,7 +402,7 @@ namespace App.Controllers.Seguridad
 
             var archivo = Request.Form.Files["Archivo"];
             var idUsuario = Request.Form["IdUsuario"];
-            
+
             if (archivo == null || string.IsNullOrEmpty(idUsuario))
             {
                 respuesta.ListaError.Add(new ErrorDto
@@ -396,15 +435,25 @@ namespace App.Controllers.Seguridad
                 ExtensionSinPunto = extension,
                 IdUsuario = Convert.ToInt64(idUsuario)
             };
-            var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo, ref urlImagenNueva));
-            if (result == 0)
+            var result = await Task.FromResult(_lnUsuario.SubirImagenAws(modelo));//, ref urlImagenNueva));
+            if (string.IsNullOrEmpty(result.Result))// == 0)
             {
                 respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
                 return BadRequest(respuesta);
             }
+            if (result.Result == "0")
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Error al intentar registrar" });
+                return BadRequest(respuesta);
+            }
+            if (result.Result == "-1")
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "El IdUsuario proporcionado no es válido" });
+                return BadRequest(respuesta);
+            }
 
             respuesta.ProcesadoOk = 1;
-            respuesta.UrlImagen = urlImagenNueva;
+            respuesta.UrlImagen = result.Result; //urlImagenNueva;
 
             return Ok(respuesta);
 
@@ -442,5 +491,30 @@ namespace App.Controllers.Seguridad
             respuesta.Cuerpo = result;
             return Ok(respuesta);
         }
+
+        [HttpGet("ObtenerContraseniaPorId/{id}")]
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerContraseniaPorIdDto), 404)]
+        [ProducesResponseType(typeof(ResponseUsuarioObtenerContraseniaPorIdDto), 200)]
+        public async Task<ActionResult<ResponseUsuarioObtenerContraseniaPorIdDto>> ObtenerContraseniaPorId(long id)
+        {
+            ResponseUsuarioObtenerContraseniaPorIdDto respuesta = new ResponseUsuarioObtenerContraseniaPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnUsuario.ObtenerContraseniaPorId(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
+            return Ok(respuesta);
+        }
+
     }
 }

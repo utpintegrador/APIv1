@@ -23,5 +23,9 @@ namespace Entidad.Request.Maestro
 
         [Range(1, 2, ErrorMessage = "{0}: debe tener un valor entre {1} y {2}")]
         public int IdEstado { get; set; }
+
+        [Required(ErrorMessage = "{0}: parametro es requerido")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "{0}: longitud debe estar entre {2} y {1} caracteres")]
+        public string Telefono { get; set; }
     }
 }

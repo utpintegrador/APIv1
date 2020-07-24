@@ -72,7 +72,7 @@ namespace App.Controllers.Maestro
 
                 if (result.Any())
                 {
-                    respuesta.CantidadTotalRegistros = result.First().TotalItems;
+                    respuesta.CantidadTotalRegistros = result.Count();
                 }
 
                 return Ok(respuesta);
@@ -86,6 +86,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseNegocioObtenerPorIdDto>> ObtenerPorId(long id)
         {
             ResponseNegocioObtenerPorIdDto respuesta = new ResponseNegocioObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -163,6 +169,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseNegocioEliminarDto>> Eliminar(long id)
         {
             ResponseNegocioEliminarDto respuesta = new ResponseNegocioEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnNegocio.ObtenerPorId(id));
             if (entidad == null)
             {

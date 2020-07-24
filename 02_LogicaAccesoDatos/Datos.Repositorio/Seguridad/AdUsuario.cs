@@ -369,5 +369,35 @@ namespace Datos.Repositorio.Seguridad
             }
             return resultado;
         }
+
+        public UsuarioObtenerContraseniaPorIdDto ObtenerContraseniaPorId(long id)
+        {
+            UsuarioObtenerContraseniaPorIdDto resultado = new UsuarioObtenerContraseniaPorIdDto();
+            try
+            {
+                const string query = "Seguridad.usp_Usuario_ObtenerContraseniaPorId";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.QuerySingleOrDefault<UsuarioObtenerContraseniaPorIdDto>(query, new
+                    {
+                        IdUsuario = id
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
     }
 }

@@ -41,12 +41,37 @@ namespace App.Controllers.Maestro
             return Ok(respuesta);
         }
 
+        [HttpPost("ObtenerPorIdUsuario")]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdUsuarioDto), 400)]
+        [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdUsuarioDto), 200)]
+        [ValidationActionFilter]
+        public async Task<ActionResult<ResponseNegocioUbicacionObtenerPorIdUsuarioDto>> ObtenerPorIdUsuario([FromBody] RequestNegocioUbicacionObtenerPorIdUsuarioDto filtro)
+        {
+            ResponseNegocioUbicacionObtenerPorIdUsuarioDto respuesta = new ResponseNegocioUbicacionObtenerPorIdUsuarioDto();
+            var result = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorIdUsuario(filtro));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+
+            if (result.Any())
+            {
+                respuesta.CantidadTotalRegistros = result.First().TotalItems;
+            }
+
+            return Ok(respuesta);
+        }
+
         [HttpGet("{id}", Name = "ObtenerNegocioUbicacionPorId")]
         [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(ResponseNegocioUbicacionObtenerPorIdDto), 200)]
         public async Task<ActionResult<ResponseNegocioUbicacionObtenerPorIdDto>> ObtenerPorId(long id)
         {
             ResponseNegocioUbicacionObtenerPorIdDto respuesta = new ResponseNegocioUbicacionObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -124,6 +149,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseNegocioUbicacionEliminarDto>> Eliminar(int id)
         {
             ResponseNegocioUbicacionEliminarDto respuesta = new ResponseNegocioUbicacionEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnNegocioUbicacion.ObtenerPorId(id));
             if (entidad == null)
             {

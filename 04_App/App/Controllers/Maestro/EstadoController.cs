@@ -12,6 +12,7 @@ using System.Linq;
 
 namespace App.Controllers.Maestro
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EstadoController : ControllerBase
@@ -24,6 +25,7 @@ namespace App.Controllers.Maestro
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost("Obtener")]
         public async Task<ActionResult<ResponseEstadoObtenerDto>> Obtener([FromBody]RequestEstadoObtenerDto filtro)
         {
@@ -46,6 +48,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseEstadoObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseEstadoObtenerPorIdDto respuesta = new ResponseEstadoObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnEstado.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -117,6 +125,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseEstadoEliminarDto>> Eliminar(int id)
         {
             ResponseEstadoEliminarDto respuesta = new ResponseEstadoEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnEstado.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -154,6 +168,54 @@ namespace App.Controllers.Maestro
             }
 
             var result = await Task.FromResult(_lnEstado.ObtenerCombo(idTipoEstado));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerComboVendedor/{idEstadoActual}")]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboVendedorDto), 200)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboVendedorDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboVendedorDto), 404)]
+        public async Task<ActionResult<ResponseEstadoObtenerComboVendedorDto>> ObtenerComboVendedor(int idEstadoActual)
+        {
+            ResponseEstadoObtenerComboVendedorDto respuesta = new ResponseEstadoObtenerComboVendedorDto();
+            if (idEstadoActual == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "IdTipoEstado: parametro es requerido"
+                });
+                respuesta.ProcesadoOk = 0;
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnEstado.ObtenerComboVendedor(idEstadoActual));
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = result;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerComboComprador/{idEstadoActual}")]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboCompradorDto), 200)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboCompradorDto), 400)]
+        [ProducesResponseType(typeof(ResponseEstadoObtenerComboCompradorDto), 404)]
+        public async Task<ActionResult<ResponseEstadoObtenerComboCompradorDto>> ObtenerComboComprador(int idEstadoActual)
+        {
+            ResponseEstadoObtenerComboCompradorDto respuesta = new ResponseEstadoObtenerComboCompradorDto();
+            if (idEstadoActual == 0)
+            {
+                respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "IdTipoEstado: parametro es requerido"
+                });
+                respuesta.ProcesadoOk = 0;
+                return BadRequest(respuesta);
+            }
+
+            var result = await Task.FromResult(_lnEstado.ObtenerComboComprador(idEstadoActual));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
             return Ok(respuesta);

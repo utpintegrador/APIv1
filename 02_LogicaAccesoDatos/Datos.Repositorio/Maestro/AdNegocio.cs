@@ -66,11 +66,13 @@ namespace Datos.Repositorio.Maestro
                     {
                         filtro.Buscar,
                         filtro.CantidadKilometros,
-                        filtro.IdUsuario,
-                        filtro.NumeroPagina,
-                        filtro.CantidadRegistros,
-                        filtro.ColumnaOrden,
-                        filtro.DireccionOrden
+                        filtro.UbicacionLongitudInicio,
+                        filtro.UbicacionLatitudInicio,
+                        filtro.IdUsuario//,
+                        //filtro.NumeroPagina,
+                        //filtro.CantidadRegistros,
+                        //filtro.ColumnaOrden,
+                        //filtro.DireccionOrden
                     }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
@@ -128,6 +130,7 @@ namespace Datos.Repositorio.Maestro
                 p.Add("Resenia", modelo.Resenia);
                 p.Add("IdTipoDocumentoIdentificacion", modelo.IdTipoDocumentoIdentificacion);
                 p.Add("IdUsuario", modelo.IdUsuario);
+                p.Add("Telefono", modelo.Telefono);
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
@@ -208,7 +211,8 @@ namespace Datos.Repositorio.Maestro
                         modelo.Nombre,
                         modelo.Resenia,
                         modelo.IdTipoDocumentoIdentificacion,
-                        modelo.IdEstado
+                        modelo.IdEstado,
+                        modelo.Telefono
                     }, commandType: CommandType.StoredProcedure);
 
                 }

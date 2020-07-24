@@ -26,6 +26,22 @@ namespace Negocio.Repositorio.Maestro
             return lista;
         }
 
+        public List<NegocioUbicacionObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestNegocioUbicacionObtenerPorIdUsuarioDto filtro)
+        {
+            if (filtro == null) filtro = new RequestNegocioUbicacionObtenerPorIdUsuarioDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocioUbicacion";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            var lista = _adNegocioUbicacion.ObtenerPorIdUsuario(filtro);
+            if (lista == null)
+            {
+                lista = new List<NegocioUbicacionObtenerPorIdUsuarioDto>();
+            }
+            return lista;
+        }
+
         //Obtener Ubicacion de Negocio por ID
         public NegocioUbicacionObtenerPorIdDto ObtenerPorId(long id)
         {

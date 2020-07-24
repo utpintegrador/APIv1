@@ -1,4 +1,6 @@
-﻿namespace Entidad.Dto.Transaccion
+﻿using Newtonsoft.Json;
+
+namespace Entidad.Dto.Transaccion
 {
     public class PedidoObtenerPorIdDto
     {
@@ -8,5 +10,7 @@
         public string Direccion { get; set; }
         public int IdMoneda { get; set; }
         public int IdEstado { get; set; }
+        [JsonIgnore]
+        public decimal Total { get; set; }
     }
 }

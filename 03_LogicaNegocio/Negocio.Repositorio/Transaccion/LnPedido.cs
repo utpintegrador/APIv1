@@ -45,6 +45,38 @@ namespace Negocio.Repositorio.Transaccion
             return listado;
         }
 
+        public List<PedidoObtenerComprasPorIdUsuarioDto> ObtenerComprasPorIdUsuario(RequestPedidoObtenerComprasPorIdUsuarioDto filtro)
+        {
+            if (filtro == null) filtro = new RequestPedidoObtenerComprasPorIdUsuarioDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdPedido";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            var listado = _adPedido.ObtenerComprasPorIdUsuario(filtro);
+            if (listado == null)
+            {
+                listado = new List<PedidoObtenerComprasPorIdUsuarioDto>();
+            }
+            return listado;
+        }
+
+        public List<PedidoObtenerVentasPorIdUsuarioDto> ObtenerVentasPorIdUsuario(RequestPedidoObtenerVentasPorIdUsuarioDto filtro)
+        {
+            if (filtro == null) filtro = new RequestPedidoObtenerVentasPorIdUsuarioDto();
+            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
+            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
+            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdPedido";
+            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
+
+            var listado = _adPedido.ObtenerVentasPorIdUsuario(filtro);
+            if (listado == null)
+            {
+                listado = new List<PedidoObtenerVentasPorIdUsuarioDto>();
+            }
+            return listado;
+        }
+
         public int Registrar(RequestPedidoRegistrarDto modelo, ref long idNuevo)
         {
             int respuesta = 0;
@@ -192,37 +224,94 @@ namespace Negocio.Repositorio.Transaccion
 
         public PedidoAtributoDto ObtenerPorIdConDetalles(long id)
         {
-            var lista = _adPedido.ObtenerPorIdConDetalles(id);
-            if (lista.Any())
+            PedidoAtributoDto pedido = null;
+            var pedidoCabecera = _adPedido.ObtenerPorId(id);
+            if (pedidoCabecera != null)
             {
-                PedidoAtributoDto pedido = (from ped in lista
-                                            select new PedidoAtributoDto
-                                            {
-                                                IdPedido = ped.IdPedido,
-                                                Direccion = ped.Direccion,
-                                                IdEstado = ped.IdEstado,
-                                                IdMoneda = ped.IdMoneda,
-                                                IdNegocioComprador = ped.IdNegocioComprador,
-                                                IdNegocioVendedor = ped.IdNegocioVendedor
-                                            }).Distinct().First();
+                LnPedidoDetalle lnPedidoDetalle = new LnPedidoDetalle();
+                var listaDetalles = lnPedidoDetalle.ObtenerPorIdPedido(id);
+                
+                List<PedidoAtributoDetalleDto> listaDet = new List<PedidoAtributoDetalleDto>();
+                if (listaDetalles != null)
+                {
+                    if (listaDetalles.Any())
+                    {
+                        listaDet = (from tab in listaDetalles
+                                     select new PedidoAtributoDetalleDto
+                                     {
+                                         IdPedidoDetalle = tab.IdPedidoDetalle,
+                                         Cantidad = tab.Cantidad,
+                                         DescripcionProducto = tab.DescripcionProducto,
+                                         PrecioUnitario = tab.PrecioUnitario,
+                                         UrlImagenProducto = tab.UrlImagenProducto
+                                     }).ToList();
+                    }
+                }
 
-                List<PedidoAtributoDetalleDto> listaDetalle = (from det in lista
-                                                               where det.IdPedidoDetalle != null
-                                                               select new PedidoAtributoDetalleDto
-                                                               {
-                                                                   IdPedidoDetalle = det.IdPedidoDetalle,
-                                                                   Cantidad = det.Cantidad,
-                                                                   DescripcionProducto = det.DescripcionProducto,
-                                                                   PrecioUnitario = det.PrecioUnitario
-                                                               }).Distinct().ToList();
+                pedido = new PedidoAtributoDto
+                {
+                    IdPedido = pedidoCabecera.IdPedido,
+                    Direccion = pedidoCabecera.Direccion,
+                    IdEstado = pedidoCabecera.IdEstado,
+                    IdMoneda = pedidoCabecera.IdMoneda,
+                    IdNegocioComprador = pedidoCabecera.IdNegocioComprador,
+                    IdNegocioVendedor = pedidoCabecera.IdNegocioVendedor,
+                    Total = pedidoCabecera.Total,
+                    ListaDetalle = listaDet
+                };
 
-                pedido.ListaDetalle = new List<PedidoAtributoDetalleDto>();
-                pedido.ListaDetalle = listaDetalle;
                 return pedido;
             }
+
             return null;
             
         }
+
+        public PedidoObtenerNotaPedidoDto ObtenerNotaPedidoPorId(long id)
+        {
+            PedidoObtenerNotaPedidoDto pedidoCabecera = _adPedido.ObtenerNotaPedido(id);
+            if (pedidoCabecera != null)
+            {
+                LnPedidoDetalle lnPedidoDetalle = new LnPedidoDetalle();
+                var listaDetalles = lnPedidoDetalle.ObtenerPorIdPedido(id);
+
+                List<PedidoAtributoDetalleDto> listaDet = new List<PedidoAtributoDetalleDto>();
+                if (listaDetalles != null)
+                {
+                    if (listaDetalles.Any())
+                    {
+                        listaDet = (from tab in listaDetalles
+                                    select new PedidoAtributoDetalleDto
+                                    {
+                                        IdPedidoDetalle = tab.IdPedidoDetalle,
+                                        Cantidad = tab.Cantidad,
+                                        DescripcionProducto = tab.DescripcionProducto,
+                                        PrecioUnitario = tab.PrecioUnitario,
+                                        UrlImagenProducto = tab.UrlImagenProducto
+                                    }).ToList();
+
+                        pedidoCabecera.ListaDetalle = listaDet;
+                    }
+                }
+
+                return pedidoCabecera;
+            }
+
+            return null;
+
+        }
+
+        public List<PedidoObtenerPendientesAtencionPorIdUsuarioDto> ObtenerPendientesAtencionPorIdUsuario(long idUsuario)
+        {
+            var listado = _adPedido.ObtenerPendientesAtencionPorIdUsuario(idUsuario);
+            if(listado == null)
+            {
+                listado = new List<PedidoObtenerPendientesAtencionPorIdUsuarioDto>();
+            }
+            return listado;
+        }
+
+        //public PedidoObtenerNotaPedidoDto ObtenerNotaPedido(long id)
 
     }
 }

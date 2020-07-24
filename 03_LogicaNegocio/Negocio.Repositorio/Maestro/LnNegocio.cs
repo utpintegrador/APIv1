@@ -31,21 +31,56 @@ namespace Negocio.Repositorio.Maestro
         }
 
         //Obtener Negocios cercanos
-        public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto filtro)
+        public List<NegocioObtenerCercanosDto> ObtenerCercanos(RequestNegocioObtenerCercanosDto prm)
         {
-            if (filtro == null) filtro = new RequestNegocioObtenerCercanosDto();
-            if (filtro.NumeroPagina == 0) filtro.NumeroPagina = 1;
-            if (filtro.CantidadRegistros == 0) filtro.CantidadRegistros = 10;
-            if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "IdNegocio";
-            if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
-            if (filtro.CantidadKilometros == 0) filtro.CantidadKilometros = 1;
+            if (prm == null) prm = new RequestNegocioObtenerCercanosDto();
+            //if (prm.NumeroPagina == 0) prm.NumeroPagina = 1;
+            //if (prm.CantidadRegistros == 0) prm.CantidadRegistros = 1000;
+            //if (string.IsNullOrEmpty(prm.ColumnaOrden)) prm.ColumnaOrden = "IdNegocio";
+            //if (string.IsNullOrEmpty(prm.DireccionOrden)) prm.DireccionOrden = "desc";
+            if (prm.CantidadKilometros == 0) prm.CantidadKilometros = 1;
 
-            var listado = _adNegocio.ObtenerCercanos(filtro);
+            var listado = _adNegocio.ObtenerCercanos(prm);
             if(listado == null)
             {
                 listado = new List<NegocioObtenerCercanosDto>();
             }
+
+            DescartarDistanciaSegunParametro(ref listado, prm);
+
             return listado;
+        }
+
+        private void DescartarDistanciaSegunParametro(ref List<NegocioObtenerCercanosDto> lista, RequestNegocioObtenerCercanosDto prm)
+        {
+            try
+            {
+                if (lista.Any())
+                {
+                    for (int i = lista.Count - 1; i >= 0; i--)
+                    {
+                        double distancia = Infraestructura.Utilitario.Util.Haversine(
+                            prm.UbicacionLatitudInicio,
+                            prm.UbicacionLongitudInicio,
+                            Convert.ToDouble(lista[i].Latitud),
+                            Convert.ToDouble(lista[i].Longitud)
+                            );
+                        if(Math.Abs(distancia) > Convert.ToDouble(prm.CantidadKilometros))
+                        {
+                            lista.RemoveAt(i);
+                        }
+                        else
+                        {
+                            lista[i].DistanciaKm = distancia;
+                        }
+                    }
+                }
+                
+            }
+            catch
+            {
+                
+            }
         }
 
         //Obtener Negociopor ID

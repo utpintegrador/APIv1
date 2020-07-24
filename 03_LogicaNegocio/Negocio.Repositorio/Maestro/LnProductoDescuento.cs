@@ -23,5 +23,28 @@ namespace Negocio.Repositorio.Maestro
             }
             return lista;
         }
+
+        public ProductoDescuentoObtenerPorIdDto ObtenerPorId(long id)
+        {
+            return _adProductoDescuento.ObtenerPorId(id);
+        }
+
+        //Registar ProductoDescuento
+        public int Registrar(RequestProductoDescuentoRegistrarDto modelo, ref long idNuevo)
+        {
+            return _adProductoDescuento.Registrar(modelo, ref idNuevo);
+        }
+
+        //Modificar ProductoDescuento
+        public int Modificar(RequestProductoDescuentoModificarDto modelo)
+        {
+            return _adProductoDescuento.Modificar(modelo);
+        }
+
+        //Eliminar ProductoDescuento
+        public int Eliminar(long id)
+        {
+            return _adProductoDescuento.Eliminar(id);
+        }
     }
 }

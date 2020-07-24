@@ -138,5 +138,33 @@ namespace Datos.Repositorio.Maestro
             }
             return resultado;
         }
+
+        public int Eliminar(long id)
+        {
+            int resultado = 0;
+            try
+            {
+                const string query = "Maestro.usp_ProductoImagen_Eliminar";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Execute(query, new
+                    {
+                        IdProductoImagen = id
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

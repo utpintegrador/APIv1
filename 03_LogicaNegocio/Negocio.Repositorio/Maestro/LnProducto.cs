@@ -72,50 +72,75 @@ namespace Negocio.Repositorio.Maestro
 
         public ProductoAtributoDto ObtenerPorIdConAtributos(long id)
         {
-            var lista = _adProducto.ObtenerPorIdConAtributos(id);
-            if (lista.Any())
+            ProductoAtributoDto producto = null;
+            var productoCabecera = _adProducto.ObtenerPorId(id);
+            if(productoCabecera != null)
             {
-                ProductoAtributoDto producto = (from prod in lista
-                                                select new ProductoAtributoDto
-                                                {
-                                                    IdProducto = prod.IdProducto,
-                                                    Descripcion = prod.Descripcion,
-                                                    DescripcionExtendida = prod.DescripcionExtendida,
-                                                    Precio = prod.Precio,
-                                                    IdMoneda = prod.IdMoneda,
-                                                    IdCategoria = prod.IdCategoria,
-                                                    IdNegocio = prod.IdNegocio,
-                                                    IdEstado = prod.IdEstado
-                                                }).Distinct().First();
+                LnProductoImagen lnProductoImagen = new LnProductoImagen();
+                var listaImagenes = lnProductoImagen.ObtenerPorIdProducto(new RequestProductoImagenObtenerPorIdProductoDto
+                {
+                    CantidadRegistros = 100,
+                    IdProducto = productoCabecera.IdProducto
+                });
 
-                List<ProductoAtributoDescuentoDto> listaDescuento = (from descu in lista
-                                                                     where descu.IdProductoDescuento != null
-                                                                     select new ProductoAtributoDescuentoDto
-                                                                     {
-                                                                         IdProductoDescuento = descu.IdProductoDescuento,
-                                                                         FechaInicio = descu.FechaInicio,
-                                                                         FechaFin = descu.FechaFin,
-                                                                         Valor = descu.Valor,
-                                                                         DescripcionTipoDescuento = descu.DescripcionTipoDescuento,
-                                                                         DescripcionEstadoDescuento = descu.DescripcionEstadoDescuento
-                                                                     }).Distinct().ToList();
+                LnProductoDescuento lnProductoDescuento = new LnProductoDescuento();
+                var listaDescuentos = lnProductoDescuento.ObtenerPorIdProducto(new RequestProductoDescuentoObtenerPorIdProductoDto
+                {
+                    IdProducto = productoCabecera.IdProducto,
+                    CantidadRegistros = 100
+                });
 
-                List<ProductoAtributoImagenDto> listaImagen = (from ima in lista
-                                                               where ima.IdProductoImagen != null
-                                                               select new ProductoAtributoImagenDto
-                                                               {
-                                                                   IdProductoImagen = ima.IdProductoImagen,
-                                                                   UrlImagen = ima.UrlImagen,
-                                                                   Predeterminado = ima.Predeterminado
-                                                               }).Distinct().ToList();
+                List<ProductoAtributoDescuentoDto> listaDesc = new List<ProductoAtributoDescuentoDto>();
+                if(listaDescuentos != null)
+                {
+                    if (listaDescuentos.Any())
+                    {
+                        listaDesc = (from tab in listaDescuentos
+                                     select new ProductoAtributoDescuentoDto
+                                     {
+                                         IdProductoDescuento = tab.IdProductoDescuento,
+                                         FechaInicio = tab.FechaInicio,
+                                         FechaFin = tab.FechaFin,
+                                         DescripcionEstadoDescuento = tab.DescripcionEstado,
+                                         DescripcionTipoDescuento = tab.DescripcionTipoDescuento,
+                                         Valor = tab.Valor
+                                     }).ToList();
+                    }
+                }
 
-                producto.ListaDescuento = new List<ProductoAtributoDescuentoDto>();
-                producto.ListaImagen = new List<ProductoAtributoImagenDto>();
-                producto.ListaDescuento = listaDescuento;
-                producto.ListaImagen = listaImagen;
+                List<ProductoAtributoImagenDto> listaIma = new List<ProductoAtributoImagenDto>();
+                if (listaImagenes != null)
+                {
+                    if (listaImagenes.Any())
+                    {
+                        listaIma = (from tab in listaImagenes
+                                    select new ProductoAtributoImagenDto
+                                    {
+                                        IdProductoImagen = tab.IdProductoImagen,
+                                        UrlImagen = tab.UrlImagen,
+                                        Predeterminado = tab.Predeterminado
+                                    }).ToList();
+                    }
+                }
+
+                producto = new ProductoAtributoDto
+                {
+                    IdProducto = productoCabecera.IdProducto,
+                    Descripcion = productoCabecera.Descripcion,
+                    DescripcionExtendida = productoCabecera.DescripcionExtendida,
+                    IdCategoria = productoCabecera.IdCategoria,
+                    IdEstado = productoCabecera.IdEstado,
+                    IdMoneda = productoCabecera.IdMoneda,
+                    IdNegocio = productoCabecera.IdNegocio,
+                    Precio = productoCabecera.Precio,
+                    IdUsuario= productoCabecera.IdUsuario,
+                    ListaDescuento = listaDesc,
+                    ListaImagen = listaIma
+                };
 
                 return producto;
             }
+
             return null;
         }
 

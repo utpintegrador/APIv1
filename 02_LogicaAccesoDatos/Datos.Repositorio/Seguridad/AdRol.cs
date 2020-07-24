@@ -187,5 +187,34 @@ namespace Datos.Repositorio.Seguridad
             }
             return resultado;
         }
+
+        public List<RolObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(long idUsuario)
+        {
+            List<RolObtenerPorIdUsuarioDto> resultado = new List<RolObtenerPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Seguridad.usp_Rol_ObtenerPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<RolObtenerPorIdUsuarioDto>(query, new
+                    {
+                        IdUsuario = idUsuario
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
     }
 }

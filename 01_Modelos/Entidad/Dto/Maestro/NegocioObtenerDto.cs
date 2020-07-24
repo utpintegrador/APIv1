@@ -12,6 +12,8 @@ namespace Entidad.Dto.Maestro
         public string DescripcionEstado { get; set; }
         public string FechaRegistro { get; set; }
         public string CorreoElectronico { get; set; }
+        public int CantidadUbicaciones { get; set; }
+        public string Telefono { get; set; }
         [JsonIgnore]
         public long TotalItems { get; set; }
 

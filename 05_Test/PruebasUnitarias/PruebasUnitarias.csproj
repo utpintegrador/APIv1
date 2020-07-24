@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\01_Modelos\Entidad\Entidad.csproj" />
-    <ProjectReference Include="..\..\03_LogicaNegocio\Negocio.Repositorio\Negocio.Repositorio.csproj" />
+    <ProjectReference Include="..\..\04_App\App\App.csproj" />
   </ItemGroup>
 
 </Project>

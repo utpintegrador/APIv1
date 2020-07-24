@@ -10,6 +10,7 @@ namespace Entidad.Dto.Transaccion
         public string Direccion { get; set; }
         public int IdMoneda { get; set; }
         public int IdEstado { get; set; }
+        public decimal Total { get; set; }
         public List<PedidoAtributoDetalleDto> ListaDetalle { get; set; }
         public PedidoAtributoDto()
         {

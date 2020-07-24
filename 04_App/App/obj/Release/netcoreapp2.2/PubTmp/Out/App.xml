@@ -4,6 +4,13 @@
         <name>App</name>
     </assembly>
     <members>
+        <member name="M:App.Controllers.Correo.RecuperacionContraseniaController.Registrar(Entidad.Request.Correo.RequestRecuperacionContraseniaRegistrarDto)">
+            <summary>
+            Registrar peticion de recuperacion de contraseña
+            </summary>
+            <param name="modelo"></param>
+            <returns></returns>
+        </member>
         <member name="M:App.Controllers.Maestro.CategoriaController.Obtener(Entidad.Request.Maestro.RequestCategoriaObtenerDto)">
             <param name="filtro">"NumeroPagina": 1, "CantidadRegistros": 10, "ColumnaOrden": "IdCategoria", "DireccionOrden": "desc"</param>
             <returns></returns>

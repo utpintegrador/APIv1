@@ -44,6 +44,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseTipoEstadoObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseTipoEstadoObtenerPorIdDto respuesta = new ResponseTipoEstadoObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -116,6 +122,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseTipoEstadoEliminarDto>> Eliminar(int id)
         {
             ResponseTipoEstadoEliminarDto respuesta = new ResponseTipoEstadoEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnTipoEstado.ObtenerPorId(id));
             if (entidad == null)
             {

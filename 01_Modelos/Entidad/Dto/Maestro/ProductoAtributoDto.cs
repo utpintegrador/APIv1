@@ -12,6 +12,7 @@ namespace Entidad.Dto.Maestro
         public int IdCategoria { get; set; }
         public long IdNegocio { get; set; }
         public int IdEstado { get; set; }
+        public long IdUsuario { get; set; }
         public List<ProductoAtributoDescuentoDto> ListaDescuento { get; set; }
         public List<ProductoAtributoImagenDto> ListaImagen { get; set; }
         public ProductoAtributoDto()

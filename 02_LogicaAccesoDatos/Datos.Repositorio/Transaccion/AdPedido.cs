@@ -31,6 +31,8 @@ namespace Datos.Repositorio.Transaccion
                     {
                         filtro.IdNegocioComprador,
                         filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdMoneda,
                         filtro.NumeroPagina,
                         filtro.CantidadRegistros,
                         filtro.ColumnaOrden,
@@ -65,6 +67,82 @@ namespace Datos.Repositorio.Transaccion
                     {
                         filtro.IdNegocioVendedor,
                         filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdMoneda,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<PedidoObtenerComprasPorIdUsuarioDto> ObtenerComprasPorIdUsuario(RequestPedidoObtenerComprasPorIdUsuarioDto filtro)
+        {
+            List<PedidoObtenerComprasPorIdUsuarioDto> resultado = new List<PedidoObtenerComprasPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ObtenerComprasPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<PedidoObtenerComprasPorIdUsuarioDto>(query, new
+                    {
+                        filtro.IdUsuario,
+                        filtro.IdNegocioComprador,
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdMoneda,
+                        filtro.NumeroPagina,
+                        filtro.CantidadRegistros,
+                        filtro.ColumnaOrden,
+                        filtro.DireccionOrden
+                    }, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<PedidoObtenerVentasPorIdUsuarioDto> ObtenerVentasPorIdUsuario(RequestPedidoObtenerVentasPorIdUsuarioDto filtro)
+        {
+            List<PedidoObtenerVentasPorIdUsuarioDto> resultado = new List<PedidoObtenerVentasPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ObtenerVentasPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<PedidoObtenerVentasPorIdUsuarioDto>(query, new
+                    {
+                        filtro.IdUsuario,
+                        filtro.IdNegocioVendedor,
+                        filtro.Buscar,
+                        filtro.IdEstado,
+                        filtro.IdMoneda,
                         filtro.NumeroPagina,
                         filtro.CantidadRegistros,
                         filtro.ColumnaOrden,
@@ -218,12 +296,12 @@ namespace Datos.Repositorio.Transaccion
             return resultado;
         }
 
-        public List<PedidoObtenerPorIdConDetallesAgrupadoDto> ObtenerPorIdConDetalles(long id)
+        public PedidoObtenerNotaPedidoDto ObtenerNotaPedido(long id)
         {
-            List<PedidoObtenerPorIdConDetallesAgrupadoDto> resultado = new List<PedidoObtenerPorIdConDetallesAgrupadoDto>();
+            PedidoObtenerNotaPedidoDto resultado = new PedidoObtenerNotaPedidoDto();
             try
             {
-                const string query = "Transaccion.usp_Pedido_ObtenerPorIdConDetalles";
+                const string query = "Transaccion.usp_Pedido_ObtenerNotaPedido";
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
@@ -232,9 +310,38 @@ namespace Datos.Repositorio.Transaccion
                         cn.Open();
                     }
 
-                    resultado = cn.Query<PedidoObtenerPorIdConDetallesAgrupadoDto>(query, new
+                    resultado = cn.QuerySingleOrDefault<PedidoObtenerNotaPedidoDto>(query, new
                     {
                         IdPedido = id
+                    }, commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+            }
+            return resultado;
+        }
+
+        public List<PedidoObtenerPendientesAtencionPorIdUsuarioDto> ObtenerPendientesAtencionPorIdUsuario(long idUsuario)
+        {
+            List<PedidoObtenerPendientesAtencionPorIdUsuarioDto> resultado = new List<PedidoObtenerPendientesAtencionPorIdUsuarioDto>();
+            try
+            {
+                const string query = "Transaccion.usp_Pedido_ObtenerPendientesAtencionPorIdUsuario";
+
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    resultado = cn.Query<PedidoObtenerPendientesAtencionPorIdUsuarioDto>(query, new
+                    {
+                        IdUsuario = idUsuario
                     }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
@@ -246,5 +353,34 @@ namespace Datos.Repositorio.Transaccion
             }
             return resultado;
         }
+
+        //public List<PedidoObtenerPorIdConDetallesAgrupadoDto> ObtenerPorIdConDetalles(long id)
+        //{
+        //    List<PedidoObtenerPorIdConDetallesAgrupadoDto> resultado = new List<PedidoObtenerPorIdConDetallesAgrupadoDto>();
+        //    try
+        //    {
+        //        const string query = "Transaccion.usp_Pedido_ObtenerPorIdConDetalles";
+
+        //        using (var cn = HelperClass.ObtenerConeccion())
+        //        {
+        //            if (cn.State == ConnectionState.Closed)
+        //            {
+        //                cn.Open();
+        //            }
+
+        //            resultado = cn.Query<PedidoObtenerPorIdConDetallesAgrupadoDto>(query, new
+        //            {
+        //                IdPedido = id
+        //            }, commandType: CommandType.StoredProcedure).ToList();
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(Level.Error, (ex.InnerException == null ? ex.Message : ex.InnerException.Message));
+        //    }
+        //    return resultado;
+        //}
     }
 }

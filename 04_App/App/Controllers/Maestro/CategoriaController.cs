@@ -50,6 +50,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseCategoriaObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseCategoriaObtenerPorIdDto respuesta = new ResponseCategoriaObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -127,6 +133,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseCategoriaEliminarDto>> Eliminar(int id)
         {
             ResponseCategoriaEliminarDto respuesta = new ResponseCategoriaEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnCategoria.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -351,6 +363,12 @@ namespace App.Controllers.Maestro
         {
             string urlImagen = string.Empty;
             ResponseCategoriaEliminarImagenDto respuesta = new ResponseCategoriaEliminarImagenDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnCategoria.EliminarImagen(id, ref urlImagen));
             if (entidad == -1)
             {

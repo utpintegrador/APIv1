@@ -102,7 +102,7 @@ namespace Negocio.Repositorio.Maestro
         }
 
         //Eliminar Imagen del Producto
-        public int EliminarImagen(long idProductoImagen, ref string urlImagen)
+        public int EliminarImagen(long idProductoImagen)
         {
             int respuesta = 0;
             try
@@ -110,16 +110,14 @@ namespace Negocio.Repositorio.Maestro
                 var objetoImagenBd = _adProductoImagen.ObtenerUrlImagenPorId(idProductoImagen);
                 if (objetoImagenBd == null)
                 {
-                    urlImagen = string.Empty;
                     respuesta = -1;
                 }
                 else
                 {
-                    respuesta = EliminarImagenAws(objetoImagenBd.UrlImagen, idProductoImagen);
-                    int respuestaModificarImagenBd = _adProductoImagen.EliminarUrlImagen(idProductoImagen);
-                    if (respuestaModificarImagenBd > 0)
+                    int respuestaAws = EliminarImagenAws(objetoImagenBd.UrlImagen, idProductoImagen);
+                    if (respuestaAws > 0)
                     {
-                        urlImagen = "https://encuentralo.s3.us-east-2.amazonaws.com/Aplicativo/producto_sin_imagen.jpg";
+                        respuesta = _adProductoImagen.Eliminar(idProductoImagen);
                     }
                 }
             }

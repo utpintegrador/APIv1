@@ -44,6 +44,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseMonedaObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseMonedaObtenerPorIdDto respuesta = new ResponseMonedaObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -116,6 +122,12 @@ namespace App.Controllers.Maestro
         public async Task<ActionResult<ResponseMonedaEliminarDto>> Eliminar(int id)
         {
             ResponseMonedaEliminarDto respuesta = new ResponseMonedaEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnMoneda.ObtenerPorId(id));
             if (entidad == null)
             {

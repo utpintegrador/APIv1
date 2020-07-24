@@ -7,6 +7,7 @@ using AutoMapper;
 using Entidad.Request.Seguridad;
 using Entidad.Response;
 using Entidad.Response.Seguridad;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Negocio.Repositorio.Seguridad;
@@ -25,6 +26,7 @@ namespace App.Controllers.Seguridad
             mapper = _mapper;
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost("Obtener")]
         public async Task<ActionResult<ResponseAccesoObtenerDto>> Obtener(RequestAccesoObtenerDto filtro)
         {
@@ -41,12 +43,19 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}", Name = "ObtenerAccesoPorId")]
         [ProducesResponseType(typeof(ResponseAccesoObtenerPorIdDto), 404)]
         [ProducesResponseType(typeof(ResponseAccesoObtenerPorIdDto), 200)]
         public async Task<ActionResult<ResponseAccesoObtenerPorIdDto>> ObtenerPorId(int id)
         {
             ResponseAccesoObtenerPorIdDto respuesta = new ResponseAccesoObtenerPorIdDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnAcceso.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -59,7 +68,7 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ProducesResponseType(typeof(ResponseAccesoRegistrarDto), 400)]
         [ProducesResponseType(typeof(ResponseAccesoRegistrarDto), 200)]
@@ -84,6 +93,7 @@ namespace App.Controllers.Seguridad
 
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut()]//"{id}")]
         [ProducesResponseType(typeof(ResponseAccesoModificarDto), 404)]
         [ProducesResponseType(typeof(ResponseAccesoModificarDto), 400)]
@@ -112,6 +122,7 @@ namespace App.Controllers.Seguridad
             return Ok(respuesta);
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(ResponseAccesoEliminarDto), 404)]
         [ProducesResponseType(typeof(ResponseAccesoEliminarDto), 400)]
@@ -119,6 +130,12 @@ namespace App.Controllers.Seguridad
         public async Task<ActionResult<ResponseAccesoEliminarDto>> Eliminar(int id)
         {
             ResponseAccesoEliminarDto respuesta = new ResponseAccesoEliminarDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
             var entidad = await Task.FromResult(_lnAcceso.ObtenerPorId(id));
             if (entidad == null)
             {
@@ -134,6 +151,30 @@ namespace App.Controllers.Seguridad
             }
 
             respuesta.ProcesadoOk = 1;
+            return Ok(respuesta);
+        }
+
+        [HttpGet("ObtenerPorIdUsuario/{id}")]
+        [ProducesResponseType(typeof(ResponseAccesoObtenerPorIdUsuarioDto), 404)]
+        [ProducesResponseType(typeof(ResponseAccesoObtenerPorIdUsuarioDto), 200)]
+        public async Task<ActionResult<ResponseAccesoObtenerPorIdUsuarioDto>> ObtenerPorIdUsuario(long id)
+        {
+            ResponseAccesoObtenerPorIdUsuarioDto respuesta = new ResponseAccesoObtenerPorIdUsuarioDto();
+            if (id == 0)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            var entidad = await Task.FromResult(_lnAcceso.ObtenerPorIdUsuario(id));
+            if (entidad == null)
+            {
+                respuesta.ListaError.Add(new ErrorDto { Mensaje = "Objeto no encontrado con el ID proporcionado" });
+                return NotFound(respuesta);
+            }
+
+            respuesta.ProcesadoOk = 1;
+            respuesta.Cuerpo = entidad;
             return Ok(respuesta);
         }
     }
