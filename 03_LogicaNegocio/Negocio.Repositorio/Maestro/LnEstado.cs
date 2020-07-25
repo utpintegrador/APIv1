@@ -62,6 +62,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Vendedor
         public List<EstadoObtenerComboVendedorDto> ObtenerComboVendedor(int idEstadoActual)
         {
             var listado = _adEstado.ObtenerComboVendedor(idEstadoActual);
@@ -72,6 +73,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Comprador
         public List<EstadoObtenerComboCompradorDto> ObtenerComboComprador(int idEstadoActual)
         {
             var listado = _adEstado.ObtenerComboComprador(idEstadoActual);

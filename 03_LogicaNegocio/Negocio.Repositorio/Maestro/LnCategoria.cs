@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Repositorio.Maestro
 {
-    public class LnCategoria: Logger
+    public class LnCategoria : Logger
     {
         private readonly string _llaveAmazon = Entidad.Vo.ConstanteVo.AccessKeyAws;
         private readonly string _claveAmazon = Entidad.Vo.ConstanteVo.SecretAccessKeyAws;
@@ -31,7 +31,7 @@ namespace Negocio.Repositorio.Maestro
             if (string.IsNullOrEmpty(filtro.ColumnaOrden)) filtro.ColumnaOrden = "Descripcion";
             if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "asc";
             var listado = _adCategoria.Obtener(filtro);
-            if(listado == null)
+            if (listado == null)
             {
                 listado = new List<CategoriaObtenerDto>();
             }
@@ -56,7 +56,7 @@ namespace Negocio.Repositorio.Maestro
         //Modificar Categoria
         public int Modificar(RequestCategoriaModificarDto modelo)
         {
-            if(modelo.IdEstado > 2 || modelo.IdEstado < 1)
+            if (modelo.IdEstado > 2 || modelo.IdEstado < 1)
             {
                 modelo.IdEstado = 2;
             }
@@ -170,7 +170,8 @@ namespace Negocio.Repositorio.Maestro
             }
             return respuesta;
         }
-
+    
+        //Eliminar Imagenes AWS
         private int EliminarImagenAws(string urlImagenBd, long idCategoria)
         {
             int respuesta = 0;

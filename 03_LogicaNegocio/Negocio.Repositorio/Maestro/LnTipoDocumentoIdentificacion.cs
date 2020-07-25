@@ -9,7 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoDocumentoIdentificacion _adTipoDocumentoIdentificacion = new AdTipoDocumentoIdentificacion();
 
-        //Documento de Identidad
+        //Documento de Identidad (DNI)
         public List<TipoDocumentoIdentificacionObtenerDto> Obtener(RequestTipoDocumentoIdentificacionObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoDocumentoIdentificacionObtenerDto();
@@ -26,7 +26,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
-        //Obtener Documento de Identidad
+        //Obtener Documento de Identidad (DNI)
         public List<TipoDocumentoIdentificacionObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoDocumentoIdentificacion.ObtenerCombo();
@@ -37,25 +37,25 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
-        //Obtener Documento de Identidad por ID
+        //Obtener Documento de Identidad (DNI) por ID
         public TipoDocumentoIdentificacionObtenerPorIdDto ObtenerPorId(int id)
         {
             return _adTipoDocumentoIdentificacion.ObtenerPorId(id);
         }
 
-        //Registrar Documento de Identidad
+        //Registrar Documento de Identidad (DNI)
         public int Registrar(RequestTipoDocumentoIdentificacionRegistrarDto modelo, ref int idNuevo)
         {
             return _adTipoDocumentoIdentificacion.Registrar(modelo, ref idNuevo);
         }
 
-        //Modificar Documento de Identidad
+        //Modificar Documento de Identidad (DNI)
         public int Modificar(RequestTipoDocumentoIdentificacionModificarDto modelo)
         {
             return _adTipoDocumentoIdentificacion.Modificar(modelo);
         }
 
-        //Eliminar Documento de Identidad
+        //Eliminar Documento de Identidad (DNI)
         public int Eliminar(int id)
         {
             return _adTipoDocumentoIdentificacion.Eliminar(id);

@@ -7,6 +7,7 @@ namespace Negocio.Repositorio.Maestro
 {
     public class LnProductoDescuento
     {
+        //Producto Descuento
         private readonly AdProductoDescuento _adProductoDescuento = new AdProductoDescuento();
         public List<ProductoDescuentoObtenerPorIdProductoDto> ObtenerPorIdProducto(RequestProductoDescuentoObtenerPorIdProductoDto filtro)
         {

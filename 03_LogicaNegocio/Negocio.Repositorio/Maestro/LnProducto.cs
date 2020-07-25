@@ -13,6 +13,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdProducto _adProducto = new AdProducto();
 
+        //Producto por ID Usuario
         public List<ProductoObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestProductoObtenerPorIdUsuarioDto filtro)
         {
             if (filtro == null) filtro = new RequestProductoObtenerPorIdUsuarioDto();
@@ -29,6 +30,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Producto por ID Negocio
         public List<ProductoObtenerPorIdNegocioDto> ObtenerPorIdNegocio(RequestProductoObtenerPorIdNegocioDto filtro)
         {
             if (filtro == null) filtro = new RequestProductoObtenerPorIdNegocioDto();
@@ -70,6 +72,7 @@ namespace Negocio.Repositorio.Maestro
             return _adProducto.Eliminar(id);
         }
 
+        //Obtener Producto - Listar
         public ProductoAtributoDto ObtenerPorIdConAtributos(long id)
         {
             ProductoAtributoDto producto = null;
@@ -144,6 +147,7 @@ namespace Negocio.Repositorio.Maestro
             return null;
         }
 
+        //Eliminar masivo
         public int EliminarMasivo(RequestProductoEliminarMasivoDto prm)
         {
             int respuesta = 0;

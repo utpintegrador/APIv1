@@ -19,13 +19,14 @@ namespace Negocio.Repositorio.Maestro
             if (string.IsNullOrEmpty(filtro.DireccionOrden)) filtro.DireccionOrden = "desc";
 
             var lista = _adNegocioUbicacion.ObtenerPorIdNegocio(filtro);
-            if(lista == null)
+            if (lista == null)
             {
                 lista = new List<NegocioUbicacionObtenerPorIdNegocioDto>();
             }
             return lista;
-        }
+        } 
 
+        //Obtener Ubicacion por ID Usuario
         public List<NegocioUbicacionObtenerPorIdUsuarioDto> ObtenerPorIdUsuario(RequestNegocioUbicacionObtenerPorIdUsuarioDto filtro)
         {
             if (filtro == null) filtro = new RequestNegocioUbicacionObtenerPorIdUsuarioDto();

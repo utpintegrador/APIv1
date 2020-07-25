@@ -9,7 +9,7 @@ namespace Negocio.Repositorio.Maestro
     {
         private readonly AdTipoBusqueda _adTipoBusqueda = new AdTipoBusqueda();
 
-        //Busqueda
+        //Obtener Tipo Busqueda
         public List<TipoBusquedaObtenerDto> Obtener(RequestTipoBusquedaObtenerDto filtro)
         {
             if (filtro == null) filtro = new RequestTipoBusquedaObtenerDto();
@@ -26,7 +26,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
-        //Busqueda
+        //Obtener Busqueda
         public List<TipoBusquedaObtenerComboDto> ObtenerCombo()
         {
             var listado = _adTipoBusqueda.ObtenerCombo();

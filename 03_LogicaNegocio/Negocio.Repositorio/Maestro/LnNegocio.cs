@@ -51,6 +51,7 @@ namespace Negocio.Repositorio.Maestro
             return listado;
         }
 
+        //Obtener Negocios cercanos
         private void DescartarDistanciaSegunParametro(ref List<NegocioObtenerCercanosDto> lista, RequestNegocioObtenerCercanosDto prm)
         {
             try

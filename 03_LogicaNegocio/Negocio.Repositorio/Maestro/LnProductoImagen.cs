@@ -44,7 +44,7 @@ namespace Negocio.Repositorio.Maestro
             return _adProductoImagen.Registrar(idProducto, url, ref idNuevo);
         }
 
-        //Subir Imagen del Producto
+        //Modificar Imagen del Producto
         public int SubirImagenAws(RequestProductoImagenModificarImagenMetodo1Dto entidad, ref string url)
         {
             int respuesta = 0;
@@ -128,7 +128,7 @@ namespace Negocio.Repositorio.Maestro
             return respuesta;
         }
 
-    
+        //Eliminar Imagen Aws    
         private int EliminarImagenAws(string urlImagenBd, long idProductoImagen)
         {
             int respuesta = 0;
