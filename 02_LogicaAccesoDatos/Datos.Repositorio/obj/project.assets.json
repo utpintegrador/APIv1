@@ -5759,11 +5759,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
+      "projectUniqueName": "D:\\Integrador2\\APIv2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
       "projectName": "Datos.Repositorio",
-      "projectPath": "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
+      "projectPath": "D:\\Integrador2\\APIv2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\Datos.Repositorio.csproj",
       "packagesPath": "C:\\Users\\Frank-PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Integrador2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\obj\\",
+      "outputPath": "D:\\Integrador2\\APIv2\\APIv1\\02_LogicaAccesoDatos\\Datos.Repositorio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5782,11 +5782,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
-              "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
+            "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj": {
+              "projectPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj"
             },
-            "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj": {
-              "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj"
+            "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj": {
+              "projectPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj"
             }
           }
         }

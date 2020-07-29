@@ -6,6 +6,6 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Proyecto Encuentralo\Publicacion</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Integrador2\APIv2\Publicacion</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

@@ -7,3 +7,12 @@ D:\Integrador2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infrae
 D:\Integrador2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.AssemblyInfo.cs
 D:\Integrador2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.dll
 D:\Integrador2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.pdb
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\bin\Release\netcoreapp2.2\Infraestructura.deps.json
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\bin\Release\netcoreapp2.2\Infraestructura.dll
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\bin\Release\netcoreapp2.2\Infraestructura.pdb
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.csprojAssemblyReference.cache
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.csproj.CoreCompileInputs.cache
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.AssemblyInfoInputs.cache
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.AssemblyInfo.cs
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.dll
+D:\Integrador2\APIv2\APIv1\01_Modelos\Infraestructura\obj\Release\netcoreapp2.2\Infraestructura.pdb

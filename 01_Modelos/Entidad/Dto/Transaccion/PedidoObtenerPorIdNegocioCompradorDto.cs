@@ -12,6 +12,8 @@ namespace Entidad.Dto.Transaccion
         public string Direccion { get; set; }
         public string DescripcionMoneda{ get; set; }
         public string DescripcionEstado{ get; set; }
+        public string NumeroCelular { get; set; }
+        public string Observaciones { get; set; }
         public string FechaRegistro { get; set; }
         public string FechaActualizacion { get; set; }
         public decimal Total { get; set; }

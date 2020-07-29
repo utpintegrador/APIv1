@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.CustomHandler;
@@ -66,6 +67,32 @@ namespace App.Controllers.Transaccion
         {
             if (!ModelState.IsValid) return BadRequest();
             ResponsePedidoObtenerComprasPorIdUsuarioDto respuesta = new ResponsePedidoObtenerComprasPorIdUsuarioDto();
+
+            DateTime fechaDesdeDate = DateTime.Now;
+            if (!ValidarFechaString(filtro.FechaDesde, ref fechaDesdeDate))
+            {
+                if (respuesta.ListaError == null) respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "FechaDesde: se requiere el parametro con el formato (yyyy/MM/dd)"
+                });
+                return BadRequest(respuesta);
+            }
+
+            DateTime fechaHastaDate = DateTime.Now;
+            if (!ValidarFechaString(filtro.FechaHasta, ref fechaHastaDate))
+            {
+                if (respuesta.ListaError == null) respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "FechaHasta: se requiere el parametro con el formato (yyyy/MM/dd)"
+                });
+                return BadRequest(respuesta);
+            }
+
+            filtro.FechaDesdeDate = fechaDesdeDate;
+            filtro.FechaHastaDate = fechaHastaDate;
+
             var result = await Task.FromResult(_lnPedido.ObtenerComprasPorIdUsuario(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;
@@ -78,12 +105,61 @@ namespace App.Controllers.Transaccion
             return Ok(respuesta);
         }
 
+        private bool ValidarFechaString(object valor, ref DateTime refFecha)
+        {
+            try
+            {
+                if (valor != null)
+                {
+                    refFecha = DateTime.Now;
+                    DateTime? fecha = null;
+                    fecha = Infraestructura.Utilitario.Util.ObtenerFechaDesdeString10(valor.ToString());
+                    if (fecha != null)
+                    {
+                        refFecha = Convert.ToDateTime(fecha);
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            return false;
+        }
+
         [HttpPost("ObtenerVentasPorIdUsuario")]
         [ValidationActionFilter]
         public async Task<ActionResult<ResponsePedidoObtenerVentasPorIdUsuarioDto>> ObtenerVentasPorIdUsuario([FromBody] RequestPedidoObtenerVentasPorIdUsuarioDto filtro)
         {
             if (!ModelState.IsValid) return BadRequest();
             ResponsePedidoObtenerVentasPorIdUsuarioDto respuesta = new ResponsePedidoObtenerVentasPorIdUsuarioDto();
+
+            DateTime fechaDesdeDate = DateTime.Now;
+            if (!ValidarFechaString(filtro.FechaDesde, ref fechaDesdeDate))
+            {
+                if (respuesta.ListaError == null) respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "FechaDesde: se requiere el parametro con el formato (yyyy/MM/dd)"
+                });
+                return BadRequest(respuesta);
+            }
+
+            DateTime fechaHastaDate = DateTime.Now;
+            if (!ValidarFechaString(filtro.FechaHasta, ref fechaHastaDate))
+            {
+                if (respuesta.ListaError == null) respuesta.ListaError = new List<ErrorDto>();
+                respuesta.ListaError.Add(new ErrorDto
+                {
+                    Mensaje = "FechaHasta: se requiere el parametro con el formato (yyyy/MM/dd)"
+                });
+                return BadRequest(respuesta);
+            }
+
+            filtro.FechaDesdeDate = fechaDesdeDate;
+            filtro.FechaHastaDate = fechaHastaDate;
+
             var result = await Task.FromResult(_lnPedido.ObtenerVentasPorIdUsuario(filtro));
             respuesta.ProcesadoOk = 1;
             respuesta.Cuerpo = result;

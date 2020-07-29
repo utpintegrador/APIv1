@@ -11,6 +11,8 @@ namespace Entidad.Dto.Transaccion
         public int IdMoneda { get; set; }
         public int IdEstado { get; set; }
         public decimal Total { get; set; }
+        public string NumeroCelular { get; set; }
+        public string Observaciones { get; set; }
         public List<PedidoAtributoDetalleDto> ListaDetalle { get; set; }
         public PedidoAtributoDto()
         {

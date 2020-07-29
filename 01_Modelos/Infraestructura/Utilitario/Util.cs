@@ -89,6 +89,37 @@ namespace Infraestructura.Utilitario
             return fecha;
         }
 
+        public static DateTime? ObtenerFechaDesdeString10(string dato)
+        {
+            DateTime? fecha = null;
+            try
+            {
+
+                if (string.IsNullOrEmpty(dato))
+                {
+                    return null;
+                }
+                dato = dato.Trim();
+
+                if (dato.Length != 10)
+                {
+                    return null;
+                }
+
+                //Solo fecha
+                int anio = Convert.ToInt32(dato.Substring(0, 4));
+                int mes = Convert.ToInt32(dato.Substring(5, 2));
+                int dia = Convert.ToInt32(dato.Substring(8, 2));
+                fecha = new DateTime(anio, mes, dia);
+
+            }
+            catch
+            {
+                return null;
+            }
+            return fecha;
+        }
+
         public static string Encriptar(string textoDesencriptado)
         {
             byte[] textBytes = ASCIIEncoding.ASCII.GetBytes(textoDesencriptado);

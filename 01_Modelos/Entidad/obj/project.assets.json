@@ -5318,11 +5318,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+      "projectUniqueName": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
       "projectName": "Entidad",
-      "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
+      "projectPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Entidad\\Entidad.csproj",
       "packagesPath": "C:\\Users\\Frank-PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Entidad\\obj\\",
+      "outputPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Entidad\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

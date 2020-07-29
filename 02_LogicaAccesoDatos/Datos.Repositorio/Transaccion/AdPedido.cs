@@ -109,7 +109,9 @@ namespace Datos.Repositorio.Transaccion
                         filtro.NumeroPagina,
                         filtro.CantidadRegistros,
                         filtro.ColumnaOrden,
-                        filtro.DireccionOrden
+                        filtro.DireccionOrden,
+                        FechaDesde = filtro.FechaDesdeDate,
+                        FechaHasta = filtro.FechaHastaDate
                     }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
@@ -146,7 +148,9 @@ namespace Datos.Repositorio.Transaccion
                         filtro.NumeroPagina,
                         filtro.CantidadRegistros,
                         filtro.ColumnaOrden,
-                        filtro.DireccionOrden
+                        filtro.DireccionOrden,
+                        FechaDesde = filtro.FechaDesdeDate,
+                        FechaHasta = filtro.FechaHastaDate
                     }, commandType: CommandType.StoredProcedure).ToList();
 
                 }
@@ -172,6 +176,8 @@ namespace Datos.Repositorio.Transaccion
                 p.Add("Direccion", modelo.Direccion);
                 p.Add("IdMoneda", modelo.IdMoneda);
                 p.Add("IdUsuarioRegistro", modelo.IdUsuarioRegistro);
+                p.Add("NumeroCelular", modelo.NumeroCelular);
+                p.Add("Observaciones", modelo.Observaciones);
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
@@ -201,6 +207,8 @@ namespace Datos.Repositorio.Transaccion
                 p.Add("Direccion", modelo.Direccion);
                 p.Add("IdMoneda", modelo.IdMoneda);
                 p.Add("IdUsuarioRegistro", modelo.IdUsuarioRegistro);
+                p.Add("NumeroCelular", modelo.NumeroCelular);
+                p.Add("Observaciones", modelo.Observaciones);
 
                 using (var cn = HelperClass.ObtenerConeccion())
                 {

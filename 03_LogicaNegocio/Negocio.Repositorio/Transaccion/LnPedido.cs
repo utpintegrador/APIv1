@@ -88,30 +88,33 @@ namespace Negocio.Repositorio.Transaccion
                     LnPedidoDetalle lnPedidoDetalle = new LnPedidoDetalle();
                     if (modelo.ListaPedidoDetalle == null) modelo.ListaPedidoDetalle = new List<RequestPedidoRegistrarPedidoDetalleRegistrarDto>();
 
-                    if (modelo.ListaPedidoDetalle.Any())
+                    if (respuesta > 0 && idNuevo > 0)
                     {
-                        int cantidadOkEsperadas = modelo.ListaPedidoDetalle.Count;
-                        int cantidadDetallesOk = 0;
-                        foreach (var det in modelo.ListaPedidoDetalle)
+                        if (modelo.ListaPedidoDetalle.Any())
                         {
-                            var entUbi = new RequestPedidoDetalleRegistrarDto
+                            int cantidadOkEsperadas = modelo.ListaPedidoDetalle.Count;
+                            int cantidadDetallesOk = 0;
+                            foreach (var det in modelo.ListaPedidoDetalle)
                             {
-                                IdPedido = idNuevo,
-                                Cantidad = det.Cantidad,
-                                IdProducto = det.IdProducto,
-                                PrecioUnitario = det.PrecioUnitario
-                            };
+                                var entUbi = new RequestPedidoDetalleRegistrarDto
+                                {
+                                    IdPedido = idNuevo,
+                                    Cantidad = det.Cantidad,
+                                    IdProducto = det.IdProducto,
+                                    PrecioUnitario = det.PrecioUnitario
+                                };
 
-                            long idNuevoDetalle = 0;
-                            int resultadoDetalle = lnPedidoDetalle.Registrar(entUbi, ref idNuevoDetalle);
-                            if (resultadoDetalle > 0 && idNuevoDetalle > 0)
-                            {
-                                cantidadDetallesOk++;
+                                long idNuevoDetalle = 0;
+                                int resultadoDetalle = lnPedidoDetalle.Registrar(entUbi, ref idNuevoDetalle);
+                                if (resultadoDetalle > 0 && idNuevoDetalle > 0)
+                                {
+                                    cantidadDetallesOk++;
+                                }
                             }
-                        }
-                        if (cantidadOkEsperadas == cantidadDetallesOk)
-                        {
-                            scope.Complete();
+                            if (cantidadOkEsperadas == cantidadDetallesOk)
+                            {
+                                scope.Complete();
+                            }
                         }
                     }
                 }
@@ -137,65 +140,68 @@ namespace Negocio.Repositorio.Transaccion
                     modelo.ListaPedidoDetalle = modelo.ListaPedidoDetalle
                         .Where(x => x.Accion == "add" || x.Accion == "upd" || x.Accion == "del").ToList();
 
-                    if (modelo.ListaPedidoDetalle.Any())
+                    if (respuesta > 0)
                     {
-                        int cantidadOkEsperadas = modelo.ListaPedidoDetalle.Count;
-                        int cantidadDetallesOk = 0;
-                        foreach (var det in modelo.ListaPedidoDetalle)
+                        if (modelo.ListaPedidoDetalle.Any())
                         {
-                            switch (det.Accion)
+                            int cantidadOkEsperadas = modelo.ListaPedidoDetalle.Count;
+                            int cantidadDetallesOk = 0;
+                            foreach (var det in modelo.ListaPedidoDetalle)
                             {
-                                case "add":
-                                    {
-                                        var entUbi = new RequestPedidoDetalleRegistrarDto
+                                switch (det.Accion)
+                                {
+                                    case "add":
                                         {
-                                            IdPedido = modelo.IdPedido,
-                                            Cantidad = det.Cantidad,
-                                            IdProducto = det.IdProducto,
-                                            PrecioUnitario = det.PrecioUnitario
-                                        };
+                                            var entUbi = new RequestPedidoDetalleRegistrarDto
+                                            {
+                                                IdPedido = modelo.IdPedido,
+                                                Cantidad = det.Cantidad,
+                                                IdProducto = det.IdProducto,
+                                                PrecioUnitario = det.PrecioUnitario
+                                            };
 
-                                        long idNuevoDetalle = 0;
-                                        int resultadoDetalle = lnPedidoDetalle.Registrar(entUbi, ref idNuevoDetalle);
-                                        if (resultadoDetalle > 0 && idNuevoDetalle > 0)
-                                        {
-                                            cantidadDetallesOk++;
+                                            long idNuevoDetalle = 0;
+                                            int resultadoDetalle = lnPedidoDetalle.Registrar(entUbi, ref idNuevoDetalle);
+                                            if (resultadoDetalle > 0 && idNuevoDetalle > 0)
+                                            {
+                                                cantidadDetallesOk++;
+                                            }
+                                            break;
                                         }
-                                        break;
-                                    }
-                                case "upd":
-                                    {
-                                        var entUbi = new RequestPedidoDetalleModificarDto
+                                    case "upd":
                                         {
-                                            IdPedidoDetalle = det.IdPedidoDetalle,
-                                            IdPedido = modelo.IdPedido,
-                                            Cantidad = det.Cantidad,
-                                            IdProducto = det.IdProducto,
-                                            PrecioUnitario = det.PrecioUnitario
-                                        };
+                                            var entUbi = new RequestPedidoDetalleModificarDto
+                                            {
+                                                IdPedidoDetalle = det.IdPedidoDetalle,
+                                                IdPedido = modelo.IdPedido,
+                                                Cantidad = det.Cantidad,
+                                                IdProducto = det.IdProducto,
+                                                PrecioUnitario = det.PrecioUnitario
+                                            };
 
-                                        int resultadoDetalle = lnPedidoDetalle.Modificar(entUbi);
-                                        if (resultadoDetalle > 0)
-                                        {
-                                            cantidadDetallesOk++;
+                                            int resultadoDetalle = lnPedidoDetalle.Modificar(entUbi);
+                                            if (resultadoDetalle > 0)
+                                            {
+                                                cantidadDetallesOk++;
+                                            }
+                                            break;
                                         }
-                                        break;
-                                    }
-                                case "del":
-                                    {
-                                        int resultadoDetalle = lnPedidoDetalle.Eliminar(det.IdPedidoDetalle);
-                                        if (resultadoDetalle > 0)
+                                    case "del":
                                         {
-                                            cantidadDetallesOk++;
+                                            int resultadoDetalle = lnPedidoDetalle.Eliminar(det.IdPedidoDetalle);
+                                            if (resultadoDetalle > 0)
+                                            {
+                                                cantidadDetallesOk++;
+                                            }
+                                            break;
                                         }
-                                        break;
-                                    }
+                                }
                             }
-                        }
 
-                        if (cantidadOkEsperadas == cantidadDetallesOk)
-                        {
-                            scope.Complete();
+                            if (cantidadOkEsperadas == cantidadDetallesOk)
+                            {
+                                scope.Complete();
+                            }
                         }
                     }
                 }
@@ -214,12 +220,30 @@ namespace Negocio.Repositorio.Transaccion
 
         public int ModificarEstadoPorParteDeComprador(RequestPedidoModificarEstadoPorParteDeCompradorDto modelo)
         {
-            return _adPedido.ModificarEstadoPorParteDeComprador(modelo);
+            int respuesta = 0;
+            using (var scope = new TransactionScope())
+            {
+                respuesta = _adPedido.ModificarEstadoPorParteDeComprador(modelo);
+                if (respuesta > 0)
+                {
+                    scope.Complete();
+                }
+            }
+            return respuesta;
         }
 
         public int ModificarEstadoPorParteDeVendedor(RequestPedidoModificarEstadoPorParteDeVendedorDto modelo)
         {
-            return _adPedido.ModificarEstadoPorParteDeVendedor(modelo);
+            int respuesta = 0;
+            using (var scope = new TransactionScope())
+            {
+                respuesta = _adPedido.ModificarEstadoPorParteDeVendedor(modelo);
+                if (respuesta > 0)
+                {
+                    scope.Complete();
+                }
+            }
+            return respuesta;
         }
 
         public PedidoAtributoDto ObtenerPorIdConDetalles(long id)
@@ -257,6 +281,8 @@ namespace Negocio.Repositorio.Transaccion
                     IdNegocioComprador = pedidoCabecera.IdNegocioComprador,
                     IdNegocioVendedor = pedidoCabecera.IdNegocioVendedor,
                     Total = pedidoCabecera.Total,
+                    NumeroCelular = pedidoCabecera.NumeroCelular,
+                    Observaciones = pedidoCabecera.Observaciones,
                     ListaDetalle = listaDet
                 };
 

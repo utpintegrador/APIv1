@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
+      "projectUniqueName": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
       "projectName": "Infraestructura",
-      "projectPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
+      "projectPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Infraestructura\\Infraestructura.csproj",
       "packagesPath": "C:\\Users\\Frank-PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Integrador2\\APIv1\\01_Modelos\\Infraestructura\\obj\\",
+      "outputPath": "D:\\Integrador2\\APIv2\\APIv1\\01_Modelos\\Infraestructura\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

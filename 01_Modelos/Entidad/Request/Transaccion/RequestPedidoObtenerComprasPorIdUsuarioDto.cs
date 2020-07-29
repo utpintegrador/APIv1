@@ -1,4 +1,6 @@
 ﻿using Entidad.Dto.Paginacion;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entidad.Request.Transaccion
@@ -11,6 +13,18 @@ namespace Entidad.Request.Transaccion
         public string Buscar { get; set; }
         public int IdEstado { get; set; }
         public int IdMoneda { get; set; }
+        [Required(ErrorMessage = "{0}: parametro es requerido")]
+        [MaxLength(10, ErrorMessage = "{0}: se requiere valor con el formato yyyy/MM/dd {1} caracteres")]
+        public string FechaDesde { get; set; }
+
+        [Required(ErrorMessage = "{0}: parametro es requerido")]
+        [MaxLength(10, ErrorMessage = "{0}: se requiere valor con el formato yyyy/MM/dd {1} caracteres")]
+        public string FechaHasta { get; set; }
+
+        [JsonIgnore]
+        public DateTime FechaDesdeDate { get; set; }
+        [JsonIgnore]
+        public DateTime FechaHastaDate { get; set; }
         public RequestPedidoObtenerComprasPorIdUsuarioDto()
         {
             Buscar = string.Empty;
